@@ -1,97 +1,51 @@
 ---
-title: Why use a Cluster?
+title: Perché usare un cluster?
 teaching: 15
 exercises: 5
 ---
 
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Describe what an HPC system is
-- Identify how an HPC system could benefit you.
+- Descrivere che cos'è un sistema HPC
+- Identificare i vantaggi di un sistema HPC.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- Why would I be interested in High Performance Computing (HPC)?
-- What can I expect to learn from this course?
+- Perché dovrei essere interessato al calcolo ad alte prestazioni (HPC)?
+- Cosa posso aspettarmi di imparare da questo corso?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Frequently, research problems that use computing can outgrow the capabilities
-of the desktop or laptop computer where they started:
+Spesso i problemi di ricerca che utilizzano l'informatica possono superare le capacità del computer desktop o portatile da cui sono partiti:
 
-- A statistics student wants to cross-validate a model. This involves running
-  the model 1000 times -- but each run takes an hour. Running the model on
-  a laptop will take over a month! In this research problem, final results are
-  calculated after all 1000 models have run, but typically only one model is
-  run at a time (in **serial**) on the laptop. Since each of the 1000 runs is
-  independent of all others, and given enough computers, it's theoretically
-  possible to run them all at once (in **parallel**).
-- A genomics researcher has been using small datasets of sequence data, but
-  soon will be receiving a new type of sequencing data that is 10 times as
-  large. It's already challenging to open the datasets on a computer --
-  analyzing these larger datasets will probably crash it. In this research
-  problem, the calculations required might be impossible to parallelize, but a
-  computer with **more memory** would be required to analyze the much larger
-  future data set.
-- An engineer is using a fluid dynamics package that has an option to run in
-  parallel. So far, this option was not used on a desktop. In going from 2D
-  to 3D simulations, the simulation time has more than tripled. It might be
-  useful to take advantage of that option or feature. In this research problem,
-  the calculations in each region of the simulation are largely independent of
-  calculations in other regions of the simulation. It's possible to run each
-  region's calculations simultaneously (in **parallel**), communicate selected
-  results to adjacent regions as needed, and repeat the calculations to
-  converge on a final set of results. In moving from a 2D to a 3D model, **both
-  the amount of data and the amount of calculations increases greatly**, and
-  it's theoretically possible to distribute the calculations across multiple
-  computers communicating over a shared network.
+- Uno studente di statistica vuole effettuare una convalida incrociata di un modello. Ciò comporta l'esecuzione del modello 1000 volte, ma ogni esecuzione richiede un'ora. L'esecuzione del modello su un computer portatile richiede più di un mese! In questo problema di ricerca, i risultati finali vengono calcolati dopo l'esecuzione di tutti i 1000 modelli, ma in genere viene eseguito solo un modello alla volta (in **serie**) sul portatile. Poiché ognuna delle 1000 esecuzioni è indipendente da tutte le altre, e con un numero sufficiente di computer, è teoricamente possibile eseguirle tutte insieme (in **parallelo**).
+- Un ricercatore di genomica ha utilizzato piccoli insiemi di dati di sequenza, ma presto riceverà un nuovo tipo di dati di sequenziamento 10 volte più grandi. Aprire i set di dati su un computer è già impegnativo, analizzare questi set di dati più grandi probabilmente lo manderà in tilt. In questo problema di ricerca, i calcoli richiesti potrebbero essere impossibili da parallelizzare, ma sarebbe necessario un computer con **più memoria** per analizzare i futuri set di dati molto più grandi.
+- Un ingegnere sta usando un pacchetto di fluidodinamica che ha un'opzione per l'esecuzione in parallelo. Finora questa opzione non è stata utilizzata su un desktop. Passando dalle simulazioni 2D a quelle 3D, il tempo di simulazione è più che triplicato. Potrebbe essere utile sfruttare questa opzione o funzione. In questo problema di ricerca, i calcoli in ogni regione della simulazione sono ampiamente indipendenti dai calcoli in altre regioni della simulazione. È possibile eseguire i calcoli di ogni regione simultaneamente (in **parallelo**), comunicare i risultati selezionati alle regioni adiacenti, se necessario, e ripetere i calcoli per convergere su un insieme finale di risultati. Passando da un modello 2D a uno 3D, **la quantità di dati e di calcoli aumenta notevolmente**, ed è teoricamente possibile distribuire i calcoli su più computer che comunicano su una rete condivisa.
 
-In all these cases, access to more (and larger) computers is needed. Those
-computers should be usable at the same time, **solving many researchers'
-problems in parallel**.
+In tutti questi casi, è necessario l'accesso a più computer (e più grandi). Questi computer dovrebbero essere utilizzabili contemporaneamente, **risolvendo in parallelo i problemi di molti ricercatori**.
 
-## Jargon Busting Presentation
+## Presentazione del gergo
 
-Open the [HPC Jargon Buster](../files/jargon#p1)
-in a new tab. To present the content, press `C` to open a **c**lone in a
-separate window, then press `P` to toggle **p**resentation mode.
+Aprire [HPC Jargon Buster](../files/jargon#p1) in una nuova scheda. Per presentare il contenuto, premere `C` per aprire una **c**lone in una finestra separata, quindi premere `P` per attivare la modalità di **p**resentazione.
 
-::::::::::::::::::::::::::::::::::::::  challenge
+:::::::::::::::::::::::::::::::::::::: challenge
 
-## I've Never Used a Server, Have I?
+## Non ho mai usato un server, vero?
 
-Take a minute and think about which of your daily interactions with a
-computer may require a remote server or even cluster to provide you with
-results.
+Prendete un minuto e pensate a quali delle vostre interazioni quotidiane con un computer potrebbero richiedere un server remoto o addirittura un cluster per fornirvi i risultati.
 
-:::::::::::::::  solution
+::::::::::::::: solution
 
-## Some Ideas
+## Alcune idee
 
-- Checking email: your computer (possibly in your pocket) contacts a remote
-  machine, authenticates, and downloads a list of new messages; it also
-  uploads changes to message status, such as whether you read, marked as
-  junk, or deleted the message. Since yours is not the only account, the
-  mail server is probably one of many in a data center.
-- Searching for a phrase online involves comparing your search term against
-  a massive database of all known sites, looking for matches. This "query"
-  operation can be straightforward, but building that database is a
-  [monumental task][mapreduce]! Servers are involved at every step.
-- Searching for directions on a mapping website involves connecting your
-  (A) starting and (B) end points by [traversing a graph][dijkstra] in
-  search of the "shortest" path by distance, time, expense, or another
-  metric. Converting a map into the right form is relatively simple, but
-  calculating all the possible routes between A and B is expensive.
+- Controllo della posta elettronica: il vostro computer (magari in tasca) contatta una macchina remota, si autentica e scarica un elenco di nuovi messaggi; carica anche le modifiche allo stato dei messaggi, come ad esempio se sono stati letti, contrassegnati come spazzatura o cancellati. Poiché il vostro non è l'unico account, il server di posta è probabilmente uno dei tanti in un centro dati.
+- La ricerca di una frase online comporta il confronto del termine di ricerca con un enorme database di tutti i siti conosciuti, alla ricerca di corrispondenze. Questa operazione di "interrogazione" può essere semplice, ma la costruzione del database è un [compito monumentale][mapreduce]! I server sono coinvolti in ogni fase.
+- La ricerca di indicazioni stradali su un sito web di mappatura comporta il collegamento dei punti (A) di partenza e (B) di arrivo [attraversando un grafo][dijkstra] alla ricerca del percorso "più breve" in base alla distanza, al tempo, alla spesa o a un'altra metrica. Convertire una mappa nella forma corretta è relativamente semplice, ma calcolare tutti i possibili percorsi tra A e B è costoso.
 
-Checking email could be serial: your machine connects to one server and
-exchanges data. Searching by querying the database for your search term (or
-endpoints) could also be serial, in that one machine receives your query
-and returns the result. However, assembling and storing the full database
-is far beyond the capability of any one machine. Therefore, these functions
-are served in parallel by a large, ["hyperscale"][hyperscale] collection of
-servers working together.
+Il controllo della posta elettronica potrebbe essere seriale: la macchina si connette a un server e scambia dati. Anche la ricerca, interrogando il database per il termine di ricerca (o gli endpoint), potrebbe essere seriale, in quanto una macchina riceve l'interrogazione e restituisce il risultato. Tuttavia, l'assemblaggio e la memorizzazione dell'intero database vanno ben oltre le capacità di una sola macchina. Pertanto, queste funzioni vengono svolte in parallelo da una vasta collezione di server ["hyperscale"][hyperscale] che lavorano insieme.
 
 
 
@@ -108,11 +62,12 @@ servers working together.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- High Performance Computing (HPC) typically involves connecting to very large computing systems elsewhere in the world.
-- These other systems can be used to do work that would either be impossible or much slower on smaller systems.
-- HPC resources are shared by multiple users.
-- The standard method of interacting with such systems is via a command line interface.
+- Il calcolo ad alte prestazioni (HPC) comporta tipicamente la connessione a sistemi di calcolo molto grandi in altre parti del mondo.
+- Questi altri sistemi possono essere utilizzati per eseguire lavori che sarebbero impossibili o molto più lenti su sistemi più piccoli.
+- Le risorse HPC sono condivise da più utenti.
+- Il metodo standard di interazione con questi sistemi è tramite un'interfaccia a riga di comando.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 
