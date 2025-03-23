@@ -1,80 +1,50 @@
 ---
-title: Accessing software via Modules
+title: Accesso al software tramite moduli
 teaching: 30
 exercises: 15
 ---
 
 
 
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Load and use a software package.
-- Explain how the shell environment changes when the module mechanism loads or unloads packages.
+- Carica e utilizza un pacchetto software.
+- Spiegate come cambia l'ambiente della shell quando il meccanismo dei moduli carica o scarica i pacchetti.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How do we load and unload software packages?
+- Come si caricano e scaricano i pacchetti software?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-On a high-performance computing system, it is seldom the case that the software
-we want to use is available when we log in. It is installed, but we will need
-to "load" it before it can run.
+In un sistema di calcolo ad alte prestazioni, raramente il software che vogliamo usare è disponibile al momento dell'accesso. È installato, ma è necessario "caricarlo" prima che possa essere eseguito.
 
-Before we start using individual software packages, however, we should
-understand the reasoning behind this approach. The three biggest factors are:
+Prima di iniziare a utilizzare i singoli pacchetti software, tuttavia, è necessario comprendere il ragionamento alla base di questo approccio. I tre fattori principali sono:
 
-- software incompatibilities
+- incompatibilità software
 - versioning
-- dependencies
+- dipendenze
 
-Software incompatibility is a major headache for programmers. Sometimes the
-presence (or absence) of a software package will break others that depend on
-it. Two well known examples are Python and C compiler versions.
-Python 3 famously provides a `python` command that conflicts with that provided
-by Python 2. Software compiled against a newer version of the C libraries and
-then run on a machine that has older C libraries installed will result in a
-nasty `'GLIBCXX_3.4.20' not found` error.
+L'incompatibilità del software è un grosso grattacapo per i programmatori. A volte, la presenza (o l'assenza) di un pacchetto software ne rompe altri che dipendono da esso. Due esempi ben noti sono le versioni dei compilatori Python e C. Python 3 fornisce un comando `python` che è in conflitto con quello fornito da Python 2. Il software compilato con una versione più recente del compilatore C non è in grado di funzionare. Il software compilato con una versione più recente delle librerie C e poi eseguito su una macchina in cui sono installate librerie C più vecchie, darà luogo a uno spiacevole errore `'GLIBCXX_3.4.20' not found`.
 
-Software versioning is another common issue. A team might depend on a certain
-package version for their research project - if the software version was to
-change (for instance, if a package was updated), it might affect their results.
-Having access to multiple software versions allows a set of researchers to
-prevent software versioning issues from affecting their results.
+La gestione delle versioni del software è un altro problema comune. Un gruppo di lavoro potrebbe dipendere da una certa versione di un pacchetto per il proprio progetto di ricerca; se la versione del software dovesse cambiare (per esempio, se un pacchetto venisse aggiornato), i risultati potrebbero risentirne. Avere accesso a più versioni del software permette a un gruppo di ricercatori di evitare che i problemi di versione del software influenzino i loro risultati.
 
-Dependencies are where a particular software package (or even a particular
-version) depends on having access to another software package (or even a
-particular version of another software package). For example, the VASP
-materials science software may depend on having a particular version of the
-FFTW (Fastest Fourier Transform in the West) software library available for it
-to work.
+Le dipendenze sono quando un particolare pacchetto software (o anche una particolare versione) dipende dall'accesso a un altro pacchetto software (o anche a una particolare versione di un altro pacchetto software). Ad esempio, il software per la scienza dei materiali VASP può dipendere dalla disponibilità di una particolare versione della libreria software FFTW (Fastest Fourier Transform in the West) per funzionare.
 
-## Environment Modules
+## Moduli d'ambiente
 
-Environment modules are the solution to these problems. A *module* is a
-self-contained description of a software package -- it contains the
-settings required to run a software package and, usually, encodes required
-dependencies on other software packages.
+I moduli d'ambiente sono la soluzione a questi problemi. Un *modulo* è una descrizione autonoma di un pacchetto software: contiene le impostazioni necessarie per eseguire un pacchetto software e, di solito, codifica le dipendenze necessarie da altri pacchetti software.
 
-There are a number of different environment module implementations commonly
-used on HPC systems: the two most common are *TCL modules* and *Lmod*. Both of
-these use similar syntax and the concepts are the same so learning to use one
-will allow you to use whichever is installed on the system you are using. In
-both implementations the `module` command is used to interact with environment
-modules. An additional subcommand is usually added to the command to specify
-what you want to do. For a list of subcommands you can use `module -h` or
-`module help`. As for all commands, you can access the full help on the *man*
-pages with `man module`.
+Esistono diverse implementazioni di moduli di ambiente comunemente utilizzate sui sistemi HPC: le due più comuni sono *TCL modules* e *Lmod*. Entrambi utilizzano una sintassi simile e i concetti sono gli stessi, quindi imparare a usarne uno vi permetterà di utilizzare quello installato sul sistema che state usando. In entrambe le implementazioni il comando `module` è usato per interagire con i moduli di ambiente. Al comando viene solitamente aggiunto un ulteriore sottocomando per specificare ciò che si vuole fare. Per un elenco di sottocomandi si può usare `module -h` o `module help`. Come per tutti i comandi, è possibile accedere alla guida completa nelle pagine di *man* con `man module`.
 
-On login you may start out with a default set of modules loaded or you may
-start out with an empty environment; this depends on the setup of the system
-you are using.
+All'accesso si può iniziare con un set predefinito di moduli caricati o con un ambiente vuoto; ciò dipende dalla configurazione del sistema in uso.
 
-### Listing Available Modules
+### Elenco dei moduli disponibili
 
-To see available software modules, use `module avail`:
+Per vedere i moduli software disponibili, usare `module avail`:
 
 ```bash
 [yourUsername@login1 ~] module avail
@@ -101,11 +71,9 @@ Use "module keyword key1 key2 ..." to search for all possible modules matching
 any of the "keys".
 ```
 
-### Listing Currently Loaded Modules
+### Elenco dei moduli attualmente caricati
 
-You can use the `module list` command to see which modules you currently have
-loaded in your environment. If you have no modules loaded, you will see a
-message telling you so
+Si può usare il comando `module list` per vedere quali moduli sono attualmente caricati nel proprio ambiente. Se non è stato caricato alcun modulo, verrà visualizzato un messaggio che lo indica
 
 ```bash
 [yourUsername@login1 ~] module list
@@ -115,28 +83,23 @@ message telling you so
 No Modulefiles Currently Loaded.
 ```
 
-## Loading and Unloading Software
+## Caricamento e scaricamento del software
 
-To load a software module, use `module load`. In this example we will use
-Python 3.
+Per caricare un modulo software, usare `module load`. In questo esempio useremo Python 3.
 
-Initially, Python 3 is not loaded. We can test this by using the `which`
-command. `which` looks for programs the same way that Bash does, so we can use
-it to tell us where a particular piece of software is stored.
+Inizialmente, Python 3 non viene caricato. Si può verificare usando il comando `which`. il comando `which` cerca i programmi nello stesso modo in cui lo fa Bash, quindi possiamo usarlo per sapere dove è memorizzato un particolare software.
 
 ```bash
 [yourUsername@login1 ~] which python3
 ```
 
-If the `python3` command was unavailable, we would see output like
+Se il comando `python3` non fosse disponibile, si vedrebbe un risultato come
 
 ```output
 /usr/bin/which: no python3 in (/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin:/opt/software/slurm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/yourUsername/.local/bin:/home/yourUsername/bin)
 ```
 
-Note that this wall of text is really a list, with values separated
-by the `:` character. The output is telling us that the `which` command
-searched the following directories for `python3`, without success:
+Si noti che questo muro di testo è in realtà un elenco, con i valori separati dal carattere `:`. L'output ci dice che il comando `which` ha cercato `python3` nelle seguenti directory, senza successo:
 
 ```output
 /cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin
@@ -150,16 +113,15 @@ searched the following directories for `python3`, without success:
 /home/yourUsername/bin
 ```
 
-However, in our case we do have an existing `python3` available so we see
+Tuttavia, nel nostro caso abbiamo un `python3` esistente disponibile, quindi vediamo
 
 ```output
 /cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin/python3
 ```
 
-We need a different Python than the system provided one though, so let us load
-a module to access it.
+Abbiamo bisogno di un Python diverso da quello fornito dal sistema, quindi carichiamo un modulo per accedervi.
 
-We can load the `python3` command with `module load`:
+Possiamo caricare il comando `python3` con `module load`:
 
 ```bash
 [yourUsername@login1 ~] module load Python
@@ -170,14 +132,9 @@ We can load the `python3` command with `module load`:
 /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin/python3
 ```
 
-So, what just happened?
+Allora, cosa è successo?
 
-To understand the output, first we need to understand the nature of the `$PATH`
-environment variable. `$PATH` is a special environment variable that controls
-where a UNIX system looks for software. Specifically `$PATH` is a list of
-directories (separated by `:`) that the OS searches through for a command
-before giving up and telling us it can't find it. As with all environment
-variables we can print it out using `echo`.
+Per comprendere l'output, occorre innanzitutto capire la natura della variabile d'ambiente `$PATH`. `$PATH` è una variabile d'ambiente speciale che controlla dove un sistema UNIX cerca il software. In particolare, `$PATH` è un elenco di directory (separate da `:`) in cui il sistema operativo cerca un comando prima di arrendersi e dire che non lo trova. Come per tutte le variabili d'ambiente, è possibile stamparle usando `echo`.
 
 ```bash
 [yourUsername@login1 ~] echo $PATH
@@ -187,10 +144,7 @@ variables we can print it out using `echo`.
 /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/SQLite/3.31.1-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Tcl/8.6.10-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/GCCcore/x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin:/opt/software/slurm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/user01/.local/bin:/home/user01/bin
 ```
 
-You'll notice a similarity to the output of the `which` command. In this case,
-there's only one difference: the different directory at the beginning. When we
-ran the `module load` command, it added a directory to the beginning of our
-`$PATH`. Let's examine what's there:
+Noterete una somiglianza con l'output del comando `which`. In questo caso, c'è solo una differenza: la diversa directory all'inizio. Quando abbiamo eseguito il comando `module load`, questo ha aggiunto una directory all'inizio del nostro `$PATH`. Esaminiamo cosa c'è:
 
 ```bash
 [yourUsername@login1 ~] ls /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin
@@ -212,13 +166,9 @@ netaddr           pytest         rst2odt.py             wheel
 nosetests         py.test        rst2pseudoxml.py
 ```
 
-Taking this to its conclusion, `module load` will add software to your `$PATH`.
-It "loads" software. A special note on this - depending on which version of the
-`module` program that is installed at your site, `module load` will also load
-required software dependencies.
+Portando questo alla sua conclusione, `module load` aggiungerà software al vostro `$PATH`. Carica il software. Una nota speciale: a seconda della versione del programma `module` installata nel sito, `module load` caricherà anche le dipendenze software necessarie.
 
-To demonstrate, let's use `module list`. `module list` shows all loaded
-software modules.
+Per dimostrarlo, usiamo `module list`.`module list` mostra tutti i moduli software caricati.
 
 ```bash
 [yourUsername@login1 ~] module list
@@ -253,10 +203,7 @@ Currently Loaded Modules:
  13) UCX/1.8.0-GCCcore-x.y.z
 ```
 
-So in this case, loading the `GROMACS` module (a bioinformatics software
-package), also loaded `GMP/6.2.0-GCCcore-x.y.z` and
-`SciPy-bundle/2020.03-foss-2020a-Python-3.x.y` as well. Let's try unloading the
-`GROMACS` package.
+In questo caso, il caricamento del modulo `GROMACS` (un pacchetto software bioinformatico) ha caricato anche `GMP/6.2.0-GCCcore-x.y.z` e `SciPy-bundle/2020.03-foss-2020a-Python-3.x.y`. Proviamo a scaricare il pacchetto `GROMACS`.
 
 ```bash
 [yourUsername@login1 ~] module unload GROMACS
@@ -279,10 +226,7 @@ Currently Loaded Modules:
  12) libevent/2.1.11-GCCcore-x.y.z    24) networkx/2.4-foss-2020a-Python-3.x.y
 ```
 
-So using `module unload` "un-loads" a module, and depending on how a site is
-configured it may also unload all of the dependencies (in our case it does
-not). If we wanted to unload everything at once, we could run `module purge`
-(unloads everything).
+Quindi l'uso di `module unload` "scarica" un modulo e, a seconda di come è configurato un sito, può anche scaricare tutte le dipendenze (nel nostro caso non lo fa). Se si volesse scaricare tutto in una volta, si potrebbe eseguire `module purge` (scarica tutto).
 
 ```bash
 [yourUsername@login1 ~] module purge
@@ -293,33 +237,19 @@ not). If we wanted to unload everything at once, we could run `module purge`
 No modules loaded
 ```
 
-Note that `module purge` is informative. It will also let us know if a default
-set of "sticky" packages cannot be unloaded (and how to actually unload these
-if we truly so desired).
+Si noti che `module purge` è informativo. Ci farà anche sapere se un insieme predefinito di pacchetti "appiccicosi" non può essere scaricato (e come scaricarli se lo si desidera veramente).
 
-Note that this module loading process happens principally through
-the manipulation of environment variables like `$PATH`. There
-is usually little or no data transfer involved.
+Si noti che questo processo di caricamento del modulo avviene principalmente attraverso la manipolazione di variabili d'ambiente come `$PATH`. Di solito il trasferimento di dati è minimo o nullo.
 
-The module loading process manipulates other special environment
-variables as well, including variables that influence where the
-system looks for software libraries, and sometimes variables which
-tell commercial software packages where to find license servers.
+Il processo di caricamento dei moduli manipola anche altre variabili d'ambiente speciali, tra cui quelle che influenzano la ricerca delle librerie software da parte del sistema e, talvolta, quelle che indicano ai pacchetti software commerciali dove trovare i server delle licenze.
 
-The module command also restores these shell environment variables
-to their previous state when a module is unloaded.
+Il comando module ripristina anche queste variabili d'ambiente della shell al loro stato precedente quando un modulo viene scaricato.
 
-## Software Versioning
+## Versione del software
 
-So far, we've learned how to load and unload software packages. This is very
-useful. However, we have not yet addressed the issue of software versioning. At
-some point or other, you will run into issues where only one particular version
-of some software will be suitable. Perhaps a key bugfix only happened in a
-certain version, or version X broke compatibility with a file format you use.
-In either of these example cases, it helps to be very specific about what
-software is loaded.
+Finora abbiamo imparato a caricare e scaricare i pacchetti software. Questo è molto utile. Tuttavia, non abbiamo ancora affrontato il problema del versionamento del software. Prima o poi ci si imbatterà in problemi in cui solo una particolare versione di un software sarà adatta. Forse la correzione di un bug fondamentale è avvenuta solo in una certa versione, oppure la versione X ha interrotto la compatibilità con un formato di file utilizzato. In entrambi questi casi, è utile essere molto precisi sul software caricato.
 
-Let's examine the output of `module avail` more closely.
+Esaminiamo più da vicino l'output di `module avail`.
 
 ```bash
 [yourUsername@login1 ~] module avail
@@ -346,18 +276,15 @@ Use "module keyword key1 key2 ..." to search for all possible modules matching
 any of the "keys".
 ```
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+::::::::::::::::::::::::::::::::::::::: challenge
 
-## Using Software Modules in Scripts
+## Utilizzo dei moduli software negli script
 
-Create a job that is able to run `python3 --version`. Remember, no software
-is loaded by default! Running a job is just like logging on to the system
-(you should not assume a module loaded on the login node is loaded on a
-compute node).
+Creare un lavoro in grado di eseguire `python3 --version`. Ricordate che per impostazione predefinita non viene caricato alcun software! Eseguire un lavoro è come accedere al sistema (non si deve dare per scontato che un modulo caricato sul nodo di login sia caricato su un nodo di calcolo).
 
-:::::::::::::::  solution
+::::::::::::::: solution
 
-## Solution
+## Soluzione
 
 ```bash
 [yourUsername@login1 ~] nano python-module.sh
@@ -385,8 +312,10 @@ python3 --version
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Load software with `module load softwareName`.
-- Unload software with `module unload`
-- The module system handles software versioning and package conflicts for you automatically.
+- Carica il software con `module load softwareName`.
+- Scarica il software con `module unload`
+- Il sistema dei moduli gestisce automaticamente le versioni del software e i conflitti tra i pacchetti.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+

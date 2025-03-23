@@ -1,71 +1,49 @@
 ---
-title: "Scheduler Fundamentals"
+title: Fondamenti di scheduler
 teaching: 45
 exercises: 30
 ---
 
 
 
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Submit a simple script to the cluster.
-- Monitor the execution of jobs using command line tools.
-- Inspect the output and error files of your jobs.
-- Find the right place to put large datasets on the cluster.
+- Invia un semplice script al cluster.
+- Monitorare l'esecuzione dei lavori utilizzando gli strumenti della riga di comando.
+- Ispezionare i file di output e di errore dei lavori.
+- Trovare il posto giusto per mettere grandi insiemi di dati sul cluster.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- What is a scheduler and why does a cluster need one?
-- How do I launch a program to run on a compute node in the cluster?
-- How do I capture the output of a program that is run on a node in the cluster?
+- Cos'è uno scheduler e perché un cluster ne ha bisogno?
+- Come si lancia un programma da eseguire su un nodo di calcolo del cluster?
+- Come posso catturare l'output di un programma eseguito su un nodo del cluster?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Job Scheduler
+## Programmatore di lavoro
 
-An HPC system might have thousands of nodes and thousands of users. How do we
-decide who gets what and when? How do we ensure that a task is run with the
-resources it needs? This job is handled by a special piece of software called
-the *scheduler*. On an HPC system, the scheduler manages which jobs run where
-and when.
+Un sistema HPC può avere migliaia di nodi e migliaia di utenti. Come si decide chi riceve cosa e quando? Come facciamo a garantire che un task venga eseguito con le risorse di cui ha bisogno? Questo lavoro è gestito da uno speciale software chiamato *scheduler*. In un sistema HPC, lo scheduler gestisce i lavori da eseguire dove e quando.
 
-The following illustration compares these tasks of a job scheduler to a waiter
-in a restaurant. If you can relate to an instance where you had to wait for a
-while in a queue to get in to a popular restaurant, then you may now understand
-why sometimes your job do not start instantly as in your laptop.
+L'illustrazione seguente paragona i compiti di uno schedulatore di lavori a quelli di un cameriere in un ristorante. Se vi è capitato di dover aspettare un po' in coda per entrare in un ristorante famoso, allora potete capire perché a volte i vostri lavori non partono immediatamente come nel vostro portatile.
 
-![](fig/restaurant_queue_manager.svg){alt="Compare a job scheduler to a waiter in a restaurant" max-width="75%"}
+![](fig/restaurant_queue_manager.svg){alt="Confronta un job scheduler con un cameriere in un ristorante" max-width="75%"}
 
-The scheduler used in this lesson is Slurm. Although
-Slurm is not used everywhere, running jobs is quite similar
-regardless of what software is being used. The exact syntax might change, but
-the concepts remain the same.
+Lo scheduler utilizzato in questa lezione è Slurm. Sebbene Slurm non sia utilizzato ovunque, l'esecuzione dei lavori è abbastanza simile indipendentemente dal software utilizzato. La sintassi esatta può cambiare, ma i concetti rimangono gli stessi.
 
-## Running a Batch Job
+## Esecuzione di un lavoro batch
 
-The most basic use of the scheduler is to run a command non-interactively. Any
-command (or series of commands) that you want to run on the cluster is called a
-*job*, and the process of using a scheduler to run the job is called *batch job
-submission*.
+L'uso più semplice dello scheduler è quello di eseguire un comando in modo non interattivo. Qualsiasi comando (o serie di comandi) che si desidera eseguire sul cluster è chiamato *lavoro* e il processo di utilizzo dello schedulatore per eseguire il lavoro è chiamato *invio di lavori in batch*.
 
-In this case, the job we want to run is a shell script -- essentially a
-text file containing a list of UNIX commands to be executed in a sequential
-manner. Our shell script will have three parts:
+In questo caso, il lavoro da eseguire è uno script di shell, ovvero un file di testo contenente un elenco di comandi UNIX da eseguire in modo sequenziale. Il nostro script di shell sarà composto da tre parti:
 
-- On the very first line, add `#!/bin/bash`. The `#!`
-  (pronounced "hash-bang" or "shebang") tells the computer what program is
-  meant to process the contents of this file. In this case, we are telling it
-  that the commands that follow are written for the command-line shell (what
-  we've been doing everything in so far).
-- Anywhere below the first line, we'll add an `echo` command with a friendly
-  greeting. When run, the shell script will print whatever comes after `echo`
-  in the terminal.
-  - `echo -n` will print everything that follows, *without* ending
-    the line by printing the new-line character.
-- On the last line, we'll invoke the `hostname` command, which will print the
-  name of the machine the script is run on.
+- Alla prima riga, aggiungere `#!/bin/bash`. L'opzione `#!` (pronunciata "hash-bang" o "shebang") indica al computer quale programma deve elaborare il contenuto di questo file. In questo caso, gli stiamo dicendo che i comandi che seguono sono scritti per la shell a riga di comando (con cui abbiamo fatto tutto finora).
+- in qualsiasi punto sotto la prima riga, aggiungeremo un comando `echo` con un saluto amichevole. Una volta eseguito, lo script di shell stamperà nel terminale qualsiasi cosa venga dopo `echo`.
+  - `echo -n` stamperà tutto ciò che segue, *senza* terminare la riga stampando il carattere di nuova riga.
+- Nell'ultima riga, invocheremo il comando `hostname`, che stamperà il nome della macchina su cui viene eseguito lo script.
 
 ```bash
 [yourUsername@login1 ~] nano example-job.sh
@@ -78,15 +56,15 @@ echo -n "This script is running on "
 hostname
 ```
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+::::::::::::::::::::::::::::::::::::::: challenge
 
-## Creating Our Test Job
+## Creare il nostro lavoro di prova
 
-Run the script. Does it execute on the cluster or just our login node?
+Eseguire lo script. Viene eseguito sul cluster o solo sul nostro nodo di accesso?
 
-:::::::::::::::  solution
+::::::::::::::: solution
 
-## Solution
+## Soluzione
 
 ```bash
 [yourUsername@login1 ~] bash example-job.sh
@@ -100,15 +78,9 @@ This script is running on login1
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-This script ran on the login node, but we want to take advantage of
-the compute nodes: we need the scheduler to queue up `example-job.sh`
-to run on a compute node.
+Questo script è stato eseguito sul nodo di login, ma vogliamo sfruttare i nodi di calcolo: abbiamo bisogno che lo scheduler metta in coda `example-job.sh` per eseguirlo su un nodo di calcolo.
 
-To submit this task to the scheduler, we use the
-`sbatch` command.
-This creates a *job* which will run the *script* when *dispatched* to
-a compute node which the queuing system has identified as being
-available to perform the work.
+Per inviare questo task allo scheduler, si usa il comando `sbatch`. Questo crea un *lavoro* che eseguirà il *script* quando verrà *spedito* a un nodo di calcolo che il sistema di accodamento ha identificato come disponibile per eseguire il lavoro.
 
 ```bash
 [yourUsername@login1 ~] sbatch  example-job.sh
@@ -119,11 +91,7 @@ available to perform the work.
 Submitted batch job 7
 ```
 
-And that's all we need to do to submit a job. Our work is done -- now the
-scheduler takes over and tries to run the job for us. While the job is waiting
-to run, it goes into a list of jobs called the *queue*. To check on our job's
-status, we check the queue using the command
-`squeue -u yourUsername`.
+E questo è tutto ciò che dobbiamo fare per inviare un lavoro. Il nostro lavoro è finito: ora lo scheduler prende il sopravvento e cerca di eseguire il lavoro per noi. Mentre il lavoro è in attesa di essere eseguito, viene inserito in un elenco di lavori chiamato *queue*. Per verificare lo stato del nostro lavoro, controlliamo la coda usando il comando `squeue -u yourUsername`.
 
 ```bash
 [yourUsername@login1 ~] squeue -u yourUsername
@@ -134,44 +102,25 @@ JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
     9 cpubase_b example-   user01  R       0:05      1 node1
 ```
 
-We can see all the details of our job, most importantly that it is in the `R`
-or `RUNNING` state. Sometimes our jobs might need to wait in a queue
-(`PENDING`) or have an error (`E`).
+Possiamo vedere tutti i dettagli del nostro lavoro, soprattutto che è nello stato `R` o `RUNNING`. A volte i nostri lavori potrebbero dover aspettare in coda (`PENDING`) o avere un errore (`E`).
 
-::::::::::::::::::::::::::::::::::::::  discussion
+:::::::::::::::::::::::::::::::::::::: discussion
 
-## Where's the Output?
+## Dov'è l'output?
 
-On the login node, this script printed output to the terminal -- but
-now, when `squeue` shows the job has finished,
-nothing was printed to the terminal.
+Nel nodo di accesso, questo script stampava l'output nel terminale, ma ora, quando `squeue` mostra che il lavoro è terminato, non viene stampato nulla nel terminale.
 
-Cluster job output is typically redirected to a file in the directory you
-launched it from. Use `ls` to find and `cat` to read the file.
+L'output del lavoro del cluster viene solitamente reindirizzato a un file nella directory da cui è stato lanciato. Usare `ls` per trovare e `cat` per leggere il file.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Customising a Job
+## Personalizzazione di un lavoro
 
-The job we just ran used all of the scheduler's default options. In a
-real-world scenario, that's probably not what we want. The default options
-represent a reasonable minimum. Chances are, we will need more cores, more
-memory, more time, among other special considerations. To get access to these
-resources we must customize our job script.
+Il lavoro appena eseguito ha utilizzato tutte le opzioni predefinite dello schedulatore. In uno scenario reale, probabilmente non è quello che vogliamo. Le opzioni predefinite rappresentano un minimo ragionevole. È probabile che avremo bisogno di più core, più memoria, più tempo e altre considerazioni speciali. Per avere accesso a queste risorse, dobbiamo personalizzare il nostro script di lavoro.
 
-Comments in UNIX shell scripts (denoted by `#`) are typically ignored, but
-there are exceptions. For instance the special `#!` comment at the beginning of
-scripts specifies what program should be used to run it (you'll typically see
-`#!/usr/bin/env bash`). Schedulers like Slurm also
-have a special comment used to denote special scheduler-specific options.
-Though these comments differ from scheduler to scheduler,
-Slurm's special comment is `#SBATCH`. Anything
-following the `#SBATCH` comment is interpreted as an
-instruction to the scheduler.
+I commenti negli script di shell UNIX (indicati con `#`) sono generalmente ignorati, ma ci sono delle eccezioni. Per esempio, il commento speciale `#!` all'inizio degli script specifica quale programma deve essere usato per eseguirli (di solito si vede `#!/usr/bin/env bash`). Anche gli schedulatori, come Slurm, hanno un commento speciale usato per indicare opzioni specifiche dello schedulatore. Sebbene questi commenti differiscano da schedulatore a schedulatore, il commento speciale di Slurm è `#SBATCH`. Tutto ciò che segue il commento `#SBATCH` viene interpretato come un'istruzione per lo schedulatore.
 
-Let's illustrate this by example. By default, a job's name is the name of the
-script, but the `-J` option can be used to change the
-name of a job. Add an option to the script:
+Illustriamo questo esempio. Per impostazione predefinita, il nome di un lavoro è il nome dello script, ma l'opzione `-J` può essere usata per cambiare il nome di un lavoro. Aggiungere un'opzione allo script:
 
 ```bash
 [yourUsername@login1 ~] cat example-job.sh
@@ -185,7 +134,7 @@ echo -n "This script is running on "
 hostname
 ```
 
-Submit the job and monitor its status:
+Inviare il lavoro e monitorarne lo stato:
 
 ```bash
 [yourUsername@login1 ~] sbatch  example-job.sh
@@ -197,55 +146,35 @@ JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
    10 cpubase_b hello-wo   user01  R       0:02      1 node1
 ```
 
-Fantastic, we've successfully changed the name of our job!
+Fantastico, abbiamo cambiato con successo il nome del nostro lavoro!
 
-### Resource Requests
+### Richieste di risorse
 
-What about more important changes, such as the number of cores and memory for
-our jobs? One thing that is absolutely critical when working on an HPC system
-is specifying the resources required to run a job. This allows the scheduler to
-find the right time and place to schedule our job. If you do not specify
-requirements (such as the amount of time you need), you will likely be stuck
-with your site's default resources, which is probably not what you want.
+Che dire di cambiamenti più importanti, come il numero di core e di memoria per i nostri lavori? Una cosa assolutamente fondamentale quando si lavora su un sistema HPC è specificare le risorse necessarie per eseguire un lavoro. Questo permette allo scheduler di trovare il momento e il posto giusto per programmare il nostro lavoro. Se non si specificano i requisiti (ad esempio la quantità di tempo necessaria), è probabile che si rimanga bloccati con le risorse predefinite del sito, il che probabilmente non è ciò che si desidera.
 
-The following are several key resource requests:
+Le seguenti sono diverse richieste di risorse chiave:
 
-- `--ntasks=<ntasks>` or `-n <ntasks>`: How many CPU cores does your job need,
-  in total?
+- `--ntasks=<ntasks>` o `-n <ntasks>`: Di quanti core di CPU ha bisogno il vostro lavoro, in totale?
 
-- `--time <days-hours:minutes:seconds>` or `-t <days-hours:minutes:seconds>`:
-  How much real-world time (walltime) will your job take to run? The `<days>`
-  part can be omitted.
+- `--time <days-hours:minutes:seconds>` o `-t <days-hours:minutes:seconds>`: Quanto tempo reale (walltime) impiegherà il lavoro per essere eseguito? La parte `<days>` può essere omessa.
 
-- `--mem=<megabytes>`: How much memory on a node does your job need in
-  megabytes? You can also specify gigabytes using by adding a little "g"
-  afterwards (example: `--mem=5g`)
+- `--mem=<megabytes>`: Di quanta memoria su un nodo ha bisogno il lavoro in megabyte? Si possono anche specificare i gigabyte aggiungendo una piccola "g" dopo (esempio: `--mem=5g`)
 
-- `--nodes=<nnodes>` or `-N <nnodes>`: How many separate machines does your job
-  need to run on? Note that if you set `ntasks` to a number greater than what
-  one machine can offer, Slurm will set this value
-  automatically.
+- `--nodes=<nnodes>` o `-N <nnodes>`: Su quante macchine separate deve essere eseguito il lavoro? Si noti che se si imposta `ntasks` su un numero superiore a quello che può offrire una sola macchina, Slurm imposterà automaticamente questo valore.
 
-Note that just *requesting* these resources does not make your job run faster,
-nor does it necessarily mean that you will consume all of these resources. It
-only means that these are made available to you. Your job may end up using less
-memory, or less time, or fewer nodes than you have requested, and it will still
-run.
+Si noti che il solo fatto di *richiedere* queste risorse non rende il lavoro più veloce, né significa necessariamente che si consumeranno tutte queste risorse. Significa solo che vengono messe a disposizione. Il lavoro può finire per utilizzare meno memoria, meno tempo o meno nodi di quelli richiesti, ma verrà comunque eseguito.
 
-It's best if your requests accurately reflect your job's requirements. We'll
-talk more about how to make sure that you're using resources effectively in a
-later episode of this lesson.
+È meglio che le richieste riflettano accuratamente i requisiti del lavoro. In una puntata successiva di questa lezione parleremo di come assicurarsi di utilizzare le risorse in modo efficace.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+::::::::::::::::::::::::::::::::::::::: challenge
 
-## Submitting Resource Requests
+## Invio di richieste di risorse
 
-Modify our `hostname` script so that it runs for a minute, then submit a job
-for it on the cluster.
+Modificare il nostro script `hostname` in modo che venga eseguito per un minuto, quindi inviare un lavoro per esso sul cluster.
 
-:::::::::::::::  solution
+::::::::::::::: solution
 
-## Solution
+## Soluzione
 
 ```bash
 [yourUsername@login1 ~] cat example-job.sh
@@ -264,7 +193,7 @@ hostname
 [yourUsername@login1 ~] sbatch  example-job.sh
 ```
 
-Why are the Slurm runtime and `sleep` time not identical?
+Perché il tempo di esecuzione Slurm e il tempo `sleep` non sono identici?
 
 
 
@@ -272,9 +201,7 @@ Why are the Slurm runtime and `sleep` time not identical?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Resource requests are typically binding. If you exceed them, your job will be
-killed. Let's use wall time as an example. We will request 1 minute of
-wall time, and attempt to run a job for two minutes.
+Le richieste di risorse sono in genere vincolanti. Se si superano, il lavoro viene eliminato. Utilizziamo il tempo di parete come esempio. Richiederemo 1 minuto di tempo di parete e cercheremo di eseguire un lavoro per due minuti.
 
 ```bash
 [yourUsername@login1 ~] cat example-job.sh
@@ -290,8 +217,7 @@ sleep 240 # time in seconds
 hostname
 ```
 
-Submit the job and wait for it to finish. Once it is has finished, check the
-log file.
+Inviare il lavoro e attendere che finisca. Una volta terminato, controllare il file di log.
 
 ```bash
 [yourUsername@login1 ~] sbatch  example-job.sh
@@ -308,23 +234,11 @@ slurmstepd: error: *** JOB 12 ON node1 CANCELLED AT 2021-02-19T13:55:57
 DUE TO TIME LIMIT ***
 ```
 
-Our job was killed for exceeding the amount of resources it requested. Although
-this appears harsh, this is actually a feature. Strict adherence to resource
-requests allows the scheduler to find the best possible place for your jobs.
-Even more importantly, it ensures that another user cannot use more resources
-than they've been given. If another user messes up and accidentally attempts to
-use all of the cores or memory on a node, Slurm will either
-restrain their job to the requested resources or kill the job outright. Other
-jobs on the node will be unaffected. This means that one user cannot mess up
-the experience of others, the only jobs affected by a mistake in scheduling
-will be their own.
+Il nostro lavoro è stato annullato per aver superato la quantità di risorse richieste. Anche se questo sembra un problema, in realtà si tratta di una caratteristica. Il rispetto rigoroso delle richieste di risorse consente allo scheduler di trovare il miglior posto possibile per i lavori. Ancora più importante, garantisce che un altro utente non possa utilizzare più risorse di quelle che gli sono state assegnate. Se un altro utente sbaglia e tenta accidentalmente di usare tutti i core o la memoria di un nodo, Slurm limiterà il suo lavoro alle risorse richieste o lo ucciderà del tutto. Gli altri lavori sul nodo non ne risentiranno. Ciò significa che un utente non può rovinare l'esperienza degli altri: gli unici lavori interessati da un errore di programmazione saranno i propri.
 
-## Cancelling a Job
+## Annullamento di un lavoro
 
-Sometimes we'll make a mistake and need to cancel a job. This can be done with
-the `scancel` command. Let's submit a job and then cancel it using
-its job number (remember to change the walltime so that it runs long enough for
-you to cancel it before it is killed!).
+A volte capita di commettere un errore e di dover cancellare un lavoro. Questo può essere fatto con il comando `scancel`. Inviamo un lavoro e poi annulliamolo usando il suo numero di lavoro (ricordate di cambiare il tempo di esecuzione in modo che funzioni abbastanza a lungo da permettervi di annullarlo prima che venga ucciso).
 
 ```bash
 [yourUsername@login1 ~] sbatch  example-job.sh
@@ -338,9 +252,7 @@ JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
    13 cpubase_b long_job   user01  R       0:02      1 node1
 ```
 
-Now cancel the job with its job number (printed in your terminal). A clean
-return of your command prompt indicates that the request to cancel the job was
-successful.
+Ora annullate il lavoro con il suo numero (stampato nel terminale). Un ritorno pulito del prompt dei comandi indica che la richiesta di annullamento del lavoro è andata a buon fine.
 
 ```bash
 [yourUsername@login1 ~] scancel 38759
@@ -352,21 +264,19 @@ successful.
 JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 ```
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+::::::::::::::::::::::::::::::::::::::: challenge
 
-## Cancelling multiple jobs
+## Annullamento di lavori multipli
 
-We can also cancel all of our jobs at once using the `-u` option. This will
-delete all jobs for a specific user (in this case, yourself). Note that you
-can only delete your own jobs.
+È anche possibile cancellare tutti i lavori in una volta sola usando l'opzione `-u`. In questo modo si cancellano tutti i lavori di un utente specifico (in questo caso, l'utente stesso). Si noti che è possibile cancellare solo i propri lavori.
 
-Try submitting multiple jobs and then cancelling them all.
+Provare a inviare più lavori e poi annullarli tutti.
 
-:::::::::::::::  solution
+::::::::::::::: solution
 
-## Solution
+## Soluzione
 
-First, submit a trio of jobs:
+Per prima cosa, inviare un trio di lavori:
 
 ```bash
 [yourUsername@login1 ~] sbatch  example-job.sh
@@ -374,7 +284,7 @@ First, submit a trio of jobs:
 [yourUsername@login1 ~] sbatch  example-job.sh
 ```
 
-Then, cancel them all:
+Poi, annullarli tutti:
 
 ```bash
 [yourUsername@login1 ~] scancel -u yourUsername
@@ -384,21 +294,13 @@ Then, cancel them all:
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Other Types of Jobs
+## Altri tipi di lavoro
 
-Up to this point, we've focused on running jobs in batch mode.
-`Slurm` also provides the ability to start an interactive session.
+Finora ci siamo concentrati sull'esecuzione di lavori in modalità batch. `Slurm` offre anche la possibilità di avviare una sessione interattiva.
 
-There are very frequently tasks that need to be done interactively. Creating an
-entire job script might be overkill, but the amount of resources required is
-too much for a login node to handle. A good example of this might be building a
-genome index for alignment with a tool like [HISAT2][hisat]. Fortunately, we
-can run these types of tasks as a one-off with `srun`.
+Molto spesso ci sono compiti che devono essere eseguiti in modo interattivo. Creare un intero script di lavoro potrebbe essere eccessivo, ma la quantità di risorse richieste è troppo elevata per essere gestita da un nodo di login. Un buon esempio potrebbe essere la creazione di un indice del genoma per l'allineamento con uno strumento come [HISAT2][hisat]. Fortunatamente, è possibile eseguire questo tipo di compiti una tantum con `srun`.
 
-`srun` runs a single command on the cluster and then
-exits. Let's demonstrate this by running the `hostname` command with
-`srun`. (We can cancel an `srun`
-job with `Ctrl-c`.)
+`srun` esegue un singolo comando sul cluster e poi esce. Dimostriamo questo eseguendo il comando `hostname` con `srun`. (È possibile annullare un lavoro `srun` con ``Ctrl-c``)
 
 ```bash
 [yourUsername@login1 ~] srun hostname
@@ -408,10 +310,7 @@ job with `Ctrl-c`.)
 smnode1
 ```
 
-`srun` accepts all of the same options as
-`sbatch`. However, instead of specifying these in a script,
-these options are specified on the command-line when starting a job. To submit
-a job that uses 2 CPUs for instance, we could use the following command:
+`srun` accetta tutte le stesse opzioni di `sbatch`. Tuttavia, invece di specificarle in uno script, queste opzioni vengono specificate sulla riga di comando quando si avvia un lavoro. Per inviare un lavoro che utilizza 2 CPU, ad esempio, si può usare il seguente comando:
 
 ```bash
 [yourUsername@login1 ~] srun -n 2 echo "This job will use 2 CPUs."
@@ -422,55 +321,41 @@ This job will use 2 CPUs.
 This job will use 2 CPUs.
 ```
 
-Typically, the resulting shell environment will be the same as that for
-`sbatch`.
+In genere, l'ambiente di shell risultante sarà lo stesso di quello di `sbatch`.
 
-### Interactive jobs
+### Lavori interattivi
 
-Sometimes, you will need a lot of resources for interactive use. Perhaps it's
-our first time running an analysis or we are attempting to debug something that
-went wrong with a previous job. Fortunately, Slurm makes it
-easy to start an interactive job with `srun`:
+A volte si ha bisogno di molte risorse per l'uso interattivo. Forse è la prima volta che si esegue un'analisi o si sta cercando di eseguire il debug di qualcosa che è andato storto con un lavoro precedente. Fortunatamente, Slurm semplifica l'avvio di un lavoro interattivo con `srun`:
 
 ```bash
 [yourUsername@login1 ~] srun --pty bash
 ```
 
-You should be presented with a bash prompt. Note that the prompt will likely
-change to reflect your new location, in this case the compute node we are
-logged on. You can also verify this with `hostname`.
+Dovrebbe apparire un prompt di bash. Si noti che il prompt probabilmente cambierà per riflettere la nuova posizione, in questo caso il nodo di calcolo su cui si è effettuato l'accesso. Si può anche verificare con `hostname`.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+::::::::::::::::::::::::::::::::::::::::: callout
 
-## Creating remote graphics
+## Creazione della grafica remota
 
-To see graphical output inside your jobs, you need to use X11 forwarding. To
-connect with this feature enabled, use the `-Y` option when you login with
-the `ssh` command, e.g., `ssh -Y yourUsername@cluster.hpc-carpentry.org`.
+Per vedere l'output grafico dei lavori, è necessario utilizzare l'inoltro X11. Per connettersi con questa funzione abilitata, usare l'opzione `-Y` quando si effettua il login con il comando `ssh`, ad esempio, `ssh -Y yourUsername@cluster.hpc-carpentry.org`.
 
-To demonstrate what happens when you create a graphics window on the remote
-node, use the `xeyes` command. A relatively adorable pair of eyes should pop
-up (press `Ctrl-C` to stop). If you are using a Mac, you must have installed
-XQuartz (and restarted your computer) for this to work.
+Per dimostrare cosa succede quando si crea una finestra grafica sul nodo remoto, usare il comando `xeyes`. Dovrebbe apparire un paio di occhi relativamente adorabili (premere `Ctrl-C` per fermarsi). Se si utilizza un Mac, è necessario aver installato XQuartz (e riavviato il computer) perché questo funzioni.
 
-If your cluster has the
-[slurm-spank-x11](https://github.com/hautreux/slurm-spank-x11) plugin
-installed, you can ensure X11 forwarding within interactive jobs by using the
-`--x11` option for `srun` with the command
-`srun --x11 --pty bash`.
+Se nel cluster è installato il plugin [slurm-spank-x11](https://github.com/hautreux/slurm-spank-x11), si può garantire l'inoltro X11 nei lavori interattivi usando l'opzione `--x11` per `srun` con il comando `srun --x11 --pty bash`.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-When you are done with the interactive job, type `exit` to quit your session.
+Al termine del lavoro interattivo, digitare `exit` per uscire dalla sessione.
 
 [hisat]: https://daehwankimlab.github.io/hisat2/
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- The scheduler handles how compute resources are shared between users.
-- A job is just a shell script.
-- Request *slightly* more resources than you will need.
+- Lo scheduler gestisce la condivisione delle risorse di calcolo tra gli utenti.
+- Un lavoro è solo uno script di shell.
+- Richiedere *poco* più risorse di quelle necessarie.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 
