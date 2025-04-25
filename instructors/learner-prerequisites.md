@@ -1,83 +1,68 @@
 ---
-title: Learner Prerequisites
+title: Prerequisiti per i Partecipanti
 ---
 
-This page collects questions that learners can answer in order to judge if they
-bring all prerequisites to the course.
+Questa pagina raccoglie domande a cui i partecipanti possono rispondere per capire
+se possiedono tutti i prerequisiti per il corso.
 
 ::::::::::::::::::::::::::::::::::::::::::  prereq
 
-## Required Pre-Knowledge
+## Conoscenze Richieste
 
-**Basic Shell** -- Navigating directories, Copy/Moving, writing shell
-scripts, using the environment, using wildcards.
-
+**Shell di base** -- Navigare tra directory, Copiare/Spostare file, scrivere script
+shell, usare l’ambiente, usare caratteri jolly (wildcard).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Pre-Workshop Survey
+## Questionario Pre-Corso
 
-For a motivation of this survey type, see Greg Wilson's template in [Teaching
+Per una spiegazione su questo tipo di questionario, vedi il modello di Greg Wilson in [Teaching
 Tech Together](https://teachtogether.tech/en/index.html#s:checklists-preassess).
 
 ### Shell
 
-#### Moving Things
+#### Spostare File
 
-You are provided with a directory of 300 files that end with `.log`, `.data`
-and `.err` at equal proportions. You want to rename all `.log` files to `.out`
-files. How do you do this?
+Hai una directory con 300 file che terminano in `.log`, `.data` e `.err` in proporzioni uguali.
+Vuoi rinominare tutti i file `.log` in file `.out`. Come lo fai?
 
-1. I can do that. Give me a shell and I'll show you.
-2. I'd need to look up the syntax in a cheatsheet or some old code and I'm good
-  to do this.
-3. I am unclear about this, I'd have to consult a colleague or a search engine
-  to do this.
-4. I am not sure what to do.
+1. So farlo. Dammi una shell e te lo mostro.
+2. Devo controllare la sintassi in un cheatsheet o in un vecchio script, ma poi ci riesco.
+3. Non mi è chiaro, dovrei chiedere a un collega o cercare online.
+4. Non so cosa fare.
 
-#### Moving Around
+#### Navigare tra Directory
 
-You are on `/bigdata/users/wolfman/projects/study` and want to jump over to
-`/bigdata/projects/experiments/at-moonlight` on the command line.
+Ti trovi in `/bigdata/users/wolfman/projects/study` e vuoi passare a
+`/bigdata/projects/experiments/at-moonlight` da linea di comando.
 
-1. I can do that. Give me a shell and I'll show you.
-2. I'd need to look up the syntax in a cheatsheet or some old code and I'm good
-  to do this.
-3. I am unclear about this, I'd have to consult a colleague or a search engine
-  to do this.
-4. I am not sure what to do.
+1. So farlo. Dammi una shell e te lo mostro.
+2. Devo controllare la sintassi in un cheatsheet o in un vecchio script, ma poi ci riesco.
+3. Non mi è chiaro, dovrei chiedere a un collega o cercare online.
+4. Non so cosa fare.
 
-#### Collaborator Candy
+#### Collaborazione Facile
 
-A collaborator provides you an implementation of a state-of-the-art simulation
-that you need to compare your own predictions to. He tells you: "You can use it
-on the command line right away. Unpack the file I sent you and use the `sim`
-executable in the `bin/` folder from it. The rest is explained in the output of
-the `--help` flag."
+Un collaboratore ti fornisce un’implementazione di una simulazione all’avanguardia
+che devi confrontare con le tue previsioni. Ti dice: "Puoi usarla da linea di comando subito.
+Decomprimi il file che ti ho inviato e usa l'eseguibile `sim` nella cartella `bin/`.
+Il resto è spiegato nell’output del flag `--help`."
 
-You want to use this new program on your cluster, starting with reading the
-"help" message from the `sim` executable.
+Vuoi usare questo nuovo programma sul tuo cluster, iniziando leggendo il messaggio di aiuto dell’eseguibile `sim`.
 
-1. I can do that. Give me a shell and I'll show you.
-2. I'd need to look up the syntax in a cheatsheet or some old code and I'm good
-  to do this.
-3. I am unclear about this, I'd have to consult a colleague or a search engine
-  to do this.
-4. I am not sure what to do.
+1. So farlo. Dammi una shell e te lo mostro.
+2. Devo controllare la sintassi in un cheatsheet o in un vecchio script, ma poi ci riesco.
+3. Non mi è chiaro, dovrei chiedere a un collega o cercare online.
+4. Non so cosa fare.
 
-#### Automating All the Things
+#### Automatizzare Tutto
 
-You notice that you've been copying \& pasting the same sequence of 5 shell
-commands more than a few times during the day. It occurs to you that capturing
-the workflow in a shell script would simplify the task and make it more
-repeatable. The script would take two arguments, i.e. the file to read data
-from and a new filename to write the processed results into.
+Ti accorgi di aver copiato e incollato la stessa sequenza di 5 comandi shell più volte durante la giornata.
+Ti viene in mente che scrivere uno script shell per questa attività semplificherebbe il lavoro e lo renderebbe ripetibile.
+Lo script dovrebbe accettare due argomenti, cioè il file da cui leggere i dati e un nuovo nome file per salvare i risultati elaborati.
 
-1. I can do that. Give me a shell and I'll show you.
-2. I'd need to look up the syntax in a cheatsheet or some old code and I'm good
-  to do this.
-3. I am unclear about this, I'd have to consult a colleague or a search engine
-  to do this.
-4. I am not sure what to do.
-
+1. So farlo. Dammi una shell e te lo mostro.
+2. Devo controllare la sintassi in un cheatsheet o in un vecchio script, ma poi ci riesco.
+3. Non mi è chiaro, dovrei chiedere a un collega o cercare online.
+4. Non so cosa fare.
 

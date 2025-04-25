@@ -1,59 +1,58 @@
 ---
-title: Learner Profiles
+title: Profili dei Partecipanti
 ---
 
-These profiles describe the potential learners that we anticipate as learners
-for this lesson. These can be used if you are deciding if this material is
-right for you or your students. If you plan to contribute material to this
-lesson, these will help you understand the target audience so that we can have
-a collaboratively developed, but cohesive lesson.
+Questi profili descrivono i potenziali partecipanti che ci aspettiamo per
+questa lezione. Possono essere utili per decidere se questo materiale è adatto
+a te o ai tuoi studenti. Se intendi contribuire al materiale della lezione,
+questi profili ti aiuteranno a capire il pubblico di riferimento, in modo da
+sviluppare insieme una lezione coesa.
 
 ## Tyra Crick
 
-Tyra is an environmental biologist that uses DNA signatures obtained from soils
-to study species diversity in the environment. She needs to compare DNA
-sequences to large databases. So far, she has been able to use web-based tools
-for her limited datasets.
+Tyra è una biologa ambientale che utilizza firme del DNA ottenute dai suoli
+per studiare la diversità delle specie nell’ambiente. Ha bisogno di confrontare
+sequenze di DNA con grandi database. Finora è riuscita a usare strumenti web
+per i suoi dataset limitati.
 
-Recently, Tyra has started working with much larger datasets, and discovered
-that the online tool she uses has a limit of 50 entries on the online server.
-She has heard it should be possible to run the same tool through the command
-line, and managed to install it on her local Laptop. Now, however, it takes
-several days before each of the analyses are finished.
+Recentemente ha iniziato a lavorare con dataset molto più grandi e ha scoperto
+che lo strumento online che usa ha un limite di 50 voci sul server. Ha sentito
+dire che è possibile eseguire lo stesso strumento da linea di comando, ed è
+riuscita a installarlo sul proprio portatile. Ora però ogni analisi impiega
+diversi giorni per concludersi.
 
-The workshop will teach Tyra to move her data to and from the university's
-computer cluster, and submit jobs using pre-installed software on the cluster.
-Afterwards, Tyra will be able to analyze her own data and pre-installed
-command-line based versions of the tool to spread the analysis over several
-dozen cores so it finishes in a few hours.
+Il workshop insegnerà a Tyra come trasferire i dati da e verso il cluster
+universitario e come inviare job usando software già installato sul cluster.
+Dopo, Tyra potrà analizzare i propri dati usando le versioni da linea di
+comando dello strumento, distribuendo l’analisi su diverse decine di core,
+così da completarla in poche ore.
 
 ## Maria Newton
 
-As a new PhD student, Maria is given a task to select parameters for their
-simulation. They need to run a set of calculations on several thousand
-combinations of parameters. One calculation takes several minutes. They set up
-the problem on their laptop but quickly realise that it would take more than a
-month to complete the task. They are told to use local HPC but they are not
-sure how this would help them.
+Maria è una nuova dottoranda a cui è stato assegnato il compito di scegliere i
+parametri per una simulazione. Deve eseguire un insieme di calcoli su diverse
+migliaia di combinazioni di parametri. Un calcolo richiede diversi minuti. Ha
+configurato il problema sul suo portatile ma si è resa conto rapidamente che ci
+vorrebbe più di un mese per completare il lavoro. Le viene consigliato di usare
+l’HPC locale, ma non sa come questo possa aiutarla.
 
 ## Dana Fisher
 
-Dana wants to cross-validate a model for a statistics class project. This
-involves running the model 1000 times -- but each run takes an hour.
-Running the model on a laptop will take over a month!
+Dana vuole convalidare un modello per un progetto del corso di statistica. Ciò
+richiede di eseguire il modello 1000 volte -- ma ogni esecuzione dura un’ora.
+Far girare il modello su un portatile richiederebbe oltre un mese!
 
 ## Rina Watson
 
-Rina, a genomics researcher, has been using small datasets of sequence data,
-but soon will be receiving a new type of sequencing data that is 10 times as
-large. It's already challenging to open the datasets on a computer --
-analyzing these larger datasets will probably crash it.
+Rina, una ricercatrice in genomica, ha usato piccoli dataset di dati di
+sequenziamento, ma presto riceverà un nuovo tipo di dati 10 volte più grande.
+Già ora è difficile aprire i dataset sul computer — analizzare i nuovi dati
+probabilmente lo farà crashare.
 
 ## Lucy Navier-Stokes
 
-Lucy is using a fluid dynamics package that has an option to run in parallel.
-So far, this option was not used on a desktop. In going from 2D to 3D
-simulations, the simulation time has more than tripled. It might be useful to
-take advantage of that parallel feature to speed things up.
-
+Lucy usa un pacchetto di fluidodinamica che ha un’opzione per l’esecuzione in
+parallelo. Finora non ha mai usato questa opzione sul proprio desktop. Passando
+da simulazioni 2D a 3D, il tempo di simulazione è più che triplicato. Potrebbe
+essere utile sfruttare la funzionalità parallela per velocizzare l’esecuzione.
 

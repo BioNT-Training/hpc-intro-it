@@ -1,47 +1,28 @@
 ---
 permalink: /reference/
-title: Knowledge Base
+title: Base di conoscenza
 ---
 
-### Quick Reference or "Cheat Sheets" for Queuing System Commands
 
-Search online for the one that fits you best, but here's some to start:
+### Riferimento rapido o "Schede di sicurezza" per i comandi del sistema di accodamento
 
-- [Slurm summary](https://slurm.schedmd.com/pdfs/summary.pdf) from SchedMD
-- [Torque/PBS
-  summary](https://gif.biotech.iastate.edu/torque-pbs-job-management-cheat-sheet)
-  from Iowa State
-- [Translating between Slurm and
-  PBS](https://www.msi.umn.edu/slurm/pbs-conversion) from University of
-  Minnesota
+Cercate online quello più adatto a voi, ma eccone alcuni per iniziare:
 
-### Units and Language
+- [Slurm summary](https://slurm.schedmd.com/pdfs/summary.pdf) da SchedMD
+- [Riassunto di Torque/PBS](https://gif.biotech.iastate.edu/torque-pbs-job-management-cheat-sheet) da Iowa State
+- [Traduzione tra Slurm e PBS](https://www.msi.umn.edu/slurm/pbs-conversion) da Università del Minnesota
 
-A computer's memory and disk are measured in units called *Bytes* (one Byte is
-8 bits). As today's files and memory have grown to be large given historic
-standards, volumes are noted using the
-[SI](https://en.wikipedia.org/wiki/International_System_of_Units) prefixes. So
-1000 Bytes is a Kilobyte (kB), 1000 Kilobytes is a Megabyte (MB), 1000
-Megabytes is a Gigabyte (GB), etc.
+### Unità e lingua
 
-History and common language have however mixed this notation with a different
-meaning. When people say "Kilobyte", they mean 1024 Bytes instead. In that
-spirit, a Megabyte is 1024 Kilobytes.
+La memoria e il disco di un computer sono misurati in unità chiamate *Byte* (un Byte è pari a 8 bit). Poiché i file e la memoria di oggi sono diventati grandi rispetto agli standard storici, i volumi sono indicati utilizzando i prefissi [SI](https://en.wikipedia.org/wiki/International_System_of_Units). Quindi 1000 Byte sono un Kilobyte (kB), 1000 Kilobyte sono un Megabyte (MB), 1000 Megabyte sono un Gigabyte (GB), ecc.
 
-To address this ambiguity, the [International System of
-Quantities](https://en.wikipedia.org/wiki/International_System_of_Quantities)
-standardizes the *binary* prefixes (with base of 2<sup>10</sup>\=1024) by the
-prefixes Kibi (ki), Mebi (Mi), Gibi (Gi), etc. For more details, see
-[here](https://en.wikipedia.org/wiki/Binary_prefix).
+La storia e il linguaggio comune hanno tuttavia mescolato questa notazione con un significato diverso. Quando si dice "Kilobyte", si intende invece 1024 Byte. In questo senso, un Megabyte è 1024 Kilobyte.
 
-### "No such file or directory" or "symbol 0096" Errors
+Per ovviare a questa ambiguità, il [Sistema Internazionale delle Quantità](https://en.wikipedia.org/wiki/International_System_of_Quantities) standardizza i prefissi *binari* (con base 2<sup>10</sup>=1024) con i prefissi Kibi (ki), Mebi (Mi), Gibi (Gi), ecc. Per maggiori dettagli, vedere [qui](https://en.wikipedia.org/wiki/Binary_prefix).
 
-`scp` and `rsync` may throw a perplexing error about files that very much do
-exist. One source of these errors is copy-and-paste of command line arguments
-from Web browsers, where the double-dash string `--` is rendered as an em-dash
-character "—" (or en-dash "–", or horizontal bar `―`). For example,
-instead of showing the transfer rate in real time, the following command fails
-mysteriously.
+### "Nessun file o directory di questo tipo" o "simbolo 0096" Errori
+
+`scp` e `rsync` possono dare un errore di perplessità su file che esistono eccome. Una fonte di questi errori è il copia-incolla degli argomenti della riga di comando da parte dei browser Web, dove la stringa a doppio trattino `--` viene resa come un carattere em-dash "-" (o en-dash "-", o barra orizzontale `―`). Ad esempio, invece di mostrare la velocità di trasferimento in tempo reale, il seguente comando fallisce misteriosamente.
 
 ```bash
 {{ site.local.prompt }} rsync —progress my_precious_data.txt {{ site.remote.user }}@{{ site.remote.login }}
@@ -51,31 +32,23 @@ rsync error: some files/attrs were not transferred (see previous errors)
 (code 23) at main.c(1207) [sender=3.1.3]
 ```
 
-The correct command, different only by two characters, succeeds:
+Il comando corretto, diverso solo da due caratteri, ha successo:
 
 ```bash
 {{ site.local.prompt }} rsync --progress my_precious_data.txt {{ site.remote.user }}@{{ site.remote.login }}
 ```
 
-We have done our best to wrap all commands in code blocks, which prevents this
-subtle conversion. If you encounter this error, please open an issue or pull
-request on the lesson repository to help others avoid it.
+Abbiamo fatto del nostro meglio per racchiudere tutti i comandi in blocchi di codice, il che impedisce questa sottile conversione. Se si riscontra questo errore, si prega di aprire un problema o una richiesta di pull sul repository delle lezioni per aiutare gli altri a evitarlo.
 
-### Transferring Files Interactively With `sftp`
+### Trasferimento interattivo di file con `sftp`
 
-`scp` is useful, but what if we don't know the exact location of what we want
-to transfer? Or perhaps we're simply not sure which files we want to transfer
-yet. `sftp` is an interactive way of downloading and uploading files. Let's
-connect to a cluster, using `sftp` -- you'll notice it works the same way
-as SSH:
+`scp` è utile, ma cosa succede se non si conosce la posizione esatta di ciò che si vuole trasferire? O forse non siamo ancora sicuri di quali file vogliamo trasferire. `sftp` è un modo interattivo di scaricare e caricare i file. Colleghiamoci a un cluster, usando `sftp` - noterete che funziona allo stesso modo di SSH:
 
 ```bash
 {{ site.local.prompt }} sftp yourUsername@remote.computer.address
 ```
 
-This will start what appears to be a bash shell (though our prompt says
-`sftp>`). However we only have access to a limited number of commands. We can
-see which commands are available with `help`:
+Questo avvia quella che sembra essere una shell bash (anche se il prompt dice `sftp>`). Tuttavia, abbiamo accesso solo a un numero limitato di comandi. Possiamo vedere quali comandi sono disponibili con `help`:
 
 ```bash
 sftp> help
@@ -105,11 +78,9 @@ ls [-1afhlnrSt] [path]             Display remote directory listing
 # omitted further output for clarity
 ```
 
-Notice the presence of multiple commands that make mention of local and remote.
-We are actually connected to two computers at once (with two working
-directories!).
+Si noti la presenza di più comandi che fanno riferimento a locale e remoto. In realtà siamo collegati a due computer contemporaneamente (con due directory funzionanti!).
 
-To show our remote working directory:
+Per mostrare la nostra directory di lavoro remota:
 
 ```bash
 sftp> pwd
@@ -119,7 +90,7 @@ sftp> pwd
 Remote working directory: /global/home/yourUsername
 ```
 
-To show our local working directory, we add an `l` in front of the command:
+Per mostrare la nostra directory di lavoro locale, aggiungiamo un `l` davanti al comando:
 
 ```bash
 sftp> lpwd
@@ -129,13 +100,12 @@ sftp> lpwd
 Local working directory: /home/jeff/Documents/teaching/hpc-intro
 ```
 
-The same pattern follows for all other commands:
+Lo stesso schema segue per tutti gli altri comandi:
 
-- `ls` shows the contents of our remote directory, while `lls` shows our local
-  directory contents.
-- `cd` changes the remote directory, `lcd` changes the local one.
+- `ls` mostra il contenuto della nostra directory remota, mentre `lls` mostra il contenuto della nostra directory locale.
+- `cd` cambia la directory remota, `lcd` cambia quella locale.
 
-To upload a file, we type `put some-file.txt` (tab-completion works here).
+Per caricare un file, digitare `put some-file.txt` (qui funziona il completamento a tabulazione).
 
 ```bash
 sftp> put config.toml
@@ -146,7 +116,7 @@ Uploading config.toml to /global/home/yourUsername/config.toml
 config.toml                                  100%  713     2.4KB/s   00:00
 ```
 
-To download a file we type `get some-file.txt`:
+Per scaricare un file digitiamo `get some-file.txt`:
 
 ```bash
 sftp> get config.toml
@@ -157,8 +127,7 @@ Fetching /global/home/yourUsername/config.toml to config.toml
 /global/home/yourUsername/config.toml        100%  713     9.3KB/s   00:00
 ```
 
-And we can recursively put/get files by just adding `-r`. Note that the
-directory needs to be present beforehand.
+E possiamo mettere/togliere file in modo ricorsivo aggiungendo semplicemente `-r`. Si noti che la directory deve essere già presente.
 
 ```bash
 sftp> mkdir content
@@ -177,7 +146,8 @@ content/modules.md                100%   17KB 158.0KB/s   00:00
 content/resources.md              100% 1115    29.9KB/s   00:00
 ```
 
-To quit, we type `exit` or `bye`.
+Per uscire, digitiamo `exit` o `bye`.
+
 
 
 
