@@ -99,7 +99,7 @@
           <button class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             More <i data-feather="chevron-down"></i>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><li><a class="dropdown-item" href="discuss.html">Taking Your Next Steps</a></li><li><a class="dropdown-item" href="reference.html">Knowledge Base</a></li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><li><a class="dropdown-item" href="discuss.html">I prossimi passi</a></li><li><a class="dropdown-item" href="reference.html">Base di conoscenza</a></li>
           </ul></li>
       </ul></div>
     <!--
@@ -207,8 +207,8 @@
 
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#where-to-type-commands-how-to-open-a-new-shell">Where to Type Commands: How to Open a New Shell</a></li>
-<li><a href="#ssh-for-secure-connections">SSH for Secure Connections</a></li>
+        <ul><li><a href="#dove-digitare-i-comandi-come-aprire-una-nuova-shell">Dove digitare i comandi: Come aprire una nuova shell</a></li>
+<li><a href="#ssh-per-connessioni-sicure">SSH per connessioni sicure</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -327,7 +327,7 @@
                       <li>
                         <a href="profiles.html">Learner Profiles</a>
                       </li>
-                      <li><a href="discuss.html">Taking Your Next Steps</a></li><li><a href="reference.html">Knowledge Base</a></li>
+                      <li><a href="discuss.html">I prossimi passi</a></li><li><a href="reference.html">Base di conoscenza</a></li>
                     </ul></div>
                 </div>
               </div>
@@ -413,91 +413,94 @@ gli istruttori] (instructors/instructor-notes.md).</p>
 </div>
 
 
-      <section id="setup"><p>There are several pieces of software you will wish to install before
-the workshop. Though installation help will be provided at the workshop,
-we recommend that these tools are installed (or at least downloaded)
-beforehand.</p>
-<ol style="list-style-type: decimal"><li><a href="#where-to-type-commands-how-to-open-a-new-shell">A terminal
-application or command-line interface</a></li>
-<li><a href="#ssh-for-secure-connections">A Secure Shell
-application</a></li>
-</ol><div id="bash-and-ssh" class="callout prereq">
+      <section id="setup"><p>Ci sono diversi software che si desidera installare prima del
+workshop. Anche se la guida all’installazione sarà fornita durante il
+workshop, si consiglia di installare (o almeno scaricare) questi
+strumenti in anticipo.</p>
+<ol style="list-style-type: decimal"><li><a href="#dove-dovete-digitare-comandi-come-aprire-una-nuova-shell">Un’applicazione
+terminale o un’interfaccia a riga di comando</a></li>
+<li><a href="#ssh-for-secure-connections">Un’applicazione Secure
+Shell</a></li>
+</ol><div id="bash-e-ssh" class="callout prereq">
 <div class="callout-square">
 <i class="callout-icon" data-feather="check"></i>
 </div>
-<div id="bash-and-ssh" class="callout-inner">
-<h3 class="callout-title">Bash and SSH</h3>
+<div id="bash-e-ssh" class="callout-inner">
+<h3 class="callout-title">Bash e SSH</h3>
 <div class="callout-content">
-<p>This lesson requires a terminal application (<code>bash</code>,
-<code>zsh</code>, or others) with the ability to securely connect to a
-remote machine (<code>ssh</code>).</p>
+<p>Questa lezione richiede un’applicazione terminale (<code>bash</code>,
+<code>zsh</code> o altre) con la capacità di connettersi in modo sicuro
+a una macchina remota (<code>ssh</code>).</p>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="where-to-type-commands-how-to-open-a-new-shell">Where to Type Commands: How to Open a New Shell<a class="anchor" aria-label="anchor" href="#where-to-type-commands-how-to-open-a-new-shell"></a></h2>
-<hr class="half-width"><p>The shell is a program that enables us to send commands to the
-computer and receive output. It is also referred to as the terminal or
-command line.</p>
-<p>Some computers include a default Unix Shell program. The steps below
-describe some methods for identifying and opening a Unix Shell program
-if you already have one installed. There are also options for
-identifying and downloading a Unix Shell program, a Linux/UNIX emulator,
-or a program to access a Unix Shell on a server.</p>
+<section><h2 class="section-heading" id="dove-digitare-i-comandi-come-aprire-una-nuova-shell">Dove digitare i comandi: Come aprire una nuova shell<a class="anchor" aria-label="anchor" href="#dove-digitare-i-comandi-come-aprire-una-nuova-shell"></a></h2>
+<hr class="half-width"><p>La shell è un programma che ci permette di inviare comandi al
+computer e di ricevere l’output. Viene anche chiamata terminale o riga
+di comando.</p>
+<p>Alcuni computer includono un programma Unix Shell predefinito. I
+passi che seguono descrivono alcuni metodi per identificare e aprire un
+programma Unix Shell se ne avete già uno installato. Esistono anche
+opzioni per identificare e scaricare un programma Unix Shell, un
+emulatore Linux/UNIX o un programma per accedere a Unix Shell su un
+server.</p>
 <div class="section level3">
-<h3 id="unix-shells-on-windows">Unix Shells on Windows<a class="anchor" aria-label="anchor" href="#unix-shells-on-windows"></a></h3>
-<p>Computers with Windows operating systems do not automatically have a
-Unix Shell program installed. In this lesson, we encourage you to use an
-emulator included in Git for Windows, which gives you access to both
-Bash shell commands and Git. If you have attended a Software Carpentry
-workshop session, it is likely you have already received instructions on
-how to install Git for Windows.</p>
-<p>Once installed, you can open a terminal by running the program Git
-Bash from the Windows start menu.</p>
+<h3 id="gusci-unix-su-windows">Gusci Unix su Windows<a class="anchor" aria-label="anchor" href="#gusci-unix-su-windows"></a></h3>
+<p>I computer con sistema operativo Windows non hanno automaticamente
+installato un programma di shell Unix. In questa lezione, vi invitiamo a
+usare un emulatore incluso in Git per Windows, che vi dà accesso sia ai
+comandi della shell Bash sia a Git. Se avete partecipato a una sessione
+di workshop di Software Carpentry, è probabile che abbiate già ricevuto
+istruzioni su come installare Git per Windows.</p>
+<p>Una volta installato, è possibile aprire un terminale eseguendo il
+programma Git Bash dal menu di avvio di Windows.</p>
 <div class="section level4">
-<h4 id="shell-programs-for-windows">Shell Programs for Windows<a class="anchor" aria-label="anchor" href="#shell-programs-for-windows"></a></h4>
+<h4 id="programmi-di-shell-per-windows">Programmi di shell per Windows<a class="anchor" aria-label="anchor" href="#programmi-di-shell-per-windows"></a></h4>
 <ul><li>
-<a href="https://gitforwindows.org/" class="external-link">Git for Windows</a> –
-<em>Recommended</em>
+<a href="https://gitforwindows.org/" class="external-link">Git per Windows</a> –
+<em>raccomandato</em>
 </li>
 <li>
-<a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" class="external-link">Windows
-Subsystem for Linux</a> – advanced option for Windows 10</li>
-</ul><div id="alternatives-to-git-for-windows" class="callout discussion">
+<a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" class="external-link">Sottosistema
+Windows per Linux</a> – opzione avanzata per Windows 10</li>
+</ul><div id="alternative-a-git-per-windows" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
-<div id="alternatives-to-git-for-windows" class="callout-inner">
-<h3 class="callout-title">Alternatives to Git for Windows</h3>
+<div id="alternative-a-git-per-windows" class="callout-inner">
+<h3 class="callout-title">Alternative a Git per Windows</h3>
 <div class="callout-content">
-<p>Other solutions are available for running Bash commands on Windows.
-There is now a Bash shell command-line tool available for Windows 10.
-Additionally, you can run Bash commands on a remote computer or server
-that already has a Unix Shell, from your Windows machine. This can
-usually be done through a Secure Shell (SSH) client. One such client
-available for free for Windows computers is <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/" class="external-link">PuTTY</a>.
-See the reference below for information on installing and using PuTTY,
-using the Windows 10 command-line tool, or installing and using a
-Unix/Linux emulator.</p>
-<p>For advanced users, you may choose one of the following
-alternatives:</p>
-<ul><li>Install the <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" class="external-link">Windows
-Subsystem for Linux</a>
+<p>Sono disponibili altre soluzioni per eseguire i comandi Bash su
+Windows. È ora disponibile uno strumento a riga di comando della shell
+Bash per Windows 10. Inoltre, è possibile eseguire i comandi Bash su un
+computer o server remoto che dispone già di una shell Unix, dal proprio
+computer Windows. Di solito questo può essere fatto attraverso un client
+Secure Shell (SSH). Uno di questi client, disponibile gratuitamente per
+i computer Windows, è <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/" class="external-link">PuTTY</a>.
+Per informazioni sull’installazione e l’uso di PuTTY, sull’uso dello
+strumento a riga di comando di Windows 10 o sull’installazione e l’uso
+di un emulatore Unix/Linux, consultare il riferimento riportato di
+seguito.</p>
+<p>Per gli utenti avanzati, è possibile scegliere una delle seguenti
+alternative:</p>
+<ul><li>Installare il <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" class="external-link">sottosistema
+Windows per Linux</a>
 </li>
-<li>Use the Windows <a href="https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7" class="external-link">PowerShell</a>
-</li>
-<li>Read up on <a href="https://www.cygwin.com/" class="external-link">Using a Unix/Linux
-emulator</a> (Cygwin) or Secure Shell (SSH) client (PuTTY)</li>
-</ul><div id="warning" class="callout discussion">
+<li>Utilizzare il programma <a href="https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7" class="external-link">PowerShell</a>
+di Windows</li>
+<li>Leggere [Utilizzo di un emulatore Unix/Linux][emulatore unix]
+(Cygwin) o di un client Secure Shell (SSH) (PuTTY)</li>
+</ul><div id="avviso" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
-<div id="warning" class="callout-inner">
-<h3 class="callout-title">Warning</h3>
+<div id="avviso" class="callout-inner">
+<h3 class="callout-title">Avviso</h3>
 <div class="callout-content">
-<p>Commands in the Windows Subsystem for Linux (WSL), PowerShell, or
-Cygwin may differ slightly from those shown in the lesson or presented
-in the workshop. Please ask if you encounter such a mismatch – you’re
-probably not alone.</p>
+<p>I comandi del sottosistema Windows per Linux (WSL), di PowerShell o
+di Cygwin possono differire leggermente da quelli mostrati nella lezione
+o presentati nel workshop. In caso di mancata corrispondenza, chiedete
+pure: probabilmente non siete i soli.</p>
 </div>
 </div>
 </div>
@@ -507,73 +510,76 @@ probably not alone.</p>
 </div>
 </div>
 <div class="section level3">
-<h3 id="unix-shell-on-macos">Unix Shell on macOS<a class="anchor" aria-label="anchor" href="#unix-shell-on-macos"></a></h3>
-<p>On macOS, the default Unix Shell is accessible by running the
-Terminal program from the <code>/Application/Utilities</code> folder in
-Finder.</p>
-<p>To open Terminal, try one or both of the following:</p>
-<ul><li>In Finder, select the Go menu, then select Utilities. Locate
-Terminal in the Utilities folder and open it.</li>
-<li>Use the Mac ‘Spotlight’ computer search function. Search for:
-<code>Terminal</code> and press <kbd>Return</kbd>.</li>
-</ul><p>For an introduction, see <a href="https://www.macworld.co.uk/feature/mac-software/how-use-terminal-on-mac-3608274/" class="external-link">How
-to Use Terminal on a Mac</a>.</p>
+<h3 id="shell-unix-su-macos">Shell Unix su macOS<a class="anchor" aria-label="anchor" href="#shell-unix-su-macos"></a></h3>
+<p>Su macOS, la shell Unix predefinita è accessibile eseguendo il
+programma Terminal dalla cartella <code>/Application/Utilities</code>
+nel Finder.</p>
+<p>Per aprire il Terminale, provate a eseguire una o entrambe le
+operazioni seguenti:</p>
+<ul><li>Nel Finder, selezionare il menu Vai, quindi selezionare Utilità.
+Individuare Terminale nella cartella Utilità e aprirlo.</li>
+<li>Usate la funzione di ricerca del computer Mac ‘Spotlight’. Cercare:
+<code>Terminal</code> e premere <kbd>Return</kbd>.</li>
+</ul><p>Per un’introduzione, vedere <a href="https://www.macworld.co.uk/feature/mac-software/how-use-terminal-on-mac-3608274/" class="external-link">Come
+usare il terminale su Mac</a>.</p>
 </div>
 <div class="section level3">
-<h3 id="unix-shell-on-linux">Unix Shell on Linux<a class="anchor" aria-label="anchor" href="#unix-shell-on-linux"></a></h3>
-<p>On most versions of Linux, the default Unix Shell is accessible by
-running the <a href="https://help.gnome.org/users/gnome-terminal/stable/" class="external-link">(Gnome)
-Terminal</a> or <a href="https://konsole.kde.org/" class="external-link">(KDE) Konsole</a> or
-<a href="https://en.wikipedia.org/wiki/Xterm" class="external-link">xterm</a>, which can be
-found via the applications menu or the search bar.</p>
+<h3 id="shell-unix-su-linux">Shell Unix su Linux<a class="anchor" aria-label="anchor" href="#shell-unix-su-linux"></a></h3>
+<p>Nella maggior parte delle versioni di Linux, la shell Unix
+predefinita è accessibile eseguendo il <a href="https://help.gnome.org/users/gnome-terminal/stable/" class="external-link">(Gnome)
+Terminal</a> o <a href="https://konsole.kde.org/" class="external-link">(KDE) Konsole</a> o <a href="https://en.wikipedia.org/wiki/Xterm" class="external-link">xterm</a>, che possono essere
+trovati tramite il menu delle applicazioni o la barra di ricerca.</p>
 </div>
 <div class="section level3">
-<h3 id="special-cases">Special Cases<a class="anchor" aria-label="anchor" href="#special-cases"></a></h3>
-<p>If none of the options above address your circumstances, try an
-online search for: <code>Unix shell [your operating system]</code>.</p>
+<h3 id="casi-speciali">Casi speciali<a class="anchor" aria-label="anchor" href="#casi-speciali"></a></h3>
+<p>Se nessuna delle opzioni precedenti risponde alle vostre esigenze,
+provate a fare una ricerca online di:
+<code>Unix shell [your operating system]</code>.</p>
 </div>
-</section><section><h2 class="section-heading" id="ssh-for-secure-connections">SSH for Secure Connections<a class="anchor" aria-label="anchor" href="#ssh-for-secure-connections"></a></h2>
-<hr class="half-width"><p>All students should have an SSH client installed. SSH is a tool that
-allows us to connect to and use a remote computer as our own.</p>
+</section><section><h2 class="section-heading" id="ssh-per-connessioni-sicure">SSH per connessioni sicure<a class="anchor" aria-label="anchor" href="#ssh-per-connessioni-sicure"></a></h2>
+<hr class="half-width"><p>Tutti gli studenti devono avere installato un client SSH. SSH è uno
+strumento che ci permette di connetterci a un computer remoto e di
+utilizzarlo come se fosse il nostro.</p>
 <div class="section level3">
-<h3 id="ssh-for-windows">SSH for Windows<a class="anchor" aria-label="anchor" href="#ssh-for-windows"></a></h3>
-<p>Git for Windows comes with SSH preinstalled: you do not have to do
-anything.</p>
-<div id="gui-support-for-windows" class="callout discussion">
+<h3 id="ssh-per-windows">SSH per Windows<a class="anchor" aria-label="anchor" href="#ssh-per-windows"></a></h3>
+<p>Git per Windows viene fornito con SSH preinstallato: non è necessario
+fare nulla.</p>
+<div id="supporto-dellinterfaccia-grafica-per-windows" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
-<div id="gui-support-for-windows" class="callout-inner">
-<h3 class="callout-title">GUI Support for Windows</h3>
+<div id="supporto-dellinterfaccia-grafica-per-windows" class="callout-inner">
+<h3 class="callout-title">Supporto dell’interfaccia grafica per
+Windows</h3>
 <div class="callout-content">
-<p>If you know that the software you will be running on the cluster
-requires a graphical user interface (a GUI window needs to open for the
-application to run properly), please install <a href="https://mobaxterm.mobatek.net" class="external-link">MobaXterm</a> Home Edition.</p>
+<p>Se si sa che il software che si eseguirà sul cluster richiede
+un’interfaccia utente grafica (una finestra GUI deve essere aperta
+perché l’applicazione funzioni correttamente), installare <a href="https://mobaxterm.mobatek.net" class="external-link">MobaXterm</a> Home Edition.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="section level3">
-<h3 id="ssh-for-macos">SSH for macOS<a class="anchor" aria-label="anchor" href="#ssh-for-macos"></a></h3>
-<p>macOS comes with SSH pre-installed: you do not have to do
-anything.</p>
-<div id="gui-support-for-macos" class="callout discussion">
+<h3 id="ssh-per-macos">SSH per macOS<a class="anchor" aria-label="anchor" href="#ssh-per-macos"></a></h3>
+<p>macOS viene fornito con SSH preinstallato: non è necessario fare
+nulla.</p>
+<div id="supporto-gui-per-macos" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
-<div id="gui-support-for-macos" class="callout-inner">
-<h3 class="callout-title">GUI Support for macOS</h3>
+<div id="supporto-gui-per-macos" class="callout-inner">
+<h3 class="callout-title">Supporto GUI per macOS</h3>
 <div class="callout-content">
-<p>If you know that the software you will be running requires a
-graphical user interface, please install <a href="https://www.xquartz.org" class="external-link">XQuartz</a>.</p>
+<p>Se si sa che il software da eseguire richiede un’interfaccia grafica,
+installare <a href="https://www.xquartz.org" class="external-link">XQuartz</a>.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="section level3">
-<h3 id="ssh-for-linux">SSH for Linux<a class="anchor" aria-label="anchor" href="#ssh-for-linux"></a></h3>
-<p>Linux comes with SSH and X window support preinstalled: you do not
-have to do anything.</p>
+<h3 id="ssh-per-linux">SSH per Linux<a class="anchor" aria-label="anchor" href="#ssh-per-linux"></a></h3>
+<p>Linux viene fornito con il supporto SSH e X window preinstallato: non
+è necessario fare nulla.</p>
 <!-- links -->
 </div>
 </section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
@@ -625,8 +631,8 @@ have to do anything.</p>
   "url": "https://ocaisa.github.io/probable_pancake/index.html",
   "identifier": "https://ocaisa.github.io/probable_pancake/index.html",
   "dateCreated": "2017-03-24",
-  "dateModified": "2025-03-23",
-  "datePublished": "2025-03-23"
+  "dateModified": "2025-04-25",
+  "datePublished": "2025-04-25"
 }
 
   </script><script>
