@@ -95,3 +95,13 @@ carpentry_description: Lesson Description
 url: 'https://ocaisa.github.io/probable_pancake'
 analytics: carpentries
 lang: it
+
+languages:
+  default: Italiano
+  other:
+    - lang: Deutsch
+      url: "https://biont-training.github.io/hpc-intro-de"
+    - lang: English
+      url: "https://biont-training.github.io/hpc-intro-en"
+    - lang: "Español"
+      url: "https://biont-training.github.io/hpc-intro-es"
