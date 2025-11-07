@@ -483,8 +483,9 @@ molti versi, è così.</p>
 </div>
 </div>
 <p>Indipendentemente dal software o dal sistema operativo utilizzato,
-<em>prego</em> di scegliere una password o una passphrase forte che
-funga da ulteriore livello di protezione per la chiave SSH privata.</p>
+<em>vi preghiamo</em> di scegliere una password o una passphrase forte
+che funga da ulteriore livello di protezione per la chiave SSH
+privata.</p>
 <div id="considerazioni-sulle-password-delle-chiavi-ssh" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -756,7 +757,7 @@ o con quello fornito dagli istruttori.</p>
 digitati dopo la richiesta della password non vengono visualizzati sullo
 schermo. L’output normale riprenderà quando si premerà
 <code>Enter</code>.</p>
-<p>avrete notato che il prompt è cambiato quando vi siete collegati al
+<p>Avrete notato che il prompt è cambiato quando vi siete collegati al
 sistema remoto usando il terminale (se vi siete collegati con PuTTY
 questo non vale perché non offre un terminale locale). Questo
 cambiamento è importante perché può aiutare a distinguere su quale
@@ -808,7 +809,7 @@ ci troviamo eseguendo <code>pwd</code> per <strong>stampare la
 </h3>
 <pre class="output" tabindex="0"><code>/home/yourUsername</code></pre>
 </div>
-<p>Ottimo, sappiamo dove siamo! Vediamo cosa c’è nella nostra directory
+<p>Ottimo, sappiamo dove siamo! Vediamo cosa c’è nella nostra cartella
 corrente:</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -821,10 +822,10 @@ corrente:</p>
 <pre class="output" tabindex="0"><code><span><span class="va">id_ed25519.pub</span></span></code></pre>
 </div>
 <p>Gli amministratori del sistema potrebbero aver configurato la vostra
-home directory con alcuni file, cartelle e collegamenti (scorciatoie)
+cartella home con alcuni file, cartelle e collegamenti (scorciatoie)
 utili allo spazio riservato a voi su altri filesystem. Se non l’hanno
-fatto, la home directory potrebbe apparire vuota. Per ricontrollare,
-includere i file nascosti nell’elenco delle directory:</p>
+fatto, la cartella home potrebbe apparire vuota. Per ricontrollare,
+includere i file nascosti nell’elenco delle cartelle:</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -837,7 +838,7 @@ includere i file nascosti nell’elenco delle directory:</p>
   ..           .ssh</code></pre>
 </div>
 <p>Nella prima colonna, <code>.</code> è un riferimento alla directory
-corrente e <code>..</code> un riferimento al suo genitore
+corrente e <code>..</code> un riferimento alla cartella precedente
 (<code>/home</code>). Gli altri file, o file simili, possono essere
 visualizzati o meno: <code>.bashrc</code> è un file di configurazione
 della shell, che può essere modificato con le proprie preferenze; e
@@ -867,7 +868,7 @@ directory. Per “installare” questa chiave, deve essere elencata in un
 file chiamato <code>authorized_keys</code> sotto la cartella
 <code>.ssh</code>.</p>
 <p>Se la cartella <code>.ssh</code> non è stata elencata sopra, allora
-non esiste ancora: crearla.</p>
+non esiste ancora: bisogna crearla.</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
