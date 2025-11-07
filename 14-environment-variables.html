@@ -384,7 +384,8 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Domande</h3>
-<ul><li>Come si impostano e si accede alle variabili nella shell Unix?</li>
+<ul><li>Come si impostano e come si accede alle variabili nella shell
+Unix?</li>
 <li>Come si possono usare le variabili per cambiare l’esecuzione di un
 programma?</li>
 </ul></div>
@@ -395,7 +396,7 @@ programma?</li>
 <div class="inner bordered">
 <h3 class="card-title">Obiettivi</h3>
 <ul><li>Capire come vengono implementate le variabili nella shell</li>
-<li>leggere il valore di una variabile esistente</li>
+<li>Scoprire il valore di una variabile esistente</li>
 <li>Creare nuove variabili e cambiarne i valori</li>
 <li>Modificare il comportamento di un programma utilizzando una
 variabile d’ambiente</li>
@@ -414,7 +415,7 @@ cercare gli eseguibili</li>
 <div id="provenienza-dellepisodio" class="callout-inner">
 <h3 class="callout-title">Provenienza dell’episodio</h3>
 <div class="callout-content">
-<p>Questo episodio è stato remixato dall’episodio <a href="https://github.com/carpentries-incubator/shell-extras/blob/gh-pages/_episodes/08-environment-variables.md" class="external-link">Shell
+<p>Questo episodio è derivato dall’episodio <a href="https://github.com/carpentries-incubator/shell-extras/blob/gh-pages/_episodes/08-environment-variables.md" class="external-link">Shell
 Extras sulle variabili di shell</a> e dall’episodio <a href="https://github.com/hpc-carpentry/hpc-shell/blob/gh-pages/_episodes/05-scripts.md" class="external-link">HPC
 Shell sugli script</a>.</p>
 </div>
@@ -485,12 +486,13 @@ quello che abbiamo effettivamente chiesto). Proviamo invece questo:</p>
 </h3>
 <pre class="output" tabindex="0"><code>/home/vlad</code></pre>
 </div>
-<p>il segno del dollaro indica alla shell che vogliamo il
+<p>dove il segno del dollaro indica alla shell che vogliamo il
 <em>valore</em> della variabile piuttosto che il suo nome. Questo
 funziona proprio come i caratteri jolly: la shell effettua la
 sostituzione <em>prima</em> di eseguire il programma richiesto. Grazie a
 questa espansione, ciò che viene eseguito è
-<code>echo /home/vlad</code>, che mostra la cosa giusta.</p>
+<code>echo /home/vlad</code>, che mostra la risposta che stavamo
+cercando.</p>
 </section><section><h2 class="section-heading" id="creazione-e-modifica-di-variabili">Creazione e modifica di variabili<a class="anchor" aria-label="anchor" href="#creazione-e-modifica-di-variabili"></a></h2>
 <hr class="half-width"><p>Creare una variabile è facile: basta assegnare un valore a un nome
 usando “=” (bisogna solo ricordare che la sintassi richiede che non ci
@@ -524,8 +526,8 @@ c’erano molte variabili i cui nomi erano in maiuscolo. Questo perché,
 per convenzione, le variabili che sono disponibili per l’uso da parte di
 <em>altri</em> programmi hanno nomi maiuscoli. Tali variabili sono
 chiamate <em>variabili d’ambiente</em> in quanto sono variabili di shell
-definite per la shell corrente ed ereditate da qualsiasi shell o
-processo figlio.</p>
+definite per la shell corrente ed ereditate da qualsiasi shell o altro
+processo.</p>
 <p>Per creare una variabile d’ambiente è necessario <code>export</code>
 una variabile di shell. Ad esempio, per rendere la nostra
 <code>SECRET_IDENTITY</code> disponibile ad altri programmi che
@@ -569,7 +571,7 @@ valore di <code>iso</code> e controllare questo valore con il comando
   Soluzione
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>La variabile <code>TIME_STYLE</code> non viene <em>vista</em> da
 <code>ls</code> fino a quando non viene esportata, a quel punto viene
@@ -610,7 +612,7 @@ stampi la posizione da cui è stato inviato il lavoro.</p>
   Soluzione
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -650,14 +652,14 @@ elementi di un tale elenco, è sua responsabilità dividere il valore
 della stringa della variabile in pezzi.</p>
 <p>Diamo un’occhiata più da vicino alla variabile <code>PATH</code>. Il
 suo valore definisce il percorso di ricerca degli eseguibili della
-shell, cioè l’elenco delle directory in cui la shell cerca i programmi
+shell, cioè l’elenco delle cartelle in cui la shell cerca i programmi
 eseguibili quando si digita il nome di un programma senza specificare la
-directory in cui si trova.</p>
+cartella in cui si trova.</p>
 <p>Ad esempio, quando si digita un comando come <code>analyze</code>, la
 shell deve decidere se eseguire <code>./analyze</code> o
 <code>/bin/analyze</code>. La regola che utilizza è semplice: la shell
-controlla ogni directory della variabile <code>PATH</code> a turno,
-cercando un programma con il nome richiesto in quella directory. Non
+controlla ogni cartella della variabile <code>PATH</code> a turno,
+cercando un programma con il nome richiesto in quella cartella. Non
 appena trova una corrispondenza, interrompe la ricerca ed esegue il
 programma.</p>
 <p>Per mostrare come funziona, ecco i componenti di <code>PATH</code>
@@ -676,11 +678,11 @@ elencati uno per riga:</p>
 <p>Sul nostro computer, ci sono in realtà tre programmi chiamati
 <code>analyze</code> in tre diverse directory:
 <code>/bin/analyze</code>, <code>/usr/local/bin/analyze</code> e
-<code>/users/vlad/analyze</code>. Poiché la shell cerca le directory
+<code>/users/vlad/analyze</code>. Poiché la shell cerca le cartella
 nell’ordine in cui sono elencate in <code>PATH</code>, trova prima
 <code>/bin/analyze</code> e lo esegue. Si noti che non troverà mai il
 programma <code>/users/vlad/analyze</code> a meno che non si digiti il
-percorso completo del programma, poiché la directory
+percorso completo del programma, poiché la cartella
 <code>/users/vlad</code> non si trova in <code>PATH</code>.</p>
 <p>Questo significa che posso avere eseguibili in molti posti diversi,
 purché mi ricordi che devo aggiornare il mio <code>PATH</code> in modo
