@@ -10,7 +10,7 @@ exercises: 5
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Capire come vengono implementate le variabili nella shell
-- leggere il valore di una variabile esistente
+- Scoprire il valore di una variabile esistente
 - Creare nuove variabili e cambiarne i valori
 - Modificare il comportamento di un programma utilizzando una variabile d'ambiente
 - Spiegare come la shell utilizza la variabile `PATH` per cercare gli eseguibili
@@ -19,7 +19,7 @@ exercises: 5
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- Come si impostano e si accede alle variabili nella shell Unix?
+- Come si impostano e come si accede alle variabili nella shell Unix?
 - Come si possono usare le variabili per cambiare l'esecuzione di un programma?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -28,7 +28,7 @@ exercises: 5
 
 ## Provenienza dell'episodio
 
-Questo episodio è stato remixato dall'episodio [Shell Extras sulle variabili di shell](https://github.com/carpentries-incubator/shell-extras/blob/gh-pages/_episodes/08-environment-variables.md) e dall'episodio [HPC Shell sugli script](https://github.com/hpc-carpentry/hpc-shell/blob/gh-pages/_episodes/05-scripts.md).
+Questo episodio è derivato dall'episodio [Shell Extras sulle variabili di shell](https://github.com/carpentries-incubator/shell-extras/blob/gh-pages/_episodes/08-environment-variables.md) e dall'episodio [HPC Shell sugli script](https://github.com/hpc-carpentry/hpc-shell/blob/gh-pages/_episodes/05-scripts.md).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -81,7 +81,7 @@ echo $HOME
 /home/vlad
 ```
 
-il segno del dollaro indica alla shell che vogliamo il *valore* della variabile piuttosto che il suo nome. Questo funziona proprio come i caratteri jolly: la shell effettua la sostituzione *prima* di eseguire il programma richiesto. Grazie a questa espansione, ciò che viene eseguito è `echo /home/vlad`, che mostra la cosa giusta.
+dove il segno del dollaro indica alla shell che vogliamo il *valore* della variabile piuttosto che il suo nome. Questo funziona proprio come i caratteri jolly: la shell effettua la sostituzione *prima* di eseguire il programma richiesto. Grazie a questa espansione, ciò che viene eseguito è `echo /home/vlad`, che mostra la risposta che stavamo cercando.
 
 ## Creazione e modifica di variabili
 
@@ -109,7 +109,7 @@ Camilla
 
 ## Variabili d'ambiente
 
-Quando abbiamo eseguito il comando `set` abbiamo visto che c'erano molte variabili i cui nomi erano in maiuscolo. Questo perché, per convenzione, le variabili che sono disponibili per l'uso da parte di *altri* programmi hanno nomi maiuscoli. Tali variabili sono chiamate *variabili d'ambiente* in quanto sono variabili di shell definite per la shell corrente ed ereditate da qualsiasi shell o processo figlio.
+Quando abbiamo eseguito il comando `set` abbiamo visto che c'erano molte variabili i cui nomi erano in maiuscolo. Questo perché, per convenzione, le variabili che sono disponibili per l'uso da parte di *altri* programmi hanno nomi maiuscoli. Tali variabili sono chiamate *variabili d'ambiente* in quanto sono variabili di shell definite per la shell corrente ed ereditate da qualsiasi shell o altro processo.
 
 Per creare una variabile d'ambiente è necessario `export` una variabile di shell. Ad esempio, per rendere la nostra `SECRET_IDENTITY` disponibile ad altri programmi che chiamiamo dalla nostra shell, possiamo fare:
 
@@ -186,9 +186,9 @@ unset SECRET_IDENTITY
 
 Analogamente, alcune variabili d'ambiente (come `PATH`) memorizzano elenchi di valori. In questo caso, la convenzione è di usare i due punti ':' come separatore. Se un programma vuole i singoli elementi di un tale elenco, è sua responsabilità dividere il valore della stringa della variabile in pezzi.
 
-Diamo un'occhiata più da vicino alla variabile `PATH`. Il suo valore definisce il percorso di ricerca degli eseguibili della shell, cioè l'elenco delle directory in cui la shell cerca i programmi eseguibili quando si digita il nome di un programma senza specificare la directory in cui si trova.
+Diamo un'occhiata più da vicino alla variabile `PATH`. Il suo valore definisce il percorso di ricerca degli eseguibili della shell, cioè l'elenco delle cartelle in cui la shell cerca i programmi eseguibili quando si digita il nome di un programma senza specificare la cartella in cui si trova.
 
-Ad esempio, quando si digita un comando come `analyze`, la shell deve decidere se eseguire `./analyze` o `/bin/analyze`. La regola che utilizza è semplice: la shell controlla ogni directory della variabile `PATH` a turno, cercando un programma con il nome richiesto in quella directory. Non appena trova una corrispondenza, interrompe la ricerca ed esegue il programma.
+Ad esempio, quando si digita un comando come `analyze`, la shell deve decidere se eseguire `./analyze` o `/bin/analyze`. La regola che utilizza è semplice: la shell controlla ogni cartella della variabile `PATH` a turno, cercando un programma con il nome richiesto in quella cartella. Non appena trova una corrispondenza, interrompe la ricerca ed esegue il programma.
 
 Per mostrare come funziona, ecco i componenti di `PATH` elencati uno per riga:
 
@@ -202,7 +202,7 @@ Per mostrare come funziona, ecco i componenti di `PATH` elencati uno per riga:
 /usr/local/bin
 ```
 
-Sul nostro computer, ci sono in realtà tre programmi chiamati `analyze` in tre diverse directory: `/bin/analyze`, `/usr/local/bin/analyze` e `/users/vlad/analyze`. Poiché la shell cerca le directory nell'ordine in cui sono elencate in `PATH`, trova prima `/bin/analyze` e lo esegue. Si noti che non troverà mai il programma `/users/vlad/analyze` a meno che non si digiti il percorso completo del programma, poiché la directory `/users/vlad` non si trova in `PATH`.
+Sul nostro computer, ci sono in realtà tre programmi chiamati `analyze` in tre diverse directory: `/bin/analyze`, `/usr/local/bin/analyze` e `/users/vlad/analyze`. Poiché la shell cerca le cartella nell'ordine in cui sono elencate in `PATH`, trova prima `/bin/analyze` e lo esegue. Si noti che non troverà mai il programma `/users/vlad/analyze` a meno che non si digiti il percorso completo del programma, poiché la cartella `/users/vlad` non si trova in `PATH`.
 
 Questo significa che posso avere eseguibili in molti posti diversi, purché mi ricordi che devo aggiornare il mio `PATH` in modo che la mia shell possa trovarli.
 
