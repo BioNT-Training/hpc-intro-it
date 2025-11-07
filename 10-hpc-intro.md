@@ -25,7 +25,7 @@ Spesso i problemi di ricerca che utilizzano l'informatica possono superare le ca
 - Un ricercatore di genomica ha utilizzato piccoli insiemi di dati di sequenza, ma presto riceverà un nuovo tipo di dati di sequenziamento 10 volte più grandi. Aprire i set di dati su un computer è già impegnativo, analizzare questi set di dati più grandi probabilmente lo manderà in tilt. In questo problema di ricerca, i calcoli richiesti potrebbero essere impossibili da parallelizzare, ma sarebbe necessario un computer con **più memoria** per analizzare i futuri set di dati molto più grandi.
 - Un ingegnere sta usando un pacchetto di fluidodinamica che ha un'opzione per l'esecuzione in parallelo. Finora questa opzione non è stata utilizzata su un desktop. Passando dalle simulazioni 2D a quelle 3D, il tempo di simulazione è più che triplicato. Potrebbe essere utile sfruttare questa opzione o funzione. In questo problema di ricerca, i calcoli in ogni regione della simulazione sono ampiamente indipendenti dai calcoli in altre regioni della simulazione. È possibile eseguire i calcoli di ogni regione simultaneamente (in **parallelo**), comunicare i risultati selezionati alle regioni adiacenti, se necessario, e ripetere i calcoli per convergere su un insieme finale di risultati. Passando da un modello 2D a uno 3D, **la quantità di dati e di calcoli aumenta notevolmente**, ed è teoricamente possibile distribuire i calcoli su più computer che comunicano su una rete condivisa.
 
-In tutti questi casi, è necessario l'accesso a più computer (e più grandi). Questi computer dovrebbero essere utilizzabili contemporaneamente, **risolvendo in parallelo i problemi di molti ricercatori**.
+In tutti questi casi, è necessario l'accesso a più computer. Questi computer dovrebbero essere utilizzabili contemporaneamente, **risolvendo in parallelo i problemi di molti ricercatori**.
 
 ## Presentazione del gergo
 
@@ -33,7 +33,7 @@ Aprire [HPC Jargon Buster](../files/jargon#p1) in una nuova scheda. Per presenta
 
 :::::::::::::::::::::::::::::::::::::: challenge
 
-## Non ho mai usato un server, vero?
+## Avete mai usato un server?
 
 Prendete un minuto e pensate a quali delle vostre interazioni quotidiane con un computer potrebbero richiedere un server remoto o addirittura un cluster per fornirvi i risultati.
 
