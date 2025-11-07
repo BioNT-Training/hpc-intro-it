@@ -6,7 +6,7 @@ exercises: 10
 
 
 ```{r, echo=FALSE}
-# Source the external configuration script
+# Carica lo script di configurazione esterno
 source("load_config.R")
 ```
 
@@ -39,7 +39,7 @@ La parola "cluster" è spesso usata per risorse HPC di scala piccola o moderata,
 
 Il primo passo per utilizzare un cluster è stabilire una connessione dal nostro portatile al cluster. Quando siamo seduti al computer (o in piedi, o tenendolo in mano o al polso), ci aspettiamo una visualizzazione con icone, widget e forse alcune finestre o applicazioni: un'interfaccia grafica utente, o GUI. Poiché i cluster di computer sono risorse remote a cui ci colleghiamo tramite interfacce spesso lente o laggose (soprattutto WiFi e VPN), è più pratico utilizzare un'interfaccia a riga di comando (CLI), in cui i comandi e i risultati sono trasmessi solo tramite testo. Tutto ciò che non è testo (ad esempio le immagini) deve essere scritto su disco e aperto con un programma separato.
 
-Se avete mai aperto il Prompt dei comandi di Windows o il Terminale di macOS, avete visto una CLI. Se avete già seguito i corsi di The Carpentries sulla shell UNIX o sul controllo di versione, avete usato la CLI sulla vostra macchina locale in modo piuttosto esteso. L'unico salto da fare in questo caso è aprire una CLI su una macchina *remota*, prendendo alcune precauzioni in modo che gli altri utenti della rete non possano vedere (o modificare) i comandi che state eseguendo o i risultati che la macchina remota invia. Utilizzeremo il protocollo Secure SHell (o SSH) per aprire una connessione di rete crittografata tra due macchine, consentendo di inviare e ricevere testo e dati senza doversi preoccupare di occhi indiscreti.
+Se avete mai aperto il Prompt dei comandi di Windows o il Terminale di macOS, avete visto una CLI. Se avete già seguito i corsi di The Carpentries sulla shell UNIX o su git, avete usato la CLI sulla vostra macchina locale in modo piuttosto esteso. L'unico salto da fare in questo caso è aprire una CLI su una macchina *remota*, prendendo alcune precauzioni in modo che gli altri utenti della rete non possano vedere (o modificare) i comandi che state eseguendo o i risultati che la macchina remota invia. Utilizzeremo il protocollo Secure SHell (o SSH) per aprire una connessione di rete crittografata tra due macchine, consentendo di inviare e ricevere testo e dati senza doversi preoccupare di occhi indiscreti.
 
 ![Connetti al cluster](fig/connect-to-remote.svg){alt-text="Connetti al cluster"}
 
@@ -69,7 +69,7 @@ Molto spesso, molti utenti sono tentati di pensare a un'installazione di calcolo
 
 ## Cosa c'è nella vostra directory principale?
 
-Gli amministratori del sistema potrebbero aver configurato la vostra home directory con alcuni file, cartelle e collegamenti (scorciatoie) utili allo spazio riservato a voi su altri filesystem. Date un'occhiata in giro e vedete cosa riuscite a trovare. *Suggerimento:* I comandi di shell `pwd` e `ls` possono essere utili. Il contenuto della home directory varia da utente a utente. Discutete con i vostri vicini le eventuali differenze riscontrate.
+Gli amministratori del sistema potrebbero aver configurato la vostra cartella home con alcuni file, cartelle e collegamenti (scorciatoie) utili allo spazio riservato a voi su altri filesystem. Date un'occhiata in giro e vedete cosa riuscite a trovare. *Suggerimento:* I comandi di shell `pwd` e `ls` possono essere utili. Il contenuto della home directory varia da utente a utente. Discutete con i vostri vicini le eventuali differenze riscontrate.
 
 :::: solution
 
@@ -77,7 +77,7 @@ Gli amministratori del sistema potrebbero aver configurato la vostra home direct
 
 Il livello più profondo dovrebbe essere diverso: ``r config$remote$user`` è unicamente vostro. Ci sono differenze nel percorso ai livelli superiori?
 
-se entrambi avete delle directory vuote, appariranno identiche. Se voi o il vostro vicino avete già usato il sistema, potrebbero esserci delle differenze. Su cosa state lavorando?
+se entrambi avete delle cartelle vuote, appariranno identiche. Se voi o il vostro vicino avete già usato il sistema, potrebbero esserci delle differenze. Su cosa state lavorando?
 
 Usare `pwd` per **stampare il percorso della **d**irettoria di lavoro:
 
@@ -85,13 +85,13 @@ Usare `pwd` per **stampare il percorso della **d**irettoria di lavoro:
 `r config$remote$prompt` pwd
 ```
 
-è possibile eseguire `ls` per verificare il contenuto della directory, anche se è possibile che non venga visualizzato nulla (se non sono stati forniti file). Per sicurezza, usare il flag `-a` per mostrare anche i file nascosti.
+è possibile eseguire `ls` per verificare il contenuto della cartella, anche se è possibile che non venga visualizzato nulla (se non sono stati forniti file). Per sicurezza, usare il flag `-a` per mostrare anche i file nascosti.
 
 ```bash
 `r config$remote$prompt` ls -a
 ```
 
-come minimo, mostrerà la directory corrente come `.` e la directory padre come `..`.
+come minimo, mostrerà la cartella corrente come `.` e la cartella precedente come `..`.
 
 ::::
 
@@ -102,7 +102,7 @@ come minimo, mostrerà la directory corrente come `.` e la directory padre come 
 
 I singoli computer che compongono un cluster sono in genere chiamati *nodi* (anche se si sente parlare anche di *server*, *computer* e *macchine*). In un cluster, ci sono diversi tipi di nodi per diversi tipi di attività. Il nodo in cui ci si trova in questo momento è chiamato *nodo principale*, *nodo di accesso*, *pista di atterraggio* o *nodo di invio*. Un nodo di accesso serve come punto di accesso al cluster.
 
-come gateway, è adatto per caricare e scaricare file, configurare software ed eseguire test rapidi. In generale, il nodo di accesso non dovrebbe essere usato per attività che richiedono molto tempo o risorse. È necessario prestare attenzione a questo aspetto e verificare con i gestori del sito o con la documentazione i dettagli di ciò che è consentito o meno. In queste lezioni, eviteremo di eseguire lavori sul nodo principale.
+Come gateway, è adatto per caricare e scaricare file, configurare software ed eseguire test rapidi. In generale, il nodo di accesso non dovrebbe essere usato per attività che richiedono molto tempo o risorse. È necessario prestare attenzione a questo aspetto e verificare con i gestori del sito o con la documentazione i dettagli di ciò che è consentito o meno. In queste lezioni, eviteremo di eseguire lavori sul nodo principale.
 
 ::: callout
 
