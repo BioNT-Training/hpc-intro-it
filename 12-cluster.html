@@ -450,15 +450,15 @@ risultati sono trasmessi solo tramite testo. Tutto ciò che non è testo
 programma separato.</p>
 <p>Se avete mai aperto il Prompt dei comandi di Windows o il Terminale
 di macOS, avete visto una CLI. Se avete già seguito i corsi di The
-Carpentries sulla shell UNIX o sul controllo di versione, avete usato la
-CLI sulla vostra macchina locale in modo piuttosto esteso. L’unico salto
-da fare in questo caso è aprire una CLI su una macchina <em>remota</em>,
-prendendo alcune precauzioni in modo che gli altri utenti della rete non
-possano vedere (o modificare) i comandi che state eseguendo o i
-risultati che la macchina remota invia. Utilizzeremo il protocollo
-Secure SHell (o SSH) per aprire una connessione di rete crittografata
-tra due macchine, consentendo di inviare e ricevere testo e dati senza
-doversi preoccupare di occhi indiscreti.</p>
+Carpentries sulla shell UNIX o su git, avete usato la CLI sulla vostra
+macchina locale in modo piuttosto esteso. L’unico salto da fare in
+questo caso è aprire una CLI su una macchina <em>remota</em>, prendendo
+alcune precauzioni in modo che gli altri utenti della rete non possano
+vedere (o modificare) i comandi che state eseguendo o i risultati che la
+macchina remota invia. Utilizzeremo il protocollo Secure SHell (o SSH)
+per aprire una connessione di rete crittografata tra due macchine,
+consentendo di inviare e ricevere testo e dati senza doversi preoccupare
+di occhi indiscreti.</p>
 <figure><img src="fig/connect-to-remote.svg" alt-text="Connetti al cluster" alt="Connetti al cluster" class="figure mx-auto d-block"><div class="figcaption">Connetti al cluster</div>
 </figure><p>Assicurarsi di avere un client SSH installato sul portatile. Fare
 riferimento alla sezione <a href="index.html">setup</a> per maggiori
@@ -512,7 +512,7 @@ che il nome dell’host corrente fa parte del nostro prompt)</p>
 principale?</h3>
 <div class="callout-content">
 <p>Gli amministratori del sistema potrebbero aver configurato la vostra
-home directory con alcuni file, cartelle e collegamenti (scorciatoie)
+cartella home con alcuni file, cartelle e collegamenti (scorciatoie)
 utili allo spazio riservato a voi su altri filesystem. Date un’occhiata
 in giro e vedete cosa riuscite a trovare. <em>Suggerimento:</em> I
 comandi di shell <code>pwd</code> e <code>ls</code> possono essere
@@ -526,14 +526,14 @@ Discutete con i vostri vicini le eventuali differenze riscontrate.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> È una bella giornata nel quartiere </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Il livello più profondo dovrebbe essere diverso:
 <code>yourUsername</code> è unicamente vostro. Ci sono differenze nel
 percorso ai livelli superiori?</p>
-<p>se entrambi avete delle directory vuote, appariranno identiche. Se
-voi o il vostro vicino avete già usato il sistema, potrebbero esserci
-delle differenze. Su cosa state lavorando?</p>
+<p>se entrambi avete delle cartelle vuote, appariranno identiche. Se voi
+o il vostro vicino avete già usato il sistema, potrebbero esserci delle
+differenze. Su cosa state lavorando?</p>
 <p>Usare <code>pwd</code> per <strong>stampare il percorso della
 </strong>d**irettoria di lavoro:</p>
 <div class="codewrapper sourceCode" id="cb4">
@@ -542,7 +542,7 @@ delle differenze. Su cosa state lavorando?</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~] pwd</span></code></pre>
 </div>
 <p>è possibile eseguire <code>ls</code> per verificare il contenuto
-della directory, anche se è possibile che non venga visualizzato nulla
+della cartella, anche se è possibile che non venga visualizzato nulla
 (se non sono stati forniti file). Per sicurezza, usare il flag
 <code>-a</code> per mostrare anche i file nascosti.</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -550,8 +550,8 @@ della directory, anche se è possibile che non venga visualizzato nulla
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~] ls <span class="at">-a</span></span></code></pre>
 </div>
-<p>come minimo, mostrerà la directory corrente come <code>.</code> e la
-directory padre come <code>..</code>.</p>
+<p>come minimo, mostrerà la cartella corrente come <code>.</code> e la
+cartella precedente come <code>..</code>.</p>
 </div>
 </div>
 </div>
@@ -564,7 +564,7 @@ tipi di nodi per diversi tipi di attività. Il nodo in cui ci si trova in
 questo momento è chiamato <em>nodo principale</em>, <em>nodo di
 accesso</em>, <em>pista di atterraggio</em> o <em>nodo di invio</em>. Un
 nodo di accesso serve come punto di accesso al cluster.</p>
-<p>come gateway, è adatto per caricare e scaricare file, configurare
+<p>Come gateway, è adatto per caricare e scaricare file, configurare
 software ed eseguire test rapidi. In generale, il nodo di accesso non
 dovrebbe essere usato per attività che richiedono molto tempo o risorse.
 È necessario prestare attenzione a questo aspetto e verificare con i
@@ -664,7 +664,7 @@ Per farlo, digitare <code>Ctrl+d</code> o <code>exit</code>:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Mostrami la soluzione </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Ci sono diversi modi per farlo. La maggior parte dei sistemi
 operativi ha un monitor grafico di sistema, come il Task Manager di
@@ -713,7 +713,7 @@ principale.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Mostrami la soluzione </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
