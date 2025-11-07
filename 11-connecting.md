@@ -52,7 +52,7 @@ Proteggete questa chiave come se vi aprisse la porta di casa. Per molti versi, �
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Indipendentemente dal software o dal sistema operativo utilizzato, *prego* di scegliere una password o una passphrase forte che funga da ulteriore livello di protezione per la chiave SSH privata.
+Indipendentemente dal software o dal sistema operativo utilizzato, *vi preghiamo* di scegliere una password o una passphrase forte che funga da ulteriore livello di protezione per la chiave SSH privata.
 
 ::::::::::::::::::::::::::::::::::::::::: callout
 
@@ -228,7 +228,7 @@ Aprire il terminale o il client grafico SSH, quindi accedere al cluster. Sostitu
 
 potrebbe essere richiesta la password. Attenzione: i caratteri digitati dopo la richiesta della password non vengono visualizzati sullo schermo. L'output normale riprenderà quando si premerà `Enter`.
 
-avrete notato che il prompt è cambiato quando vi siete collegati al sistema remoto usando il terminale (se vi siete collegati con PuTTY questo non vale perché non offre un terminale locale). Questo cambiamento è importante perché può aiutare a distinguere su quale sistema verranno eseguiti i comandi digitati quando li si passa al terminale. Questa modifica rappresenta anche una piccola complicazione che dovremo affrontare nel corso del workshop. L'esatta visualizzazione del prompt (che convenzionalmente termina con `$`) nel terminale quando è collegato al sistema locale e al sistema remoto sarà in genere diversa per ogni utente. È comunque necessario indicare su quale sistema si stanno inserendo i comandi, quindi adotteremo la seguente convenzione:
+Avrete notato che il prompt è cambiato quando vi siete collegati al sistema remoto usando il terminale (se vi siete collegati con PuTTY questo non vale perché non offre un terminale locale). Questo cambiamento è importante perché può aiutare a distinguere su quale sistema verranno eseguiti i comandi digitati quando li si passa al terminale. Questa modifica rappresenta anche una piccola complicazione che dovremo affrontare nel corso del workshop. L'esatta visualizzazione del prompt (che convenzionalmente termina con `$`) nel terminale quando è collegato al sistema locale e al sistema remoto sarà in genere diversa per ogni utente. È comunque necessario indicare su quale sistema si stanno inserendo i comandi, quindi adotteremo la seguente convenzione:
 
 - `[you@laptop:~]$` quando il comando deve essere immesso su un terminale collegato al computer locale
 - `[yourUsername@login1 ~]` quando il comando deve essere immesso su un terminale collegato al sistema remoto
@@ -256,7 +256,7 @@ Quindi, siamo sicuramente sul computer remoto. Quindi, scopriamo dove ci troviam
 /home/yourUsername
 ```
 
-Ottimo, sappiamo dove siamo! Vediamo cosa c'è nella nostra directory corrente:
+Ottimo, sappiamo dove siamo! Vediamo cosa c'è nella nostra cartella corrente:
 
 ```bash
 [yourUsername@login1 ~] ls
@@ -266,7 +266,7 @@ Ottimo, sappiamo dove siamo! Vediamo cosa c'è nella nostra directory corrente:
 id_ed25519.pub
 ```
 
-Gli amministratori del sistema potrebbero aver configurato la vostra home directory con alcuni file, cartelle e collegamenti (scorciatoie) utili allo spazio riservato a voi su altri filesystem. Se non l'hanno fatto, la home directory potrebbe apparire vuota. Per ricontrollare, includere i file nascosti nell'elenco delle directory:
+Gli amministratori del sistema potrebbero aver configurato la vostra cartella home con alcuni file, cartelle e collegamenti (scorciatoie) utili allo spazio riservato a voi su altri filesystem. Se non l'hanno fatto, la cartella home potrebbe apparire vuota. Per ricontrollare, includere i file nascosti nell'elenco delle cartelle:
 
 ```bash
 [yourUsername@login1 ~] ls -a
@@ -277,7 +277,7 @@ Gli amministratori del sistema potrebbero aver configurato la vostra home direct
   ..           .ssh
 ```
 
-Nella prima colonna, `.` è un riferimento alla directory corrente e `..` un riferimento al suo genitore (`/home`). Gli altri file, o file simili, possono essere visualizzati o meno: `.bashrc` è un file di configurazione della shell, che può essere modificato con le proprie preferenze; e `.ssh` è una directory che memorizza le chiavi SSH e un registro delle connessioni autorizzate.
+Nella prima colonna, `.` è un riferimento alla directory corrente e `..` un riferimento alla cartella precedente (`/home`). Gli altri file, o file simili, possono essere visualizzati o meno: `.bashrc` è un file di configurazione della shell, che può essere modificato con le proprie preferenze; e `.ssh` è una directory che memorizza le chiavi SSH e un registro delle connessioni autorizzate.
 
 ### Installare la chiave SSH
 
@@ -291,7 +291,7 @@ Le politiche e le pratiche per la gestione delle chiavi SSH variano tra i cluste
 
 Se si è trasferita la chiave pubblica SSH con `scp`, si dovrebbe vedere `id_ed25519.pub` nella propria home directory. Per "installare" questa chiave, deve essere elencata in un file chiamato `authorized_keys` sotto la cartella `.ssh`.
 
-Se la cartella `.ssh` non è stata elencata sopra, allora non esiste ancora: crearla.
+Se la cartella `.ssh` non è stata elencata sopra, allora non esiste ancora: bisogna crearla.
 
 ```bash
 [yourUsername@login1 ~] mkdir ~/.ssh
