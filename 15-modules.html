@@ -391,8 +391,8 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Obiettivi</h3>
-<ul><li>Carica e utilizza un pacchetto software.</li>
-<li>Spiegate come cambia l’ambiente della shell quando il meccanismo dei
+<ul><li>Caricare ed utilizza un pacchetto software.</li>
+<li>Spiegare come cambia l’ambiente della shell quando il meccanismo dei
 moduli carica o scarica i pacchetti.</li>
 </ul></div>
 </div>
@@ -410,14 +410,14 @@ approccio. I tre fattori principali sono:</p>
 <li>dipendenze</li>
 </ul><p>L’incompatibilità del software è un grosso grattacapo per i
 programmatori. A volte, la presenza (o l’assenza) di un pacchetto
-software ne rompe altri che dipendono da esso. Due esempi ben noti sono
-le versioni dei compilatori Python e C. Python 3 fornisce un comando
-<code>python</code> che è in conflitto con quello fornito da Python 2.
-Il software compilato con una versione più recente del compilatore C non
-è in grado di funzionare. Il software compilato con una versione più
-recente delle librerie C e poi eseguito su una macchina in cui sono
-installate librerie C più vecchie, darà luogo a uno spiacevole errore
-<code>'GLIBCXX_3.4.20' not found</code>.</p>
+software ne interrompe altri che dipendono da esso. Due esempi ben noti
+sono le versioni dei compilatori Python e C. Python 3 fornisce un
+comando <code>python</code> che è in conflitto con quello fornito da
+Python 2. Il software compilato con una versione più recente del
+compilatore C non è in grado di funzionare. Il software compilato con
+una versione più recente delle librerie C e poi eseguito su una macchina
+in cui sono installate librerie C più vecchie, darà luogo a uno
+spiacevole errore <code>'GLIBCXX_3.4.20' not found</code>.</p>
 <p>La gestione delle versioni del software è un altro problema comune.
 Un gruppo di lavoro potrebbe dipendere da una certa versione di un
 pacchetto per il proprio progetto di ricerca; se la versione del
@@ -425,13 +425,13 @@ software dovesse cambiare (per esempio, se un pacchetto venisse
 aggiornato), i risultati potrebbero risentirne. Avere accesso a più
 versioni del software permette a un gruppo di ricercatori di evitare che
 i problemi di versione del software influenzino i loro risultati.</p>
-<p>Le dipendenze sono quando un particolare pacchetto software (o anche
-una particolare versione) dipende dall’accesso a un altro pacchetto
-software (o anche a una particolare versione di un altro pacchetto
-software). Ad esempio, il software per la scienza dei materiali VASP può
-dipendere dalla disponibilità di una particolare versione della libreria
-software FFTW (Fastest Fourier Transform in the West) per
-funzionare.</p>
+<p>Le dipendenze si riferiscono a quando un particolare pacchetto
+software (o anche una particolare versione) dipende dall’accesso a un
+altro pacchetto software (o anche a una particolare versione di un altro
+pacchetto software). Ad esempio, il software per la scienza dei
+materiali VASP può dipendere dalla disponibilità di una particolare
+versione della libreria software FFTW (Fastest Fourier Transform in the
+West) per funzionare.</p>
 <section><h2 class="section-heading" id="moduli-dambiente">Moduli d’ambiente<a class="anchor" aria-label="anchor" href="#moduli-dambiente"></a></h2>
 <hr class="half-width"><p>I moduli d’ambiente sono la soluzione a questi problemi. Un
 <em>modulo</em> è una descrizione autonoma di un pacchetto software:
@@ -505,9 +505,9 @@ caricato alcun modulo, verrà visualizzato un messaggio che lo indica</p>
 <hr class="half-width"><p>Per caricare un modulo software, usare <code>module load</code>. In
 questo esempio useremo Python 3.</p>
 <p>Inizialmente, Python 3 non viene caricato. Si può verificare usando
-il comando <code>which</code>. il comando <code>which</code> cerca i
-programmi nello stesso modo in cui lo fa Bash, quindi possiamo usarlo
-per sapere dove è memorizzato un particolare software.</p>
+il comando <code>which</code> che cerca i programmi nello stesso modo in
+cui lo fa Bash, quindi possiamo usarlo per sapere dove è memorizzato un
+particolare software.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -520,10 +520,10 @@ un risultato come</p>
 </h3>
 <pre class="output" tabindex="0"><code>/usr/bin/which: no python3 in (/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin:/opt/software/slurm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/yourUsername/.local/bin:/home/yourUsername/bin)</code></pre>
 </div>
-<p>Si noti che questo muro di testo è in realtà un elenco, con i valori
-separati dal carattere <code>:</code>. L’output ci dice che il comando
-<code>which</code> ha cercato <code>python3</code> nelle seguenti
-directory, senza successo:</p>
+<p>Si noti che questo blocco di testo è in realtà un elenco, con i
+valori separati dal carattere <code>:</code>. L’output ci dice che il
+comando <code>which</code> ha cercato <code>python3</code> nelle
+seguenti directory, senza successo:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -544,8 +544,8 @@ disponibile, quindi vediamo</p>
 </h3>
 <pre class="output" tabindex="0"><code>/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin/python3</code></pre>
 </div>
-<p>Abbiamo bisogno di un Python diverso da quello fornito dal sistema,
-quindi carichiamo un modulo per accedervi.</p>
+<p>Comunque abbiamo bisogno di un Python diverso da quello fornito dal
+sistema, quindi carichiamo un modulo per accedervi.</p>
 <p>Possiamo caricare il comando <code>python3</code> con
 <code>module load</code>:</p>
 <div class="codewrapper sourceCode" id="cb9">
@@ -579,10 +579,10 @@ variabili d’ambiente, è possibile stamparle usando
 <pre class="output" tabindex="0"><code>/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/SQLite/3.31.1-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Tcl/8.6.10-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/GCCcore/x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin:/opt/software/slurm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/user01/.local/bin:/home/user01/bin</code></pre>
 </div>
 <p>Noterete una somiglianza con l’output del comando <code>which</code>.
-In questo caso, c’è solo una differenza: la diversa directory
-all’inizio. Quando abbiamo eseguito il comando <code>module load</code>,
-questo ha aggiunto una directory all’inizio del nostro
-<code>$PATH</code>. Esaminiamo cosa c’è:</p>
+In questo caso, c’è solo una differenza: la diversa cartella all’inizio.
+Quando abbiamo eseguito il comando <code>module load</code>, questo ha
+aggiunto una cartella all’inizio del nostro <code>$PATH</code>.
+Esaminiamo cosa c’è:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -606,13 +606,12 @@ netaddr           pytest         rst2odt.py             wheel
 nosetests         py.test        rst2pseudoxml.py</code></pre>
 </div>
 <p>Portando questo alla sua conclusione, <code>module load</code>
-aggiungerà software al vostro <code>$PATH</code>. Carica il software.
+aggiungerà software al vostro <code>$PATH</code> e carica il software.
 Una nota speciale: a seconda della versione del programma
 <code>module</code> installata nel sito, <code>module load</code>
 caricherà anche le dipendenze software necessarie.</p>
-<p>Per dimostrarlo, usiamo
-<code>module list</code>.<code>module list</code> mostra tutti i moduli
-software caricati.</p>
+<p>Per dimostrarlo, usiamo <code>module list</code> che mostra tutti i
+moduli software caricati.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -678,11 +677,10 @@ scaricare il pacchetto <code>GROMACS</code>.</p>
  11) hwloc/2.2.0-GCCcore-x.y.z        23) SciPy-bundle/2020.03-foss-2020a-Py...
  12) libevent/2.1.11-GCCcore-x.y.z    24) networkx/2.4-foss-2020a-Python-3.x.y</code></pre>
 </div>
-<p>Quindi l’uso di <code>module unload</code> “scarica” un modulo e, a
-seconda di come è configurato un sito, può anche scaricare tutte le
-dipendenze (nel nostro caso non lo fa). Se si volesse scaricare tutto in
-una volta, si potrebbe eseguire <code>module purge</code> (scarica
-tutto).</p>
+<p>L’uso di <code>module unload</code> “scarica” un modulo e, a seconda
+di come è configurato un sito, può anche scaricare tutte le dipendenze
+(nel nostro caso non lo fa). Se si volesse scaricare tutto in una volta,
+si potrebbe eseguire <code>module purge</code> (scarica tutto).</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -694,11 +692,12 @@ tutto).</p>
 </h3>
 <pre class="output" tabindex="0"><code>No modules loaded</code></pre>
 </div>
-<p>Si noti che <code>module purge</code> è informativo. Ci farà anche
-sapere se un insieme predefinito di pacchetti “appiccicosi” non può
-essere scaricato (e come scaricarli se lo si desidera veramente).</p>
-<p>Si noti che questo processo di caricamento del modulo avviene
-principalmente attraverso la manipolazione di variabili d’ambiente come
+<p>Si noti che <code>module purge</code> è informativo perché ci farà
+anche sapere se un insieme predefinito di pacchetti “appiccicosi” non
+può essere scaricato (e come scaricarli se lo si desidera
+veramente).</p>
+<p>Questo processo di caricamento del modulo avviene principalmente
+attraverso la manipolazione di variabili d’ambiente come
 <code>$PATH</code>. Di solito il trasferimento di dati è minimo o
 nullo.</p>
 <p>Il processo di caricamento dei moduli manipola anche altre variabili
@@ -803,8 +802,8 @@ python3 --version</code></pre>
 <span class="callout-header">Punti Chiave</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li>Carica il software con <code>module load softwareName</code>.</li>
-<li>Scarica il software con <code>module unload</code>
+<ul><li>Caricare il software con <code>module load softwareName</code>.</li>
+<li>Scaricare il software con <code>module unload</code>
 </li>
 <li>Il sistema dei moduli gestisce automaticamente le versioni del
 software e i conflitti tra i pacchetti.</li>
