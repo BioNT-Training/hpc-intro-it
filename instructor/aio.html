@@ -331,7 +331,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="17-parallel.html">8. Esecuzione di un lavoro parallelo</a>
+        <a href="17-parallel.html">8. Esecuzione di un lavoro in parallelo</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -2448,7 +2448,7 @@ valore di <code>iso</code> e controllare questo valore con il comando
   Soluzione
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>La variabile <code>TIME_STYLE</code> non viene <em>vista</em> da
 <code>ls</code> fino a quando non viene esportata, a quel punto viene
@@ -2489,7 +2489,7 @@ stampi la posizione da cui è stato inviato il lavoro.</p>
   Soluzione
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3009,7 +3009,7 @@ su un nodo di calcolo).</p>
   Soluzione
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3145,7 +3145,7 @@ tarball come <code>amdahl.tar.gz</code>.</p>
   Comandi wget e curl
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3422,7 +3422,7 @@ fallire, ma va bene così!</p>
   Comandi
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3595,7 +3595,7 @@ per <code>rsync</code>.</p>
   Soluzione
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3665,7 +3665,7 @@ i file attraverso un’interfaccia grafica.</li>
 </div>
 </div>
 </div>
-</section></section><section id="aio-17-parallel"><p>Content from <a href="17-parallel.html">Esecuzione di un lavoro parallelo</a></p>
+</section></section><section id="aio-17-parallel"><p>Content from <a href="17-parallel.html">Esecuzione di un lavoro in parallelo</a></p>
 <hr>
 <p>Ultimo aggiornamento il 2025-11-09 |
 
@@ -3683,7 +3683,7 @@ i file attraverso un’interfaccia grafica.</li>
 <h3 class="card-title">Domande</h3>
 <ul>
 <li>Come si esegue un’attività in parallelo?</li>
-<li>Quali vantaggi derivano dall’esecuzione parallela?</li>
+<li>Quali vantaggi derivano dall’esecuzione in parallelo?</li>
 <li>Quali sono i limiti dei guadagni derivanti dall’esecuzione in
 parallelo?</li>
 </ul>
@@ -3697,9 +3697,9 @@ parallelo?</li>
 <ul>
 <li>Installare un pacchetto Python utilizzando <code>pip</code>
 </li>
-<li>Preparare uno script di invio del lavoro per l’eseguibile
+<li>Preparare uno script di invio del lavoro per l’esecuzione in
 parallelo.</li>
-<li>Avvio di lavori con esecuzione parallela.</li>
+<li>Avvio di lavori con esecuzione in parallelo.</li>
 <li>Registrare e riassumere i tempi e la precisione dei lavori.</li>
 <li>Descrivere la relazione tra parallelismo dei lavori e
 prestazioni.</li>
@@ -3724,8 +3724,8 @@ disponiamo per migliorare le prestazioni delle attività di calcolo.</p>
 <hr class="half-width">
 <p>Con il codice sorgente di Amdahl sul cluster, possiamo installarlo,
 il che ci darà accesso all’eseguibile <code>amdahl</code>. Spostarsi
-nella directory estratta, quindi usare il Package Installer for Python,
-o <code>pip</code>, per installarlo nella propria home directory
+nella cartella estratta, quindi usare il Package Installer for Python, o
+<code>pip</code>, per installarlo nella propria cartella home
 (“utente”):</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3810,8 +3810,9 @@ non sono presenti nel PATH.</p>
 not on PATH. Consider adding this directory to PATH or, if you prefer to
 suppress this warning, use --no-warn-script-location.</code></pre>
 </div>
-<p>Per verificare se questo avviso rappresenta un problema, utilizzare
-<code>which</code> per cercare il programma <code>amdahl</code>:</p>
+<p>Per verificare se questo avviso rappresenta realmente un problema,
+utilizzare <code>which</code> per cercare il programma
+<code>amdahl</code>:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -3891,10 +3892,10 @@ nodo e lanciarlo.</p>
 <span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
 <span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="co">#SBATCH -n 1</span></span>
 <span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co"># Load the computing environment we need</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="co"># Caricare l'ambiente di cui abbiamo bisogno</span></span>
 <span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="ex">module</span> load Python</span>
 <span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co"># Execute the task</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co"># Eseguirlo</span></span>
 <span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="ex">amdahl</span></span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb13">
@@ -3954,7 +3955,7 @@ Total execution time (according to rank 0): 30.033 seconds</code></pre>
 </div>
 </div>
 </div>
-<p>Come abbiamo visto in precedenza, due dei flag del programma
+<p>Come abbiamo visto in precedenza, due dei parametri del programma
 <code>amdahl</code> impostano la quantità di lavoro e la proporzione di
 tale lavoro che è di natura parallela. In base all’output, possiamo
 vedere che il codice utilizza un valore predefinito di 30 secondi di
@@ -3962,11 +3963,11 @@ lavoro parallelo all’85%. Il programma ha funzionato per poco più di 30
 secondi in totale e, se facciamo i conti, è vero che il 15% è stato
 contrassegnato come ‘seriale’ e l’85% come ‘parallelo’.</p>
 <p>Poiché abbiamo dato al lavoro una sola CPU, questo lavoro non è stato
-veramente parallelo: lo stesso processore ha eseguito il lavoro
-‘seriale’ per 4,5 secondi, poi la parte ‘parallela’ per 25,5 secondi, e
-non è stato risparmiato tempo. Il cluster può fare di meglio, se lo
-chiediamo.</p>
-</section><section><h2 class="section-heading" id="esecuzione-del-lavoro-parallelo">Esecuzione del lavoro parallelo<a class="anchor" aria-label="anchor" href="#esecuzione-del-lavoro-parallelo"></a>
+veramente eseguito in parallelo: lo stesso processore ha eseguito il
+lavoro ‘seriale’ per 4,5 secondi, poi la parte ‘parallela’ per 25,5
+secondi, e non è stato risparmiato tempo. Il cluster può fare di meglio,
+se lo chiediamo.</p>
+</section><section><h2 class="section-heading" id="esecuzione-del-lavoro-in-parallelo">Esecuzione del lavoro in parallelo<a class="anchor" aria-label="anchor" href="#esecuzione-del-lavoro-in-parallelo"></a>
 </h2>
 <hr class="half-width">
 <p>Il programma <code>amdahl</code> utilizza la Message Passing
@@ -4037,15 +4038,15 @@ utilizzare il run-time MPI.</p>
 <span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
 <span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="co">#SBATCH -n 4</span></span>
 <span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a><span class="co"># Load the computing environment we need</span></span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a><span class="co"># Carica l'ambiente di cui abbiamo bisogno</span></span>
 <span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a><span class="co"># (mpi4py and numpy are in SciPy-bundle)</span></span>
 <span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a><span class="ex">module</span> load Python</span>
 <span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a><span class="ex">module</span> load SciPy-bundle</span>
 <span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a></span>
-<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a><span class="co"># Execute the task</span></span>
+<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a><span class="co"># Lo esegue</span></span>
 <span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a><span class="ex">mpiexec</span> amdahl</span></code></pre>
 </div>
-<p>Quindi inviare il lavoro. Si noti che il comando di invio non è
+<p>Subito dopo inviare il lavoro. Si noti che il comando di invio non è
 cambiato rispetto a come abbiamo inviato il lavoro seriale: tutte le
 impostazioni parallele sono nel file batch anziché nella riga di
 comando.</p>
@@ -4175,12 +4176,12 @@ retta il nostro codice <code>amdahl</code>.</p>
 <span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a><span class="co">#SBATCH -N 1</span></span>
 <span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="co">#SBATCH -n 8</span></span>
 <span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a><span class="co"># Load the computing environment we need</span></span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a><span class="co"># Caricare l'ambiente di cui abbiamo bisogno</span></span>
 <span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a><span class="co"># (mpi4py and numpy are in SciPy-bundle)</span></span>
 <span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a><span class="ex">module</span> load Python</span>
 <span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a><span class="ex">module</span> load SciPy-bundle</span>
 <span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a></span>
-<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a><span class="co"># Execute the task</span></span>
+<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a><span class="co"># Eseguirlo</span></span>
 <span id="cb27-13"><a href="#cb27-13" tabindex="-1"></a><span class="ex">mpiexec</span> amdahl</span></code></pre>
 </div>
 <p>Quindi inviare il lavoro. Si noti che il comando di invio non è
@@ -4307,9 +4308,9 @@ usare 8 o 9 processori in parallelo. Nei programmi reali, il fattore di
 velocizzazione è influenzato da</p>
 <ul>
 <li>Progettazione della CPU</li>
-<li>rete di comunicazione tra i nodi di calcolo</li>
+<li>Rete di comunicazione tra i nodi di calcolo</li>
 <li>Implementazioni della libreria MPI</li>
-<li>dettagli del programma MPI stesso</li>
+<li>Dettagli del programma MPI stesso</li>
 </ul>
 <p>Utilizzando la legge di Amdahl, è possibile dimostrare che con questo
 programma è <em>impossibile</em> raggiungere una velocità di 8 volte,
@@ -4519,7 +4520,7 @@ migliore del tempo. Quanto ci si può avvicinare?</p>
   Soluzione
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>La riga seguente dice a Slurm che il nostro lavoro deve finire entro
 2 minuti:</p>
@@ -4672,7 +4673,7 @@ sul nodo di login?</p>
   Soluzione
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>La creazione di software, la creazione di directory e il
 disimballaggio di software sono compiti comuni e accettabili per il nodo
@@ -4905,7 +4906,7 @@ Cluster?</p>
   Soluzione
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>
