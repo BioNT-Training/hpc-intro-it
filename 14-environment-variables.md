@@ -150,7 +150,7 @@ La variabile `TIME_STYLE` non viene *vista* da `ls` fino a quando non viene espo
 
 ## Variabili d'ambiente di lavoro
 
-Quando `Slurm` esegue un lavoro, imposta una serie di variabili d'ambiente per il lavoro. Una di queste ci permette di verificare da quale directory è stato inviato lo script del lavoro. La variabile `SLURM_SUBMIT_DIR` è impostata sulla directory da cui è stato inviato il lavoro. Utilizzando la variabile `SLURM_SUBMIT_DIR`, modificate il vostro lavoro in modo che stampi la posizione da cui è stato inviato il lavoro.
+Quando `Slurm` esegue un lavoro, imposta una serie di variabili d'ambiente per il lavoro. Una di queste ci permette di verificare da quale cartella è stato inviato lo script del lavoro. La variabile `SLURM_SUBMIT_DIR` è impostata sulla cartella da cui è stato inviato il lavoro. Utilizzando la variabile `SLURM_SUBMIT_DIR`, modificate il vostro lavoro in modo che stampi la posizione da cui è stato inviato il lavoro.
 
 ::::::::::::::: solution
 
