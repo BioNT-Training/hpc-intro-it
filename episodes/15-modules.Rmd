@@ -12,8 +12,8 @@ source("load_config.R")
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Carica e utilizza un pacchetto software.
-- Spiegate come cambia l'ambiente della shell quando il meccanismo dei moduli carica o scarica i pacchetti.
+- Caricare ed utilizza un pacchetto software.
+- Spiegare come cambia l'ambiente della shell quando il meccanismo dei moduli carica o scarica i pacchetti.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -31,11 +31,11 @@ Prima di iniziare a utilizzare i singoli pacchetti software, tuttavia, è necess
 - versioning
 - dipendenze
 
-L'incompatibilità del software è un grosso grattacapo per i programmatori. A volte, la presenza (o l'assenza) di un pacchetto software ne rompe altri che dipendono da esso. Due esempi ben noti sono le versioni dei compilatori Python e C. Python 3 fornisce un comando `python` che è in conflitto con quello fornito da Python 2. Il software compilato con una versione più recente del compilatore C non è in grado di funzionare. Il software compilato con una versione più recente delle librerie C e poi eseguito su una macchina in cui sono installate librerie C più vecchie, darà luogo a uno spiacevole errore `'GLIBCXX_3.4.20' not found`.
+L'incompatibilità del software è un grosso grattacapo per i programmatori. A volte, la presenza (o l'assenza) di un pacchetto software ne interrompe altri che dipendono da esso. Due esempi ben noti sono le versioni dei compilatori Python e C. Python 3 fornisce un comando `python` che è in conflitto con quello fornito da Python 2. Il software compilato con una versione più recente del compilatore C non è in grado di funzionare. Il software compilato con una versione più recente delle librerie C e poi eseguito su una macchina in cui sono installate librerie C più vecchie, darà luogo a uno spiacevole errore `'GLIBCXX_3.4.20' not found`.
 
 La gestione delle versioni del software è un altro problema comune. Un gruppo di lavoro potrebbe dipendere da una certa versione di un pacchetto per il proprio progetto di ricerca; se la versione del software dovesse cambiare (per esempio, se un pacchetto venisse aggiornato), i risultati potrebbero risentirne. Avere accesso a più versioni del software permette a un gruppo di ricercatori di evitare che i problemi di versione del software influenzino i loro risultati.
 
-Le dipendenze sono quando un particolare pacchetto software (o anche una particolare versione) dipende dall'accesso a un altro pacchetto software (o anche a una particolare versione di un altro pacchetto software). Ad esempio, il software per la scienza dei materiali VASP può dipendere dalla disponibilità di una particolare versione della libreria software FFTW (Fastest Fourier Transform in the West) per funzionare.
+Le dipendenze si riferiscono a  quando un particolare pacchetto software (o anche una particolare versione) dipende dall'accesso a un altro pacchetto software (o anche a una particolare versione di un altro pacchetto software). Ad esempio, il software per la scienza dei materiali VASP può dipendere dalla disponibilità di una particolare versione della libreria software FFTW (Fastest Fourier Transform in the West) per funzionare.
 
 ## Moduli d'ambiente
 
@@ -90,7 +90,7 @@ No Modulefiles Currently Loaded.
 
 Per caricare un modulo software, usare `module load`. In questo esempio useremo Python 3.
 
-Inizialmente, Python 3 non viene caricato. Si può verificare usando il comando `which`. il comando `which` cerca i programmi nello stesso modo in cui lo fa Bash, quindi possiamo usarlo per sapere dove è memorizzato un particolare software.
+Inizialmente, Python 3 non viene caricato. Si può verificare usando il comando `which` che cerca i programmi nello stesso modo in cui lo fa Bash, quindi possiamo usarlo per sapere dove è memorizzato un particolare software.
 
 ```bash
 `r config$remote$prompt` which python3
@@ -102,7 +102,7 @@ Se il comando `python3` non fosse disponibile, si vedrebbe un risultato come
 /usr/bin/which: no python3 in (/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin:/opt/software/slurm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/`r config$remote$user`/.local/bin:/home/`r config$remote$user`/bin)
 ```
 
-Si noti che questo muro di testo è in realtà un elenco, con i valori separati dal carattere `:`. L'output ci dice che il comando `which` ha cercato `python3` nelle seguenti directory, senza successo:
+Si noti che questo blocco di testo è in realtà un elenco, con i valori separati dal carattere `:`. L'output ci dice che il comando `which` ha cercato `python3` nelle seguenti directory, senza successo:
 
 ```output
 /cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin
@@ -122,7 +122,7 @@ Tuttavia, nel nostro caso abbiamo un `python3` esistente disponibile, quindi ved
 /cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin/python3
 ```
 
-Abbiamo bisogno di un Python diverso da quello fornito dal sistema, quindi carichiamo un modulo per accedervi.
+Comunque abbiamo bisogno di un Python diverso da quello fornito dal sistema, quindi carichiamo un modulo per accedervi.
 
 Possiamo caricare il comando `python3` con `module load`:
 
@@ -147,7 +147,7 @@ Per comprendere l'output, occorre innanzitutto capire la natura della variabile 
 /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/SQLite/3.31.1-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Tcl/8.6.10-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/GCCcore/x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin:/opt/software/slurm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/user01/.local/bin:/home/user01/bin
 ```
 
-Noterete una somiglianza con l'output del comando `which`. In questo caso, c'è solo una differenza: la diversa directory all'inizio. Quando abbiamo eseguito il comando `module load`, questo ha aggiunto una directory all'inizio del nostro `$PATH`. Esaminiamo cosa c'è:
+Noterete una somiglianza con l'output del comando `which`. In questo caso, c'è solo una differenza: la diversa cartella all'inizio. Quando abbiamo eseguito il comando `module load`, questo ha aggiunto una cartella all'inizio del nostro `$PATH`. Esaminiamo cosa c'è:
 
 ```bash
 `r config$remote$prompt` ls /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin
@@ -169,9 +169,9 @@ netaddr           pytest         rst2odt.py             wheel
 nosetests         py.test        rst2pseudoxml.py
 ```
 
-Portando questo alla sua conclusione, `module load` aggiungerà software al vostro `$PATH`. Carica il software. Una nota speciale: a seconda della versione del programma `module` installata nel sito, `module load` caricherà anche le dipendenze software necessarie.
+Portando questo alla sua conclusione, `module load` aggiungerà software al vostro `$PATH` e carica il software. Una nota speciale: a seconda della versione del programma `module` installata nel sito, `module load` caricherà anche le dipendenze software necessarie.
 
-Per dimostrarlo, usiamo `module list`.`module list` mostra tutti i moduli software caricati.
+Per dimostrarlo, usiamo `module list` che mostra tutti i moduli software caricati.
 
 ```bash
 `r config$remote$prompt` module list
@@ -229,7 +229,7 @@ Currently Loaded Modules:
  12) libevent/2.1.11-GCCcore-x.y.z    24) networkx/2.4-foss-2020a-Python-3.x.y
 ```
 
-Quindi l'uso di `module unload` "scarica" un modulo e, a seconda di come è configurato un sito, può anche scaricare tutte le dipendenze (nel nostro caso non lo fa). Se si volesse scaricare tutto in una volta, si potrebbe eseguire `module purge` (scarica tutto).
+L'uso di `module unload` "scarica" un modulo e, a seconda di come è configurato un sito, può anche scaricare tutte le dipendenze (nel nostro caso non lo fa). Se si volesse scaricare tutto in una volta, si potrebbe eseguire `module purge` (scarica tutto).
 
 ```bash
 `r config$remote$prompt` module purge
@@ -240,9 +240,9 @@ Quindi l'uso di `module unload` "scarica" un modulo e, a seconda di come è conf
 No modules loaded
 ```
 
-Si noti che `module purge` è informativo. Ci farà anche sapere se un insieme predefinito di pacchetti "appiccicosi" non può essere scaricato (e come scaricarli se lo si desidera veramente).
+Si noti che `module purge` è informativo perché ci farà anche sapere se un insieme predefinito di pacchetti "appiccicosi" non può essere scaricato (e come scaricarli se lo si desidera veramente).
 
-Si noti che questo processo di caricamento del modulo avviene principalmente attraverso la manipolazione di variabili d'ambiente come `$PATH`. Di solito il trasferimento di dati è minimo o nullo.
+Questo processo di caricamento del modulo avviene principalmente attraverso la manipolazione di variabili d'ambiente come `$PATH`. Di solito il trasferimento di dati è minimo o nullo.
 
 Il processo di caricamento dei moduli manipola anche altre variabili d'ambiente speciali, tra cui quelle che influenzano la ricerca delle librerie software da parte del sistema e, talvolta, quelle che indicano ai pacchetti software commerciali dove trovare i server delle licenze.
 
@@ -316,8 +316,8 @@ python3 --version
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Carica il software con `module load softwareName`.
-- Scarica il software con `module unload`
+- Caricare il software con `module load softwareName`.
+- Scaricare il software con `module unload`
 - Il sistema dei moduli gestisce automaticamente le versioni del software e i conflitti tra i pacchetti.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
