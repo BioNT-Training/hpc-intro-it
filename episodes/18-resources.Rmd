@@ -12,14 +12,14 @@ source("load_config.R")
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Consultare le statistiche dei lavori.
+- Consultare le statistiche.
 - Fare richieste di risorse più accurate negli script di lavoro in base ai dati che descrivono le prestazioni passate.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- Come posso rivedere i lavori passati?
+- Come posso rivedere i lavori eseguiti in passato?
 - Come posso utilizzare queste conoscenze per creare uno script di invio più accurato?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -62,13 +62,13 @@ Poiché abbiamo già inviato `amdahl` per l'esecuzione sul cluster, possiamo int
 9.extern         extern            def-spons+          1  COMPLETED      0:0
 ```
 
-Questo mostra tutti i lavori eseguiti oggi (si noti che ci sono più voci per ogni lavoro). Per ottenere informazioni su un lavoro specifico (ad esempio, 347087), si cambia leggermente il comando.
+Questo mostra tutti i lavori eseguiti nella giornata (si noti che ci sono più voci per ogni lavoro). Per ottenere informazioni su un lavoro specifico (ad esempio, 347087), si cambia leggermente il comando.
 
 ```bash
 `r config$remote$prompt` `r config$sched$hist` `r config$sched$flag$histdetail` 347087
 ```
 
-mostrerà molte informazioni; in effetti, ogni singola informazione raccolta sul lavoro dallo schedulatore apparirà qui. Può essere utile reindirizzare queste informazioni a `less` per facilitarne la visualizzazione (usare i tasti freccia sinistra e destra per scorrere i campi).
+Questo mostrerà molte informazioni; in effetti, ogni singola informazione raccolta sul lavoro dallo schedulatore apparirà qui. Può essere utile reindirizzare queste informazioni a `less` per facilitarne la visualizzazione (usare i tasti freccia sinistra e destra per scorrere i campi).
 
 ```bash
 `r config$remote$prompt` `r config$sched$hist` `r config$sched$flag$histdetail` 347087 | less -S
@@ -87,7 +87,7 @@ Quanto sono state accurate le nostre stime?
 
 ## Miglioramento delle richieste di risorse
 
-Dalla cronologia dei lavori, vediamo che i lavori `amdahl` hanno terminato l'esecuzione in pochi minuti, una volta spediti. La stima del tempo fornita nello script del lavoro era troppo lunga! Questo rende più difficile per il sistema di accodamento stimare con precisione quando le risorse si libereranno per altri lavori. In pratica, questo significa che il sistema di accodamento aspetta a inviare il nostro lavoro `amdahl` fino a quando non si apre l'intera fascia oraria richiesta, invece di "intrufolarsi" in una finestra molto più breve in cui il lavoro potrebbe effettivamente terminare. Specificando con maggiore precisione il tempo di esecuzione previsto nello script di invio, si può contribuire ad alleviare la congestione del cluster e a far sì che il lavoro venga inviato prima.
+Dalla cronologia dei lavori, vediamo che i lavori `amdahl` hanno terminato l'esecuzione in pochi minuti. La stima del tempo fornita nello script del lavoro era troppo lunga! Questo rende più difficile per il sistema di accodamento stimare con precisione quando le risorse si libereranno per altri lavori. In pratica, questo significa che il sistema di accodamento aspetta a inviare il nostro lavoro `amdahl` fino a quando non si apre l'intera fascia oraria richiesta, invece di "intrufolarsi" in una finestra molto più breve in cui il lavoro potrebbe effettivamente terminare. Specificando con maggiore precisione il tempo di esecuzione previsto nello script di invio, si può contribuire ad alleviare la congestione del cluster e a far sì che il lavoro venga inviato prima.
 
 ::::::::::::::::::::::::::::::::::::::: challenge
 
@@ -114,7 +114,7 @@ La riga seguente dice a `r config$sched$name` che il nostro lavoro deve finire e
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Job script accurati aiutano il sistema di accodamento ad allocare in modo efficiente le risorse condivise.
+- Dei comandi accurati aiutano il sistema di accodamento ad allocare in modo efficiente le risorse condivise.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
