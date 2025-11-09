@@ -385,7 +385,7 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Domande</h3>
-<ul><li>Come posso rivedere i lavori passati?</li>
+<ul><li>Come posso rivedere i lavori eseguiti in passato?</li>
 <li>Come posso utilizzare queste conoscenze per creare uno script di
 invio più accurato?</li>
 </ul></div>
@@ -395,7 +395,7 @@ invio più accurato?</li>
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Obiettivi</h3>
-<ul><li>Consultare le statistiche dei lavori.</li>
+<ul><li>Consultare le statistiche.</li>
 <li>Fare richieste di risorse più accurate negli script di lavoro in
 base ai dati che descrivono le prestazioni passate.</li>
 </ul></div>
@@ -470,19 +470,19 @@ su <code>parallel-job.sh</code>.</p>
 9.batch           batch            def-spons+          1  COMPLETED      0:0
 9.extern         extern            def-spons+          1  COMPLETED      0:0</code></pre>
 </div>
-<p>Questo mostra tutti i lavori eseguiti oggi (si noti che ci sono più
-voci per ogni lavoro). Per ottenere informazioni su un lavoro specifico
-(ad esempio, 347087), si cambia leggermente il comando.</p>
+<p>Questo mostra tutti i lavori eseguiti nella giornata (si noti che ci
+sono più voci per ogni lavoro). Per ottenere informazioni su un lavoro
+specifico (ad esempio, 347087), si cambia leggermente il comando.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~] sacct <span class="at">-u</span> yourUsername <span class="at">-l</span> <span class="at">-j</span> 347087</span></code></pre>
 </div>
-<p>mostrerà molte informazioni; in effetti, ogni singola informazione
-raccolta sul lavoro dallo schedulatore apparirà qui. Può essere utile
-reindirizzare queste informazioni a <code>less</code> per facilitarne la
-visualizzazione (usare i tasti freccia sinistra e destra per scorrere i
-campi).</p>
+<p>Questo mostrerà molte informazioni; in effetti, ogni singola
+informazione raccolta sul lavoro dallo schedulatore apparirà qui. Può
+essere utile reindirizzare queste informazioni a <code>less</code> per
+facilitarne la visualizzazione (usare i tasti freccia sinistra e destra
+per scorrere i campi).</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -505,15 +505,15 @@ prima del lancio e l’impronta di memoria sui nodi di calcolo.</p>
 </div>
 </section><section><h2 class="section-heading" id="miglioramento-delle-richieste-di-risorse">Miglioramento delle richieste di risorse<a class="anchor" aria-label="anchor" href="#miglioramento-delle-richieste-di-risorse"></a></h2>
 <hr class="half-width"><p>Dalla cronologia dei lavori, vediamo che i lavori <code>amdahl</code>
-hanno terminato l’esecuzione in pochi minuti, una volta spediti. La
-stima del tempo fornita nello script del lavoro era troppo lunga! Questo
-rende più difficile per il sistema di accodamento stimare con precisione
-quando le risorse si libereranno per altri lavori. In pratica, questo
-significa che il sistema di accodamento aspetta a inviare il nostro
-lavoro <code>amdahl</code> fino a quando non si apre l’intera fascia
-oraria richiesta, invece di “intrufolarsi” in una finestra molto più
-breve in cui il lavoro potrebbe effettivamente terminare. Specificando
-con maggiore precisione il tempo di esecuzione previsto nello script di
+hanno terminato l’esecuzione in pochi minuti. La stima del tempo fornita
+nello script del lavoro era troppo lunga! Questo rende più difficile per
+il sistema di accodamento stimare con precisione quando le risorse si
+libereranno per altri lavori. In pratica, questo significa che il
+sistema di accodamento aspetta a inviare il nostro lavoro
+<code>amdahl</code> fino a quando non si apre l’intera fascia oraria
+richiesta, invece di “intrufolarsi” in una finestra molto più breve in
+cui il lavoro potrebbe effettivamente terminare. Specificando con
+maggiore precisione il tempo di esecuzione previsto nello script di
 invio, si può contribuire ad alleviare la congestione del cluster e a
 far sì che il lavoro venga inviato prima.</p>
 <div id="restringere-la-stima-del-tempo" class="callout challenge">
@@ -537,7 +537,7 @@ migliore del tempo. Quanto ci si può avvicinare?</p>
   Soluzione
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>La riga seguente dice a Slurm che il nostro lavoro deve finire entro
 2 minuti:</p>
@@ -557,8 +557,8 @@ migliore del tempo. Quanto ci si può avvicinare?</p>
 <span class="callout-header">Punti Chiave</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li>Job script accurati aiutano il sistema di accodamento ad allocare in
-modo efficiente le risorse condivise.</li>
+<ul><li>Dei comandi accurati aiutano il sistema di accodamento ad allocare
+in modo efficiente le risorse condivise.</li>
 </ul></div>
 </div>
 </div>
