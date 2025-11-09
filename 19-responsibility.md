@@ -10,7 +10,7 @@ exercises: 5
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Descrivere come le azioni di un singolo utente possono influenzare l'esperienza degli altri su un sistema condiviso.
-- Discutere il comportamento di un premuroso cittadino del sistema condiviso.
+- Discutere il comportamento di un utente premuroso del sistema condiviso.
 - Spiegare l'importanza del backup dei dati critici.
 - Descrivere le sfide legate al trasferimento di grandi quantità di dati dai sistemi HPC.
 - Convertire molti file in un singolo file di archivio usando tar.
@@ -27,7 +27,7 @@ exercises: 5
 
 Una delle principali differenze tra l'uso di risorse HPC remote e il proprio sistema (ad esempio il portatile) è che le risorse remote sono condivise. Il numero di utenti tra i quali la risorsa è condivisa varia da sistema a sistema, ma è improbabile che siate l'unico utente connesso o che utilizzi un sistema di questo tipo.
 
-L'uso diffuso di sistemi di schedulazione in cui gli utenti inviano lavori su risorse HPC è un risultato naturale della natura condivisa di queste risorse. Ci sono altre cose che, in quanto membro integerrimo della comunità, dovete considerare.
+L'uso diffuso di sistemi di schedulazione in cui gli utenti inviano lavori su risorse HPC è un risultato naturale della natura condivisa di queste risorse. Ci sono altre cose che, in quanto membri responsabili della comunità, dovete considerare.
 
 ## Sii gentile con i nodi di accesso
 
@@ -41,7 +41,7 @@ I nodi di accesso sono sempre il posto giusto per lanciare i lavori. Le politich
 
 Ricordate che il nodo di login è condiviso con tutti gli altri utenti e le vostre azioni potrebbero causare problemi ad altre persone. Pensate bene alle potenziali implicazioni dell'emissione di comandi che possono utilizzare grandi quantità di risorse.
 
-Non siete sicuri? Chiedete al vostro amichevole amministratore di sistema ("sysadmin") se la cosa che state pensando di fare è adatta al nodo di login, o se c'è un altro meccanismo per farlo in modo sicuro.
+Non siete sicuri? Chiedete al vostro amministratore di sistema ("sysadmin") se la cosa che state pensando di fare è adatta al nodo di login, o se c'è un altro meccanismo per farlo in modo sicuro.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -50,7 +50,7 @@ Non siete sicuri? Chiedete al vostro amichevole amministratore di sistema ("sysa
 
 ::::::::::::::::::::::::::::::::::::::: challenge
 
-## Galateo del nodo di accesso
+## "Galateo" del nodo di accesso
 
 Quale di questi comandi sarebbe un'operazione di routine da eseguire sul nodo di login?
 
@@ -64,9 +64,9 @@ Quale di questi comandi sarebbe un'operazione di routine da eseguire sul nodo di
 
 ## Soluzione
 
-La creazione di software, la creazione di directory e il disimballaggio di software sono compiti comuni e accettabili per il nodo di login: le opzioni #2 (`make`), #3 (`mkdir`) e #5 (`tar`) probabilmente vanno bene. Si noti che i nomi degli script non sempre riflettono il loro contenuto: prima di lanciare il #3, si consiglia di usare `less create_directories.sh` e assicurarsi che non sia un cavallo di Troia.
+La creazione di software, la creazione di cartelle e il disimballaggio di software sono compiti comuni e accettabili per il nodo di login: le opzioni #2 (`make`), #3 (`mkdir`) e #5 (`tar`) probabilmente vanno bene. Si noti che i nomi degli script non sempre riflettono il loro contenuto: prima di lanciare il #3, si consiglia di usare `less create_directories.sh` e assicurarsi che non sia un virus o "troian horse"
 
-L'esecuzione di applicazioni ad alta intensità di risorse è sconsigliata. A meno che non siate sicuri che non influisca sugli altri utenti, non eseguite lavori come il #1 (`python`) o il #4 (codice MD personalizzato). Se non si è sicuri, chiedere consiglio al proprio sysadmin.
+L'esecuzione di applicazioni ad alta intensità di risorse è sconsigliata. A meno che non siate sicuri che non influisca sugli altri utenti, non eseguite lavori come il #1 (`python`) o il #4 (codice MD personalizzato). Se non si è sicuri, meglio chiedere consiglio all'amministratore di sistema.
 
 
 
@@ -74,11 +74,11 @@ L'esecuzione di applicazioni ad alta intensità di risorse è sconsigliata. A me
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Se si riscontrano problemi di prestazioni con un nodo di login, è necessario segnalarlo al personale del sistema (di solito tramite l'helpdesk) affinché indaghi.
+Se si riscontrano problemi di prestazioni con un nodo di login, è necessario segnalarlo all'amministratore di sistema (di solito tramite l'helpdesk) affinché indaghi.
 
 ## Test prima di scalare
 
-Ricordate che in genere l'utilizzo dei sistemi condivisi viene addebitato. Un semplice errore in uno script di lavoro può finire per costare una grande quantità di budget di risorse. Immaginate uno script di lavoro con un errore che lo fa stare fermo per 24 ore su 1000 core o uno in cui avete richiesto per errore 2000 core e ne usate solo 100! Questo problema può essere aggravato quando si scrivono script che automatizzano l'invio di lavori (ad esempio, quando si esegue lo stesso calcolo o analisi su molti parametri o file diversi). Quando ciò accade, si danneggia sia l'utente (che spreca molte risorse caricate) sia gli altri utenti (che sono bloccati dall'accesso ai nodi di calcolo inattivi). Su risorse molto trafficate, potreste aspettare molti giorni in coda e il vostro lavoro potrebbe fallire entro 10 secondi dall'avvio a causa di un banale errore di battitura nello script del lavoro. Questo è estremamente frustrante!
+Ricordate che in genere l'utilizzo dei sistemi condivisi ha un costo. Un semplice errore in uno script di lavoro può finire per costare una grande quantità di budget di risorse. Immaginate uno script di lavoro con un errore che lo fa stare fermo per 24 ore su 1000 core o uno in cui avete richiesto per errore 2000 core e ne usate solo 100! Questo problema può essere aggravato quando si scrivono script che automatizzano l'invio di lavori (ad esempio, quando si esegue lo stesso calcolo o analisi su molti parametri o file diversi). Quando ciò accade, si danneggia sia l'utente (che spreca molte risorse caricate) sia gli altri utenti (che sono bloccati dall'accesso ai nodi di calcolo inattivi). Su risorse molto trafficate, potreste aspettare molti giorni in coda e il vostro lavoro potrebbe fallire entro 10 secondi dall'avvio a causa di un banale errore di battitura nello script del lavoro. Questo è estremamente frustrante!
 
 La maggior parte dei sistemi fornisce risorse dedicate ai test con tempi di attesa brevi per evitare questo problema.
 
@@ -93,13 +93,13 @@ Prima di inviare un lavoro molto grande o molto lungo, eseguire un breve test tr
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Avere un piano di backup
+## Avere sempre un backup
 
 Sebbene molti sistemi HPC mantengano dei backup, questi non sempre coprono tutti i file system disponibili e possono servire solo per scopi di disaster recovery (cioè per ripristinare l'intero file system in caso di perdita piuttosto che un singolo file o una directory cancellati per errore). Proteggere i dati critici dalla corruzione o dall'eliminazione è una responsabilità primaria dell'utente: conservare le proprie copie di backup.
 
 I sistemi di controllo delle versioni (come Git) hanno spesso offerte gratuite basate su cloud (ad esempio, GitHub e GitLab) che vengono generalmente utilizzate per archiviare il codice sorgente. Anche se non si scrivono programmi propri, questi sistemi possono essere molto utili per archiviare script di lavoro, script di analisi e piccoli file di input.
 
-Se state costruendo un software, potreste avere una grande quantità di codice sorgente che compilate per creare il vostro eseguibile. Poiché questi dati possono essere generalmente recuperati scaricando nuovamente il codice o eseguendo nuovamente l'operazione di checkout dal repository del codice sorgente, questi dati sono anche meno critici da proteggere.
+Se state progettando un software, potreste avere una grande quantità di codice sorgente che compilate per creare il vostro eseguibile. Poiché questi dati possono essere generalmente recuperati scaricando nuovamente il codice o eseguendo nuovamente l'operazione di checkout dal repository del codice sorgente, questi dati sono anche meno critici da proteggere.
 
 Per le grandi quantità di dati, in particolare per i risultati importanti delle esecuzioni, che possono essere insostituibili, è necessario assicurarsi di disporre di un sistema robusto per prelevare le copie dei dati dal sistema HPC, ove possibile, e trasferirle su uno storage di backup. Strumenti come `rsync` possono essere molto utili a questo scopo.
 
@@ -159,11 +159,11 @@ Supponiamo di avere una cartella "dati" contenente circa 10.000 file, un sano mi
 
 ## Soluzione
 
-1. `scp` copierà ricorsivamente la directory. Funziona, ma senza compressione.
+1. `scp` copierà ricorsivamente la cartella. Funziona, ma senza compressione.
 2. `rsync -ra` funziona come `scp -r`, ma conserva le informazioni sui file, come i tempi di creazione. Questo è marginalmente migliore.
 3. `rsync -raz` aggiunge la compressione, che farà risparmiare un po' di larghezza di banda. Se si dispone di una CPU forte a entrambi i capi della linea e si è su una rete lenta, questa è una buona scelta.
 4. Questo comando usa prima `tar` per unire tutto in un unico file, poi `rsync -z` per trasferirlo con la compressione. Con un numero così elevato di file, l'overhead dei metadati può ostacolare il trasferimento, quindi questa è una buona idea.
-5. Questo comando usa `tar -z` per comprimere l'archivio e poi `rsync` per trasferirlo. Le prestazioni sono simili a quelle del comando #4, ma nella maggior parte dei casi (per insiemi di dati di grandi dimensioni), è la migliore combinazione di alta velocità e bassa latenza (per sfruttare al meglio il tempo e la connessione di rete).
+5. Questo usa `tar -z` per comprimere l'archivio e poi `rsync` per trasferirlo. Le prestazioni sono simili a quelle del comando #4, ma nella maggior parte dei casi (per insiemi di dati di grandi dimensioni), è la migliore combinazione di alta velocità e bassa latenza (per sfruttare al meglio il tempo e la connessione di rete).
 
 :::::::::::::::::::::::::
 
