@@ -1,5 +1,5 @@
 ---
-title: Esecuzione di un lavoro parallelo
+title: Esecuzione di un lavoro in parallelo
 teaching: 30
 exercises: 60
 ---
@@ -10,8 +10,8 @@ exercises: 60
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Installare un pacchetto Python utilizzando `pip`
-- Preparare uno script di invio del lavoro per l'eseguibile parallelo.
-- Avvio di lavori con esecuzione parallela.
+- Preparare uno script di invio del lavoro per l'esecuzione in parallelo.
+- Avvio di lavori con esecuzione in parallelo.
 - Registrare e riassumere i tempi e la precisione dei lavori.
 - Descrivere la relazione tra parallelismo dei lavori e prestazioni.
 
@@ -20,7 +20,7 @@ exercises: 60
 :::::::::::::::::::::::::::::::::::::::: questions
 
 - Come si esegue un'attività in parallelo?
-- Quali vantaggi derivano dall'esecuzione parallela?
+- Quali vantaggi derivano dall'esecuzione in parallelo?
 - Quali sono i limiti dei guadagni derivanti dall'esecuzione in parallelo?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -35,7 +35,7 @@ Se si è disconnessi, accedere nuovamente al cluster.
 
 ## Installare il programma Amdahl
 
-Con il codice sorgente di Amdahl sul cluster, possiamo installarlo, il che ci darà accesso all'eseguibile `amdahl`. Spostarsi nella directory estratta, quindi usare il Package Installer for Python, o `pip`, per installarlo nella propria home directory ("utente"):
+Con il codice sorgente di Amdahl sul cluster, possiamo installarlo, il che ci darà accesso all'eseguibile `amdahl`. Spostarsi nella cartella estratta, quindi usare il Package Installer for Python, o `pip`, per installarlo nella propria cartella home ("utente"):
 
 ```bash
 [yourUsername@login1 ~] cd amdahl
@@ -92,7 +92,7 @@ not on PATH. Consider adding this directory to PATH or, if you prefer to
 suppress this warning, use --no-warn-script-location.
 ```
 
-Per verificare se questo avviso rappresenta un problema, utilizzare `which` per cercare il programma `amdahl`:
+Per verificare se questo avviso rappresenta realmente un problema, utilizzare `which` per cercare il programma `amdahl`:
 
 ```bash
 [yourUsername@login1 ~] which amdahl
@@ -155,10 +155,10 @@ Creare un file di presentazione, richiedere un task su un singolo nodo e lanciar
 #SBATCH -N 1
 #SBATCH -n 1
 
-# Load the computing environment we need
+# Caricare l'ambiente di cui abbiamo bisogno
 module load Python
 
-# Execute the task
+# Eseguirlo
 amdahl
 ```
 
@@ -204,11 +204,11 @@ Total execution time (according to rank 0): 30.033 seconds
 
 :::::::::::::::::::::::::
 
-Come abbiamo visto in precedenza, due dei flag del programma `amdahl` impostano la quantità di lavoro e la proporzione di tale lavoro che è di natura parallela. In base all'output, possiamo vedere che il codice utilizza un valore predefinito di 30 secondi di lavoro parallelo all'85%. Il programma ha funzionato per poco più di 30 secondi in totale e, se facciamo i conti, è vero che il 15% è stato contrassegnato come 'seriale' e l'85% come 'parallelo'.
+Come abbiamo visto in precedenza, due dei parametri del programma `amdahl` impostano la quantità di lavoro e la proporzione di tale lavoro che è di natura parallela. In base all'output, possiamo vedere che il codice utilizza un valore predefinito di 30 secondi di lavoro parallelo all'85%. Il programma ha funzionato per poco più di 30 secondi in totale e, se facciamo i conti, è vero che il 15% è stato contrassegnato come 'seriale' e l'85% come 'parallelo'.
 
-Poiché abbiamo dato al lavoro una sola CPU, questo lavoro non è stato veramente parallelo: lo stesso processore ha eseguito il lavoro 'seriale' per 4,5 secondi, poi la parte 'parallela' per 25,5 secondi, e non è stato risparmiato tempo. Il cluster può fare di meglio, se lo chiediamo.
+Poiché abbiamo dato al lavoro una sola CPU, questo lavoro non è stato veramente eseguito in parallelo: lo stesso processore ha eseguito il lavoro 'seriale' per 4,5 secondi, poi la parte 'parallela' per 25,5 secondi, e non è stato risparmiato tempo. Il cluster può fare di meglio, se lo chiediamo.
 
-## Esecuzione del lavoro parallelo
+## Esecuzione del lavoro in parallelo
 
 Il programma `amdahl` utilizza la Message Passing Interface (MPI) per il parallelismo, uno strumento comune nei sistemi HPC.
 
@@ -246,16 +246,16 @@ Modifichiamo lo script del lavoro per richiedere più core e utilizzare il run-t
 #SBATCH -N 1
 #SBATCH -n 4
 
-# Load the computing environment we need
+# Carica l'ambiente di cui abbiamo bisogno
 # (mpi4py and numpy are in SciPy-bundle)
 module load Python
 module load SciPy-bundle
 
-# Execute the task
+# Lo esegue
 mpiexec amdahl
 ```
 
-Quindi inviare il lavoro. Si noti che il comando di invio non è cambiato rispetto a come abbiamo inviato il lavoro seriale: tutte le impostazioni parallele sono nel file batch anziché nella riga di comando.
+Subito dopo inviare il lavoro. Si noti che il comando di invio non è cambiato rispetto a come abbiamo inviato il lavoro seriale: tutte le impostazioni parallele sono nel file batch anziché nella riga di comando.
 
 ```bash
 [yourUsername@login1 ~] sbatch parallel-job.sh
@@ -343,12 +343,12 @@ Eseguiamo un altro lavoro, per vedere quanto si avvicina a una linea retta il no
 #SBATCH -N 1
 #SBATCH -n 8
 
-# Load the computing environment we need
+# Caricare l'ambiente di cui abbiamo bisogno
 # (mpi4py and numpy are in SciPy-bundle)
 module load Python
 module load SciPy-bundle
 
-# Execute the task
+# Eseguirlo
 mpiexec amdahl
 ```
 
@@ -423,9 +423,9 @@ $$ S(t_{n}) = \frac{t_{1}}{t_{n}} $$
 I file di output del lavoro ci dicono che questo programma esegue l'85% del suo lavoro in parallelo, lasciando il 15% all'esecuzione seriale. Questo dato sembra ragionevolmente alto, ma il nostro rapido studio dello speedup mostra che per ottenere uno speedup 4×, dobbiamo usare 8 o 9 processori in parallelo. Nei programmi reali, il fattore di velocizzazione è influenzato da
 
 - Progettazione della CPU
-- rete di comunicazione tra i nodi di calcolo
+- Rete di comunicazione tra i nodi di calcolo
 - Implementazioni della libreria MPI
-- dettagli del programma MPI stesso
+- Dettagli del programma MPI stesso
 
 Utilizzando la legge di Amdahl, è possibile dimostrare che con questo programma è *impossibile* raggiungere una velocità di 8 volte, indipendentemente dal numero di processori disponibili. I dettagli di questa analisi, con i risultati a supporto, sono lasciati per la prossima lezione del workshop HPC Carpentry, *Flussi di lavoro HPC*.
 
