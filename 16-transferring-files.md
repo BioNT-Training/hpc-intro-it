@@ -1,5 +1,5 @@
 ---
-title: Trasferimento di file con computer remoti
+title: Trasferimento di file da computer remoti
 teaching: 15
 exercises: 15
 ---
@@ -19,11 +19,11 @@ exercises: 15
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Eseguire il lavoro su un computer remoto non è molto utile se non si possono ottenere file da o verso il cluster. Esistono diverse opzioni per trasferire i dati tra le risorse di calcolo utilizzando le utility CLI e GUI, alcune delle quali verranno trattate.
+Eseguire il lavoro su un computer remoto non è molto utile se non si possono muovere file da o verso il cluster. Esistono diverse opzioni per trasferire i dati tra le risorse di calcolo utilizzando le utility CLI e GUI. Qui di seguito tratteremo alcune di queste opzioni.
 
 ## Scaricare i file delle lezioni da Internet
 
-Uno dei modi più semplici per scaricare i file è usare `curl` o `wget`. Uno di questi è solitamente installato nella maggior parte delle shell di Linux, nel terminale di Mac OS e in GitBash. Qualsiasi file che può essere scaricato nel browser web attraverso un link diretto può essere scaricato usando `curl` o `wget`. Si tratta di un modo rapido per scaricare insiemi di dati o codice sorgente. La sintassi di questi comandi è
+Uno dei modi più semplici per scaricare i file è usare `curl` o `wget`. Almeno uno di questi è solitamente installato nella maggior parte delle shell di Linux, nel terminale di Mac OS e in GitBash. Qualsiasi file che può essere scaricato nel browser web attraverso un link diretto può essere scaricato usando `curl` o `wget`. Si tratta di un modo rapido per scaricare insiemi di dati o codice sorgente. La sintassi di questi comandi è
 
 - `wget [-O new_name] https://some/link/to/a/file`
 - `curl [-o new_name] https://some/link/to/a/file`
@@ -60,7 +60,7 @@ L'opzione `-L` di `curl` indica di seguire i reindirizzamenti URL (cosa che `wge
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-dopo aver scaricato il file, usare `ls` per vederlo nella propria directory di lavoro:
+Dopo aver scaricato il file, si può usare `ls` per vederlo nella propria cartella di lavoro:
 
 ```bash
 [you@laptop:~]$ ls
@@ -130,12 +130,12 @@ hpc-carpentry-amdahl-46c9b4b/requirements.txt
 hpc-carpentry-amdahl-46c9b4b/setup.py
 ```
 
-Si noti che non è stato necessario digitare `-x -v -z -f`, grazie alla concatenazione dei flag, anche se il comando funziona in modo identico in entrambi i casi, purché l'elenco concatenato termini con `f`, perché la stringa successiva deve specificare il nome del file da estrarre.
+Da notare che non è stato necessario digitare `-x -v -z -f`, grazie alla concatenazione dei flag, anche se il comando funziona in modo identico in entrambi i casi, purché l'elenco concatenato termini con `f`, perché la stringa successiva deve specificare il nome del file da estrarre.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-La cartella ha un nome infelice, quindi cambiamolo con qualcosa di più comodo.
+La cartella ha un nome non adatto, quindi cambiamolo con qualcosa di più comodo.
 
 ```bash
 [you@laptop:~]$ mv hpc-carpentry-amdahl-46c9b4b amdahl
@@ -152,7 +152,7 @@ Controllare la dimensione della directory estratta e confrontarla con la dimensi
 
 I file di testo (compreso il codice sorgente Python) si comprimono bene: il "tarball" è un sesto della dimensione totale dei dati grezzi!
 
-Se si vuole invertire il processo - comprimere i dati grezzi invece di estrarli - impostare un flag `c` invece di `x`, impostare il nome del file di archivio e fornire una directory da comprimere:
+Se si vuole invertire il processo - comprimere i dati grezzi invece di estrarli - impostare un flag `c` invece di `x`, impostare il nome del file di archivio e fornire una cartella da comprimere:
 
 ```bash
 [you@laptop:~]$ tar -cvzf compressed_code.tar.gz amdahl
@@ -180,9 +180,9 @@ Se si dà `amdahl.tar.gz` come nome del file nel comando precedente, `tar` aggio
 
 ## Lavorare con Windows
 
-Quando si trasferiscono file di testo da un sistema Windows a un sistema Unix (Mac, Linux, BSD, Solaris, ecc.) questo può causare problemi. Windows codifica i suoi file in modo leggermente diverso da Unix e aggiunge un carattere extra a ogni riga.
+Quando si trasferiscono file di testo da un sistema Windows a un sistema Unix (Mac, Linux, BSD, Solaris, ecc.) si possono verificare dei problemi. Windows codifica i suoi file in modo leggermente diverso da Unix e aggiunge un carattere extra a ogni riga.
 
-In un sistema Unix, ogni riga di un file termina con un `\n` (newline). Su Windows, ogni riga di un file termina con un `\r\n` (ritorno a capo + newline). Questo a volte causa problemi.
+In un sistema Unix, ogni riga di un file termina con un `\n` (newline). Su Windows, ogni riga di un file termina con un `\r\n` (ritorno a capo + newline). 
 
 Sebbene la maggior parte dei linguaggi di programmazione e dei software moderni gestisca questo problema correttamente, in alcuni rari casi si può incorrere in un problema. La soluzione consiste nel convertire un file dalla codifica Windows a quella Unix con il comando `dos2unix`.
 
@@ -205,7 +205,7 @@ per *caricare su* un altro computer, il comando modello è
 
 in cui `@` e `:` sono separatori di campo e `remote_destination` è un percorso relativo alla vostra home directory remota, o un nuovo nome di file se desiderate cambiarlo, o sia un percorso relativo *e* un nuovo nome di file. Se non si ha in mente una cartella specifica, si può omettere la `remote_destination` e il file verrà copiato nella propria home directory sul computer remoto (con il nome originale). Se si include un `remote_destination`, si noti che `scp` lo interpreta nello stesso modo in cui lo interpreta `cp` quando si effettuano copie locali: se esiste ed è una cartella, il file viene copiato all'interno della cartella; se esiste ed è un file, il file viene sovrascritto con il contenuto di `local_file`; se non esiste, si presume che sia un nome di file di destinazione per `local_file`.
 
-Carica il materiale della lezione nella tua home directory remota in questo modo:
+Carica il materiale della lezione nella tua cartella home remota in questo modo:
 
 ```bash
 [you@laptop:~]$ scp amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:
@@ -217,7 +217,7 @@ Carica il materiale della lezione nella tua home directory remota in questo modo
 
 La maggior parte dei cluster di computer sono protetti da Internet da un *firewall*. Per una maggiore sicurezza, alcuni sono configurati per consentire il traffico *in entrata*, ma non *in uscita*. Ciò significa che un utente autenticato può inviare un file a un computer del cluster, ma un computer del cluster non può recuperare i file dal computer di un utente o da Internet.
 
-provare a scaricare direttamente il file. Si noti che potrebbe fallire, ma va bene così!
+Provare a scaricare direttamente il file. Si noti che potrebbe fallire, ma va bene così!
 
 ::::::::::::::: solution
 
@@ -232,14 +232,14 @@ provare a scaricare direttamente il file. Si noti che potrebbe fallire, ma va be
 
 :::::::::::::::::::::::::
 
-ha funzionato? Se no, che cosa ci dice l'output del terminale su ciò che è successo?
+Ha funzionato? Se no, che cosa ci dice l'output del terminale su ciò che è successo?
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Trasferimento di una directory
+## Trasferimento di una cartella
 
-Per trasferire un'intera directory, aggiungiamo il flag `-r` per "**r**ecursive": copia l'elemento specificato, e ogni elemento sotto di esso, e ogni elemento sotto di esso... fino a raggiungere il fondo dell'albero delle directory con radice nel nome della cartella fornito.
+Per trasferire un'intera cartella, aggiungiamo il flag `-r` per "**r**ecursive": copia l'elemento specificato, e ogni elemento sotto di esso, e ogni elemento sotto di esso... fino a raggiungere il fondo dell'albero delle cartelle con radice nel nome della cartella fornito.
 
 ```bash
 [you@laptop:~]$ scp -r amdahl yourUsername@cluster.hpc-carpentry.org:
@@ -249,18 +249,18 @@ Per trasferire un'intera directory, aggiungiamo il flag `-r` per "**r**ecursive"
 
 ## Attenzione
 
-Per una directory di grandi dimensioni, sia in termini di dimensioni che di numero di file, la copia con `-r` può richiedere molto tempo.
+Per una cartella di grandi dimensioni, sia in termini di dimensioni che di numero di file, la copia con `-r` può richiedere molto tempo.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Quando si usa `scp`, si può notare che un `:` segue *sempre* il nome del computer remoto. Una stringa *dopo* la `:` specifica la directory remota in cui si desidera trasferire il file o la cartella, compreso un nuovo nome se si desidera rinominare il materiale remoto. Se si lascia questo campo vuoto, per impostazione predefinita, `scp` è la propria home directory e il nome del materiale locale da trasferire.
+Quando si usa `scp`, si può notare che un `:` segue *sempre* il nome del computer remoto. Una stringa *dopo* la `:` specifica la cartella remota in cui si desidera trasferire il file o la cartella, compreso un nuovo nome se si desidera rinominare il materiale remoto. Se si lascia questo campo vuoto, per impostazione predefinita, `scp` è la propria cartella home e il nome del materiale locale da trasferire.
 
-Nei computer Linux, `/` è il separatore nei percorsi di file o directory. Un percorso che inizia con un `/` è detto *assoluto*, poiché non può esserci nulla al di sopra della radice `/`. Un percorso che non inizia con `/` è detto *relativo*, poiché non è ancorato alla radice.
+Nei computer Linux, `/` è il separatore nei percorsi di file o cartelle. Un percorso che inizia con un `/` è detto *assoluto*, poiché non può esserci nulla al di sopra della radice `/`. Un percorso che non inizia con `/` è detto *relativo*, poiché non è ancorato alla radice.
 
-Se si vuole caricare un file in una posizione all'interno della propria home directory, cosa che accade spesso, non è necessario un `/`. Dopo il `:`, si può digitare il percorso di destinazione relativo alla propria home directory. Se la propria home directory *è* la destinazione, si può lasciare il campo della destinazione vuoto, oppure digitare `~` -- l'abbreviazione della propria home directory -- per completezza.
+Se si vuole caricare un file in una posizione all'interno della propria cartella home, cosa che accade spesso, non è necessario un `/`. Dopo il `:`, si può digitare il percorso di destinazione relativo alla propria cartella home. Se questa *è* la destinazione, si può lasciare il campo della destinazione vuoto, oppure digitare `~` -- l'abbreviazione della propria cartella home -- per completezza.
 
-Con `scp`, una barra tracciante sulla directory di destinazione è opzionale e non ha alcun effetto. Il trattino sulla directory di origine è importante per altri comandi, come `rsync`.
+Con `scp`, una barra tracciante sulla cartella di destinazione è opzionale e non ha alcun effetto. Il trattino sulla cartella di origine è importante per altri comandi, come `rsync`.
 
 ::::::::::::::::::::::::::::::::::::::::: callout
 
@@ -268,7 +268,7 @@ Con `scp`, una barra tracciante sulla directory di destinazione è opzionale e n
 
 Man mano che si acquisisce esperienza nel trasferimento di file, il comando `scp` può risultare limitante. L'utilità [rsync] fornisce funzioni avanzate per il trasferimento di file ed è tipicamente più veloce sia di `scp` che di `sftp` (vedi sotto). È particolarmente utile per trasferire file di grandi dimensioni e/o numerosi e per sincronizzare il contenuto delle cartelle tra computer.
 
-la sintassi è simile a quella di `scp`. Per trasferire *a* un altro computer con le opzioni comunemente usate:
+La sintassi è simile a quella di `scp`. Per trasferire *a* un altro computer con le opzioni comunemente usate:
 
 ```bash
 [you@laptop:~]$ rsync -avP amdahl.tar.gz yourUsername@cluster.hpc-carpentry.org:
@@ -280,13 +280,13 @@ Le opzioni sono:
 - `-v` (**v**erbose) per ottenere un output verboso che aiuti a monitorare il trasferimento
 - `-P` (parziale/progresso) per preservare i file parzialmente trasferiti in caso di interruzione e per visualizzare il progresso del trasferimento.
 
-Per copiare ricorsivamente una directory, si possono usare le stesse opzioni:
+Per copiare ricorsivamente una cartella, si possono usare le stesse opzioni:
 
 ```bash
 [you@laptop:~]$ rsync -avP amdahl yourUsername@cluster.hpc-carpentry.org:~/
 ```
 
-così come è scritto, la directory locale e il suo contenuto si trovano sotto la propria home directory sul sistema remoto. Se all'origine viene aggiunto un trattino, non verrà creata una nuova directory corrispondente alla directory trasferita e il contenuto della directory di origine verrà copiato direttamente nella directory di destinazione.
+così come è scritto, la cartella locale e il suo contenuto si trovano sotto la propria cartella home sul sistema remoto. Se all'origine viene aggiunto un trattino, non verrà creata una nuova cartella corrispondente alla cartella trasferita e il contenuto della cartella di origine verrà copiato direttamente nella cartella di destinazione.
 
 Per scaricare un file, basta cambiare la sorgente e la destinazione:
 
