@@ -374,7 +374,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Connessione a un sistema HPC remoto</h1>
-        <p>Ultimo aggiornamento il 2026-01-15 |
+        <p>Ultimo aggiornamento il 2026-01-20 |
 
         <a href="https://github.com/ocaisa/probable-pancake/edit/main/episodes/11-connecting.Rmd" class="external-link">Modifica questa pagina <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -556,7 +556,7 @@ pubblica sarà identico, con l’aggiunta dell’estensione
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh-keygen <span class="at">-a</span> 100 <span class="at">-f</span> ~/.ssh/id_ed25519 <span class="at">-t</span> ed25519</span></code></pre>
 </div>
 <p>Quando viene richiesto, inserire una password forte tenendo conto
-delle <a href="#considerazioni-per-le-chiavi-password">considerazioni
+delle <a href="#considerazioni-sulle-password-delle-chiavi-ssh">considerazioni
 precedenti</a>. Si noti che il terminale non sembra cambiare mentre si
 digita la password: questo è intenzionale, per la vostra sicurezza. Vi
 verrà richiesto di digitarla di nuovo, quindi non preoccupatevi troppo
@@ -603,7 +603,7 @@ della chiave OpenSSH, anziché PEM.</li>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> ssh-keygen <span class="at">-a</span> 100 <span class="at">-b</span> 4096 <span class="at">-f</span> ~/.ssh/id_rsa <span class="at">-o</span> <span class="at">-t</span> rsa</span></code></pre>
 </div>
 <p>Quando viene richiesto, inserire una password forte tenendo conto
-delle <a href="#considerazioni-per-le-chiavi-password">considerazioni di
+delle <a href="#considerazioni-sulle-password-delle-chiavi-ssh">considerazioni di
 cui sopra</a>.</p>
 <p>Guardare in <code>~/.ssh</code> (usare <code>ls ~/.ssh</code>). Si
 dovrebbero vedere due nuovi file:</p>
@@ -622,16 +622,16 @@ a essere vista.</li>
 <p>Se si usa PuTTY su Windows, scaricare e usare <code>puttygen</code>
 per generare la coppia di chiavi. Vedere la <a href="https://tartarus.org/~simon/putty-prerel-snapshots/htmldoc/Chapter8.html#pubkey-puttygen" class="external-link">documentazione
 di PuTTY</a> per i dettagli.</p>
-<ul><li>Selezionare <code>EdDSA</code> come tipo di chiave.</li>
-<li>Selezionare <code>255</code> come dimensione o forza della
-chiave.</li>
-<li>Fare clic sul pulsante “Genera”.</li>
-<li>Non è necessario inserire un commento.</li>
-<li>Quando viene richiesto, inserire una password forte tenendo conto
-delle <a href="#considerazioni-per-le-chiavi-password">considerazioni di
-cui sopra</a>.</li>
-<li>Salvare le chiavi in una cartella che non può essere letta da altri
-utenti del sistema.</li>
+<ul><li><p>Selezionare <code>EdDSA</code> come tipo di chiave.</p></li>
+<li><p>Selezionare <code>255</code> come dimensione o forza della
+chiave.</p></li>
+<li><p>Fare clic sul pulsante “Genera”.</p></li>
+<li><p>Non è necessario inserire un commento.</p></li>
+<li><p>Quando viene richiesto, inserire una password forte tenendo conto
+delle <a href="#considerazioni-sulle-password-delle-chiavi-ssh">considerazioni di
+cui sopra</a>.</p></li>
+<li><p>Salvare le chiavi in una cartella che non può essere letta da
+altri utenti del sistema.</p></li>
 </ul><p>Guardare nella cartella specificata. Si dovrebbero vedere due nuovi
 file:</p>
 <ul><li>la vostra chiave privata (<code>id_ed25519</code>): *non condividere
@@ -959,7 +959,7 @@ disponibilità di filesystem montati in rete, ecc.)</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template concesso in licenza sotto <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> da <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Realizzato con <a href="https://github.com/carpentries/sandpaper/tree/0.17.3" class="external-link">sandpaper (0.17.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a> e <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
+        <p>Realizzato con <a href="https://github.com/carpentries/sandpaper/tree/0.18.3" class="external-link">sandpaper (0.18.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a> e <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -981,8 +981,8 @@ disponibilità di filesystem montati in rete, ecc.)</li>
   "url": "https://ocaisa.github.io/probable_pancake/11-connecting.html",
   "identifier": "https://ocaisa.github.io/probable_pancake/11-connecting.html",
   "dateCreated": "2017-03-24",
-  "dateModified": "2026-01-15",
-  "datePublished": "2026-01-15"
+  "dateModified": "2026-01-20",
+  "datePublished": "2026-01-20"
 }
 
   </script><script>
