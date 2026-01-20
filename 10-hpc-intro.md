@@ -29,7 +29,7 @@ In tutti questi casi, è necessario l'accesso a più computer. Questi computer d
 
 ## Presentazione del gergo
 
-Aprire [HPC Jargon Buster](../files/jargon#p1) in una nuova scheda. Per presentare il contenuto, premere `C` per aprire una **c**lone in una finestra separata, quindi premere `P` per attivare la modalità di **p**resentazione.
+Aprire [HPC Jargon Buster](files/jargon.html#p1) in una nuova scheda. Per presentare il contenuto, premere `C` per aprire una **c**lone in una finestra separata, quindi premere `P` per attivare la modalità di **p**resentazione.
 
 :::::::::::::::::::::::::::::::::::::: challenge
 

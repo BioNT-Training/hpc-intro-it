@@ -112,7 +112,7 @@ Se `~/.ssh/id_rsa` esiste già, è necessario specificare un nome diverso per la
 [you@laptop:~]$ ssh-keygen -a 100 -b 4096 -f ~/.ssh/id_rsa -o -t rsa
 ```
 
-Quando viene richiesto, inserire una password forte tenendo conto delle [considerazioni di cui sopra](#considerazioni-per-le-chiavi-password).
+Quando viene richiesto, inserire una password forte tenendo conto delle [considerazioni di cui sopra](#considerazioni-sulle-password-delle-chiavi-ssh).
 
 Guardare in `~/.ssh` (usare `ls ~/.ssh`). Si dovrebbero vedere due nuovi file:
 
