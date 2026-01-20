@@ -38,7 +38,7 @@ Il primo passo per utilizzare un cluster è stabilire una connessione dal nostro
 
 Se avete mai aperto il Prompt dei comandi di Windows o il Terminale di macOS, avete visto una CLI. Se avete già seguito i corsi di The Carpentries sulla shell UNIX o su git, avete usato la CLI sulla vostra macchina locale in modo piuttosto esteso. L'unico salto da fare in questo caso è aprire una CLI su una macchina *remota*, prendendo alcune precauzioni in modo che gli altri utenti della rete non possano vedere (o modificare) i comandi che state eseguendo o i risultati che la macchina remota invia. Utilizzeremo il protocollo Secure SHell (o SSH) per aprire una connessione di rete crittografata tra due macchine, consentendo di inviare e ricevere testo e dati senza doversi preoccupare di occhi indiscreti.
 
-![Connetti al cluster](fig/connect-to-remote.svg){alt-text="Connetti al cluster"}
+![Connetti al cluster](fig/connect-to-remote.svg){alt="Connetti al cluster"}
 
 Assicurarsi di avere un client SSH installato sul portatile. Fare riferimento alla sezione [setup](../index.md) per maggiori dettagli. I client SSH sono solitamente strumenti a riga di comando, in cui si fornisce l'indirizzo della macchina remota come unico argomento richiesto. Se il nome utente sul sistema remoto è diverso da quello utilizzato localmente, è necessario fornire anche quello. Se il vostro client SSH ha un front-end grafico, come PuTTY o MobaXterm, dovrete impostare questi argomenti prima di fare clic su "connect" Dal terminale, si scriverà qualcosa come `ssh userName@hostname`, dove il simbolo "@" è usato per separare le due parti di un singolo argomento.
 

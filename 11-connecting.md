@@ -86,7 +86,7 @@ Generare una nuova coppia di chiavi pubbliche e private usando il seguente coman
 [you@laptop:~]$ ssh-keygen -a 100 -f ~/.ssh/id_ed25519 -t ed25519
 ```
 
-Quando viene richiesto, inserire una password forte tenendo conto delle [considerazioni precedenti](#considerazioni-per-le-chiavi-password). Si noti che il terminale non sembra cambiare mentre si digita la password: questo è intenzionale, per la vostra sicurezza. Vi verrà richiesto di digitarla di nuovo, quindi non preoccupatevi troppo degli errori di battitura.
+Quando viene richiesto, inserire una password forte tenendo conto delle [considerazioni precedenti](#considerazioni-sulle-password-delle-chiavi-ssh). Si noti che il terminale non sembra cambiare mentre si digita la password: questo è intenzionale, per la vostra sicurezza. Vi verrà richiesto di digitarla di nuovo, quindi non preoccupatevi troppo degli errori di battitura.
 
 Guardare in `~/.ssh` (usare `ls ~/.ssh`). Si dovrebbero vedere due nuovi file:
 
@@ -129,7 +129,8 @@ Se si usa PuTTY su Windows, scaricare e usare `puttygen` per generare la coppia 
 - Selezionare `255` come dimensione o forza della chiave.
 - Fare clic sul pulsante "Genera".
 - Non è necessario inserire un commento.
-- Quando viene richiesto, inserire una password forte tenendo conto delle [considerazioni di cui sopra](#considerazioni-per-le-chiavi-password).
+- Quando viene richiesto, inserire una password forte tenendo conto delle [considerazioni di cui sopra](#considerazioni-sulle-password-delle-chiavi-ssh).
+
 - Salvare le chiavi in una cartella che non può essere letta da altri utenti del sistema.
 
 Guardare nella cartella specificata. Si dovrebbero vedere due nuovi file:
@@ -199,7 +200,7 @@ Aggiungere la propria chiave all'agente, con scadenza della sessione dopo 8 ore:
 ```
 
 ```output
-Enter passphrase for .ssh/id_ed25519: 
+Enter passphrase for .ssh/id_ed25519:
 Identity added: .ssh/id_ed25519
 Lifetime set to 86400 seconds
 ```

@@ -5,8 +5,8 @@ title: Configurazione
 
 Ci sono diversi software che si desidera installare prima del workshop. Anche se la guida all'installazione sarà fornita durante il workshop, si consiglia di installare (o almeno scaricare) questi strumenti in anticipo.
 
-1. [Un'applicazione terminale o un'interfaccia a riga di comando](#dove-dovete-digitare-comandi-come-aprire-una-nuova-shell)
-2. [Un'applicazione Secure Shell](#ssh-for-secure-connections)
+1. [Un'applicazione terminale o un'interfaccia a riga di comando](#dove-digitare-i-comandi-come-aprire-una-nuova-shell)
+2. [Un'applicazione Secure Shell](#ssh-per-connessioni-sicure)
 
 :::::::::::::::::::::::::::::::::::::::::: prereq
 
