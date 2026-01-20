@@ -25,7 +25,7 @@ Alla fine di questo workshop, gli studenti sapranno come:
 
 ## Iniziare
 
-Per iniziare, seguire le "[Istruzioni per la configurazione](../learners/setup.md) per assicurarsi di avere un terminale e un'applicazione SSH.
+Per iniziare, seguire le [Istruzioni per la configurazione](learners/setup.md) per assicurarsi di avere un terminale e un'applicazione SSH.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
