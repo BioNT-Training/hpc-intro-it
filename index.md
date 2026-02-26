@@ -9,7 +9,7 @@ site: sandpaper::sandpaper_site
 Questo materiale formativo è destinato esclusivamente a scopi educativi e
 informativi. Descrive come utilizzare un ambiente HPC basato su
 [SLURM](https://slurm.schedmd.com/overview.html),
-[moduli](https://lmod.readthedocs.io)
+[modules](https://lmod.readthedocs.io)
 e tecnologie correlate, ma non fornisce accesso
 all'infrastruttura computazionale necessaria per completare gli esercizi.
 
