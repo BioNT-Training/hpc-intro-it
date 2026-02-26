@@ -2,7 +2,7 @@
 site: sandpaper::sandpaper_site
 ---
 
-::::::::::::::::::::::::::::::::::::::::::  prereq
+::::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Dichiarazione di non responsabilità
 
